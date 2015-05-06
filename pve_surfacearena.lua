@@ -35,6 +35,7 @@ end
 --------------------------------
 
 local arenaPlayers = {};
+local playerCount = 0;
 
 ---------------------
 --Surface Arena------
@@ -58,22 +59,31 @@ local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
 
 
 function surface_enter(data)
+      if playerCount < 4 then
          local player = Player:new(data.player);
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cHead to the center of the arena to get started!", player);
          arenaPlayers[player.name] = true;
+         playerCount = playerCount + 1;
+      else
+        a_whisper_npc(Message, "&cSorry this Arena is full, try joining when someone leaves!", player);
+          local player = Player:new(playerName);
+          player:teleport(surfacearenaexit);
+    end
 end
 
 function surface_exit1(data)
       local targetPlayer = Player:new(data.player);
        targetPlayer:teleport(surfacearenaexit);
        arenaPlayers[player.name] = nil;
+       playerCount = playerCount - 1;
 end
 
 function surface_exit2(data)
       local player = Player:new(data.player);
        a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Surface Arena&f!");
        arenaPlayers[player.name] = nil;
+       playerCount = playerCount - 1;
 end
 
 registerHook("REGION_ENTER", "surface_enter", "mobarena-arena_surface");
@@ -171,11 +181,11 @@ end
 
 --Round 1 (20 Mobs)--
 
-local sR1spawn1 = Location:new(myWorld, -3.0, 65.0, -1.0);
-local sR1spawn2 = Location:new(myWorld, -3.0, 65.0, -1.0);
-local sR1spawn3 = Location:new(myWorld, -3.0, 65.0, -1.0);
-local sR1spawn4 = Location:new(myWorld, -3.0, 65.0, -1.0);
-local sR1spawn5 = Location:new(myWorld, -3.0, 65.0, -1.0);
+local sR1spawn1 = Location:new(myWorld, 4.0, 65.0, 17.0);
+local sR1spawn2 = Location:new(myWorld, -11.0, 65.0, 16.0);
+local sR1spawn3 = Location:new(myWorld, -18.0, 65.0,-5.0);
+local sR1spawn4 = Location:new(myWorld, 6.0, 65.0, -14.0);
+local sR1spawn5 = Location:new(myWorld, 15.0, 65.0, 2.0);
 
 function s_round1_spawn1(data)
       if not sR1Done then
