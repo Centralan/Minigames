@@ -78,11 +78,11 @@ registerHook("REGION_LEAVE", "surface_exit2", "mobarena-arena_surface");
 
 local entityList = {};
 
-local checkTimer1 = Timer:new("round1_end", 5000);
-local checkTimer2 = Timer:new("round2_end", 5000);
-local checkTimer3 = Timer:new("round3_end", 5000);
-local checkTimer4 = Timer:new("round4_end", 5000);
-local checkTimer5 = Timer:new("round5_end", 5000);
+local checkTimer1 = Timer:new("round1_end", 1);
+local checkTimer2 = Timer:new("round2_end", 1);
+local checkTimer3 = Timer:new("round3_end", 1);
+local checkTimer4 = Timer:new("round4_end", 1);
+local checkTimer5 = Timer:new("round5_end", 1);
 
 local function spawnMob(position, mobType)
 	local entity = Entity:new(position);
@@ -114,7 +114,7 @@ function round1_end()
          checkTimer1:cancel()
          a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhad ended!");
 	end
-end
+end     
 
 function round2_end()
        local player = Player:new(data.player);
@@ -125,6 +125,7 @@ function round2_end()
          a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Surface Arena &fhad ended!");
 	end
 end
+
 function round3_end()
        local player = Player:new(data.player);
 	if check_alive_status() then
@@ -163,11 +164,11 @@ end
 
 --Round 1 (20 Mobs)--
 
-local sR1spawn1 = Location:new(myWorld, 4.0, 65.0, 17.0);
-local sR1spawn2 = Location:new(myWorld, -11.0, 65.0, 16.0);
-local sR1spawn3 = Location:new(myWorld, -18.0, 65.0,-5.0);
-local sR1spawn4 = Location:new(myWorld, 6.0, 65.0, -14.0);
-local sR1spawn5 = Location:new(myWorld, 15.0, 65.0, 2.0);
+local sR1spawn1 = Location:new(myWorld, -3.0, 65.0, -1.0);
+local sR1spawn2 = Location:new(myWorld, -3.0, 65.0, -1.0);
+local sR1spawn3 = Location:new(myWorld, -3.0, 65.0, -1.0);
+local sR1spawn4 = Location:new(myWorld, -3.0, 65.0, -1.0);
+local sR1spawn5 = Location:new(myWorld, -3.0, 65.0, -1.0);
 
 function s_round1_spawn1(data)
       if not sR1Done then
