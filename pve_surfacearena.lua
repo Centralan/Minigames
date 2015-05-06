@@ -2,7 +2,6 @@ local myWorld = World:new('mobarena');
 
 --ToDo:
 --IF NO PLAYERS IN ARENA ALL ROUNDS RESET.
---TP all players from arena after round 5.
 --Give loot to players in arena after they get tped away from arena.
 --Sounds to round end.	
 --Message all players in arena on round end to tell player about shop, how to start.
@@ -174,6 +173,64 @@ function round5_end()
 	end
 end
 end
+
+--------------------------
+--Respawning/Game Over----
+--------------------------
+
+local surfacerespawn = Location:new(myWorld, -43, 66, 1);
+local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
+local deadPlayers = {};
+local deadplayerCount = 0;
+
+--When Player dies repsawn here.
+function respawn(data)
+       if sRoundRunning then
+         for playerName, value in pairs(arenaPlayers) do
+             local player = Player:new(data.player);
+             deadplayerCount = deadplayerCount + 1
+             player:setHealth(20);
+             player:teleport(surfacerespawn);
+   end
+end
+end
+
+
+--Round Over, reset deadplayer count.
+function reset_deadcount(data)
+         if not sRoundRunning then
+            for playerName, value in pairs(deadPlayers)
+           do deadPlayers[playerName] = nil;
+end
+end
+end
+
+
+--When all players die, tp to lobby, reset game.
+function game_over(data)
+        if sRoundRunning then
+        if deadplayerCount > 3 then
+         for playerName, value in pairs(arenaPlayers) do
+             local player = Player:new(data.player);
+             player:setHealth(20);
+             player:teleport(surfacearenaexit);
+             sRoundRunning = false;
+             sR1Done = false;
+             sR2Done = false;
+             sR3Done = false;
+             sR4Done = false;
+             sR5Done = false;
+         a_broadcast_npc(Overlord, "The &6Surface Arena &fhas been proven to hard, rounds reset!");
+         for playerName, value in pairs(deadPlayers)
+             do deadPlayers[playerName] = nil;
+   end
+end
+end
+end
+end
+
+registerHook("PLAYER_DEATH", "respawn", "mobarena");
+
 
 ----------------
 --Mob Spawning--
