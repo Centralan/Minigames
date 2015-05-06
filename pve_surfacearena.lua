@@ -107,7 +107,6 @@ function check_alive_stats()
 end
 
 function round1_end()
-       local player = Player:new(data.player);
 	if check_alive_status() then
          sRoundRunning = false;
          sR1Done = true;
@@ -117,7 +116,6 @@ function round1_end()
 end     
 
 function round2_end()
-       local player = Player:new(data.player);
 	if check_alive_status() then
          sRoundRunning = false;
          sR2Done = true;
@@ -127,7 +125,6 @@ function round2_end()
 end
 
 function round3_end()
-       local player = Player:new(data.player);
 	if check_alive_status() then
          sRoundRunning = false;
          sR3Done = true;
@@ -136,7 +133,6 @@ function round3_end()
 	end
 end
 function round4_end()
-       local player = Player:new(data.player);
 	if check_alive_status() then
          sRoundRunning = false;
          sR4Done = true;
@@ -145,7 +141,6 @@ function round4_end()
 	end
 end
 function round5_end()
-       local player = Player:new(data.player);
 	if check_alive_status() then
          sRoundRunning = false;
          sR1Done = false;
@@ -153,7 +148,6 @@ function round5_end()
          sR3Done = false;
          sR4Done = false;
          checkTimer5:cancel()
-         p:sendEvent("achievement.mobgrinder");
          a_broadcast_npc(Overlord, "&aRound 5 &fin the &6Surface Arena &fhad ended!");
 	end
 end
