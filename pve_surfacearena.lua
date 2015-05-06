@@ -59,15 +59,11 @@ end
 function surface_exit1(data)
       local targetPlayer = Player:new(data.player);
        targetPlayer:teleport(surfacearenaexit);
-       arenaPlayers[player.name] = nil;
-       playerCount = playerCount - 1;
 end
 
 function surface_exit2(data)
       local player = Player:new(data.player);
        a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Surface Arena&f!");
-       arenaPlayers[player.name] = nil;
-       playerCount = playerCount - 1;
 end
 
 registerHook("REGION_ENTER", "surface_enter", "mobarena-arena_surface");
