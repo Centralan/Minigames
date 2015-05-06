@@ -1,10 +1,5 @@
+
 local myWorld = World:new('mobarena');
-
---ToDo's
---Plug-in Shops
---Secret Room Stuff
---Fix Testing Lanes
-
 
 --------
 ---AI---
@@ -171,3 +166,16 @@ end
 
 registerHook("INTERACT", "lobby_vanish_ach", 77, "mobarena", 841.0, 99.0, 172.0);
 registerHook("REGION_ENTER", "lobby_easter_room", "mobarena-lobby_secret_door");
+
+
+--Bug Report--
+
+local bugbook = Location:new(myWorld, 832, 133, 164);
+
+function bug_report(data)
+       local targetPlayer = Player:new(data.player);
+             bugbook:cloneChestToPlayer(player.name);
+       a_whisper_npc(Message, "&dType /may to send this book. Please use this book to report bugs only! Visit our sub-reddit r/RunsafeMinecraft to see a list of bugs!", player);
+
+registerHook("INTERACT", "bug_report", 77, "mobarena", 834.0, 99.0, 152.0);
+
