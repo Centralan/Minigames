@@ -556,11 +556,11 @@ function s_round1_start(data)
          local player = Player:new(data.player);
       if not sR1Done then
        if not sRoundRunning then  
+         sRoundRunning = true;
+         checkTimer1:startRepeating()
+         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cRound One has started, kill all mobs to move into round 2.", player);
-         sRoundRunning = true;
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
-         checkTimer1:startRepeating()
       else
          a_whisper_npc(Message, "&cFinish current round before starting Round 1.", player);
 
@@ -573,11 +573,11 @@ function s_round2_start(data)
       if sR1Done then 
       if not sR2Done then
        if not sRoundRunning then 
+         sRoundRunning = true;
+         checkTimer2:startRepeating()
+         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 2 &fin the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cRound Two has started, kill all mobs to move into round 3.", player);
-         sRoundRunning = true;
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
-         checkTimer2:startRepeating()
       else
          a_whisper_npc(Message, "&cFinish Round 1 before starting Round 2.", player);
    end
@@ -590,11 +590,11 @@ function s_round3_start(data)
       if sR2Done then 
       if not sR3Done then
        if not sRoundRunning then 
+         sRoundRunning = true;
+         checkTimer3:startRepeating()
+         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 3 &fin the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cRound Three has started, kill all mobs to move into round 4.", player);
-         sRoundRunning = true;
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
-         checkTimer3:startRepeating()
       else
          a_whisper_npc(Message, "&cFinish Round 2 before starting Round 3.", player);
    end
@@ -607,11 +607,11 @@ function s_round4_start(data)
       if sR3Done then
       if not sR4Done then
        if not sRoundRunning then  
+         sRoundRunning = true;
+         checkTimer4:startRepeating()
+         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 4 &fin the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cRound Four has started, kill all mobs to move into round 5.", player);
-         sRoundRunning = true;
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
-         checkTimer4:startRepeating()
       else
          a_whisper_npc(Message, "&cFinish Round 3 before starting Round 4.", player);
    end
@@ -624,11 +624,11 @@ function s_round5_start(data)
       if sR4Done then
       if not sR5Done then
        if not sRoundRunning then  
+         sRoundRunning = true;
+         checkTimer5:startRepeating()
+         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 5 &fin the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cRound Five has started, kill all mobs to finish the arena!", player);
-         sRoundRunning = true;
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
-         checkTimer5:startRepeating()
       else
          a_whisper_npc(Message, "&cFinish Round 4 before starting Round 5.", player);
    end
