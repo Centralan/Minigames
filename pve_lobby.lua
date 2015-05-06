@@ -1,5 +1,11 @@
 local myWorld = World:new('mobarena');
 
+--ToDo's
+--Plug-in Shops
+--Secret Room Stuff
+--Fix Testing Lanes
+
+
 --------
 ---AI---
 --------
