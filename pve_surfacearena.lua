@@ -1,13 +1,14 @@
 local myWorld = World:new('mobarena');
 
---ToDo:
+--ToDoBeforeBeta:
 --IF NO PLAYERS IN ARENA ALL ROUNDS RESET.
 --Give loot to players in arena after they get tped away from arena.
 --Sounds to round end.	
---Message all players in arena on round end to tell player about shop, how to start.
---players in center to start?
---Respawn inside the arena if player dies.
---Change tp in face-direction.
+
+--ToDoAfterBeta:
+--Shops
+--loot
+--fix bugs that appear.
 
 
 --------
