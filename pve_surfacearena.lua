@@ -1,14 +1,13 @@
 local myWorld = World:new('mobarena');
 
---ToDoBeforeBeta:
+--ToDo:
 --IF NO PLAYERS IN ARENA ALL ROUNDS RESET.
 --Give loot to players in arena after they get tped away from arena.
 --Sounds to round end.	
-
---ToDoAfterBeta:
---Shops
---loot
---fix bugs that appear.
+--Message all players in arena on round end to tell player about shop, how to start.
+--players in center to start?
+--Respawn inside the arena if player dies.
+--Change tp in face-direction.
 
 
 --------
@@ -29,13 +28,6 @@ end
 function a_whisper_npc(npc, msg, player)
 	player:sendMessage('&f&c' .. npc .. '&f' .. msg);
 end
-
---------------------------------
---Player Control--
---------------------------------
-
-local arenaPlayers = {};
-local playerCount = 0;
 
 ---------------------
 --Surface Arena------
@@ -59,17 +51,9 @@ local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
 
 
 function surface_enter(data)
-      if playerCount < 4 then
          local player = Player:new(data.player);
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cHead to the center of the arena to get started!", player);
-         arenaPlayers[player.name] = true;
-         playerCount = playerCount + 1;
-      else
-        a_whisper_npc(Message, "&cSorry this Arena is full, try joining when someone leaves!", player);
-          local player = Player:new(playerName);
-          player:teleport(surfacearenaexit);
-    end
 end
 
 function surface_exit1(data)
@@ -179,54 +163,18 @@ end
 --Respawning/Game Over----
 --------------------------
 
-local surfacerespawn = Location:new(myWorld, -43, 66, 1);
-local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
-local deadPlayers = {};
-local deadplayerCount = 0;
+local surfacerespawn = Location:new(myWorld, 41, 67, 1);
+local respawngear = Location:new(myWorld, 48, 67, 1);
 
 --When Player dies repsawn here.
 function respawn(data)
        if sRoundRunning then
          for playerName, value in pairs(arenaPlayers) do
              local player = Player:new(data.player);
-             deadplayerCount = deadplayerCount + 1
+             respawngear:cloneChestToPlayer(player.name);
              player:setHealth(20);
              player:teleport(surfacerespawn);
    end
-end
-end
-
-
---Round Over, reset deadplayer count.
-function reset_deadcount(data)
-         if not sRoundRunning then
-            for playerName, value in pairs(deadPlayers)
-           do deadPlayers[playerName] = nil;
-end
-end
-end
-
-
---When all players die, tp to lobby, reset game.
-function game_over(data)
-        if sRoundRunning then
-        if deadplayerCount > 3 then
-         for playerName, value in pairs(arenaPlayers) do
-             local player = Player:new(data.player);
-             player:setHealth(20);
-             player:teleport(surfacearenaexit);
-             sRoundRunning = false;
-             sR1Done = false;
-             sR2Done = false;
-             sR3Done = false;
-             sR4Done = false;
-             sR5Done = false;
-         a_broadcast_npc(Overlord, "The &6Surface Arena &fhas been proven to hard, rounds reset!");
-         for playerName, value in pairs(deadPlayers)
-             do deadPlayers[playerName] = nil;
-   end
-end
-end
 end
 end
 
