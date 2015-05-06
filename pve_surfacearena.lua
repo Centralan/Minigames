@@ -61,19 +61,19 @@ function surface_enter(data)
          local player = Player:new(data.player);
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cHead to the center of the arena to get started!", player);
-         arenaPlayers[playerNameHere] = true;
+         arenaPlayers[player.name] = true;
 end
 
 function surface_exit1(data)
       local targetPlayer = Player:new(data.player);
        targetPlayer:teleport(surfacearenaexit);
-       arenaPlayers[playerNameHere] = nil;
+       arenaPlayers[player.name] = nil;
 end
 
 function surface_exit2(data)
       local player = Player:new(data.player);
        a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Surface Arena&f!");
-       arenaPlayers[playerNameHere] = nil;
+       arenaPlayers[player.name] = nil;
 end
 
 registerHook("REGION_ENTER", "surface_enter", "mobarena-arena_surface");
@@ -623,6 +623,7 @@ function s_round4_start(data)
       else
          a_whisper_npc(Message, "&cFinish Round 3 before starting Round 4.", player);
    end
+end
 end
 end
 end
