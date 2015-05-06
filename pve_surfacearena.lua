@@ -140,7 +140,6 @@ function round3_end()
          a_broadcast_npc(Overlord, "&aRound 3 &fin the &6Surface Arena &fhad ended!");
 	end
 end
-
 function round4_end()
 	if check_alive_stats() then
          sRoundRunning = false;
@@ -149,7 +148,6 @@ function round4_end()
          a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Surface Arena &fhad ended!");
 	end
 end
-
 function round5_end()
 	if check_alive_stats() then
          sRoundRunning = false;
@@ -158,12 +156,12 @@ function round5_end()
          sR3Done = false;
          sR4Done = false;
          checkTimer5:cancel()
-         a_broadcast_npc(Overlord, "&aRound 5 &fin the &6Surface Arena &fhad ended!");
          for playerName, value in pairs(arenaPlayers) do
-         local player = Player:new(playerName);
-         player:sendEvent("achievement.mobgrinder");
-
+             local player = Player:new(playerName);
+             player:sendEvent("achievement.mobgrinder");
+         a_broadcast_npc(Overlord, "&aRound 5 &fin the &6Surface Arena &fhad ended!");
 	end
+end
 end
 
 ----------------
@@ -626,7 +624,6 @@ function s_round4_start(data)
 end
 end
 end
-end
 
 function s_round5_start(data)
          local player = Player:new(data.player);
@@ -780,3 +777,54 @@ end
 
 registerHook("BLOCK_GAINS_CURRENT", "s_re_lever", "mobarena", -49.0, 114.0, 9.0);
 registerHook("BLOCK_GAINS_CURRENT", "s_pl_lever", "mobarena", -49.0, 114.0, 9.0);
+
+------------------------------------------------------
+--OVERRIDE (DELETE BEFORE MAKEING GAME LIVE)----------
+------------------------------------------------------
+
+function s_round1_end(data)
+         local player = Player:new(data.player);
+         sRoundRunning = false;
+         sR1Done = true;
+         a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhad ended!");
+end
+
+function s_round2_end(data)
+         local player = Player:new(data.player);
+         sRoundRunning = false;
+         sR2Done = true;
+         a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Surface Arena &fhad ended!");
+end
+
+function s_round3_end(data)
+         local player = Player:new(data.player);
+         sRoundRunning = false;
+         sR3Done = true;
+         a_broadcast_npc(Overlord, "&aRound 3 &fin the &6Surface Arena &fhad ended!");
+end
+
+function s_round4_end(data)
+         local player = Player:new(data.player);
+         sRoundRunning = false;
+         sR4Done = true;
+         a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Surface Arena &fhad ended!");
+end
+
+function s_round5_end(data)
+         local player = Player:new(data.player);
+         sRoundRunning = false;
+         sR1Done = false;
+         sR2Done = false;
+         sR3Done = false;
+         sR4Done = false;
+         a_broadcast_npc(Overlord, "&aRound 5 &fin the &6Surface Arena &fhad ended!");
+        local p = Player:new(data["player"]);
+        p:sendEvent("achievement.mobgrinder");
+end
+
+
+registerHook("INTERACT", "s_round1_end", 77, "mobarena", -42.0, 67.0, -7.0);
+registerHook("INTERACT", "s_round2_end", 77, "mobarena", -43.0, 67.0, -7.0);
+registerHook("INTERACT", "s_round3_end", 77, "mobarena", -44.0, 67.0, -7.0);
+registerHook("INTERACT", "s_round4_end", 77, "mobarena", -45.0, 67.0, -7.0);
+registerHook("INTERACT", "s_round5_end", 77, "mobarena", -46.0, 67.0, -7.0);
