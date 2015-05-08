@@ -29,8 +29,15 @@ function a_whisper_npc(npc, msg, player)
 	player:sendMessage('&f&c' .. npc .. '&f' .. msg);
 end
 
+--------------------------------
+--Player Control--
+--------------------------------
+
+local arenaPlayers = {};
+local playerCount = 0;
+
 ---------------------
---Surface Arena------
+--Toggles------
 ---------------------
 
 --To know when a Round is completed.
@@ -48,25 +55,38 @@ local sRoundRunning = false;
 
 local surfacesound = Location:new(myWorld, -3, 65, -1);
 local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
+local surfacearenaenter = Location:new(myWorld, 41, 67, 1);
 
 
-function surface_enter(data)
+function surface_enter_message(data)
          local player = Player:new(data.player);
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
          a_whisper_npc(Message, "&cHead to the center of the arena to get started!", player);
 end
 
+function to_surface_arena(data)
+       local targetPlayer = Player:new(data.player);
+       targetPlayer:teleport(surfacearenaenter);
+       arenaPlayers[player.name] = true;
+       playerCount = playerCount + 1;
+end
+
 function surface_exit1(data)
       local targetPlayer = Player:new(data.player);
        targetPlayer:teleport(surfacearenaexit);
+       arenaPlayers[player.name] = nil;
+       playerCount = playerCount - 1;
 end
 
 function surface_exit2(data)
       local player = Player:new(data.player);
        a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Surface Arena&f!");
+       arenaPlayers[player.name] = nil;
+       playerCount = playerCount - 1;
 end
 
-registerHook("REGION_ENTER", "surface_enter", "mobarena-arena_surface");
+registerHook("REGION_ENTER", "to_surface_arena", "mobarena-portal_surfacearena");
+registerHook("REGION_ENTER", "surface_enter_message", "mobarena-arena_surface");
 registerHook("INTERACT", "surface_exit1", 77, "mobarena", 30, 65, -2);
 registerHook("REGION_LEAVE", "surface_exit2", "mobarena-arena_surface");
 
