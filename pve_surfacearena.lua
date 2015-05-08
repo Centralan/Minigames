@@ -40,6 +40,15 @@ local sR5Done = false;
 local sRoundRunning = false;
 
 ---------------------
+--Signs------
+---------------------
+--
+--	{["Location"] = Location:new(myWorld.name, 815, 100, 168), ["Name"] = "Packed Ice", ["Item"] = "packedice", ["Amount"] = 64, ["Cost"] = 4}
+--};
+--
+--
+
+---------------------
 --Teleports------
 ---------------------
 
