@@ -57,21 +57,18 @@ end
 function arena_leave_message(data)
         local player = Player:new(data.player);
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Surface Arena&f!");
-          arenaPlayers[player.name] = nil;
-          playerCount = playerCount - 1;
 end
 
 function tp_to_arena(data)
-       if playerCount < 1 then
+       if playerCount < 4 then
         local player = Player:new(data.player);
           player:teleport(surfacearenaenter);
           arenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
-        if playerCount > 1 then
+        else
          local player = Player:new(data.player);
           a_whisper_npc(Message, "&cSorry this Arena is full, try joining when someone leaves!", player);
           player:teleport(surfacearenaexit);
-      end
    end
 end
 
@@ -171,6 +168,9 @@ function round5_end()
              local player = Player:new(playerName);
              player:teleport(surfacearenaexit);
              player:sendEvent("achievement.mobgrinder");
+            local player = Player:new(data.player);
+             arenaPlayers[player.name] = nil;
+             playerCount = playerCount - 1;
 	end
 end
 end
