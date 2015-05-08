@@ -127,14 +127,8 @@ registerHook("INTERACT", "yellow_test_despawn", 77, "mobarena", 841, 101, 143);
 --Teleports---
 --------------
 
-local surfacearenaenter = Location:new(myWorld, 41, 67, 1);
 local lobbyeasterdoor = Location:new(myWorld, 824, 101, 143);
 local lobbydoor = Location:new(myWorld, 837, 97, 149);
-
-function to_surface_arena(data)
-       local targetPlayer = Player:new(data.player);
-       targetPlayer:teleport(surfacearenaenter);
-end
 
 function to_easter_door(data)
        local targetPlayer = Player:new(data.player);
@@ -146,7 +140,6 @@ function to_lobby_door(data)
        targetPlayer:teleport(lobbydoor);
 end
 
-registerHook("REGION_ENTER", "to_surface_arena", "mobarena-portal_surfacearena");
 registerHook("REGION_ENTER", "to_easter_door", "mobarena-lobby_secret_door");
 registerHook("REGION_ENTER", "to_lobby_door", "mobarena-lobby_tolobby");
 
