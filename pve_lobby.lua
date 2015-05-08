@@ -24,104 +24,192 @@ end
 --Testing Lanes--
 -----------------
 
---Location of Orange Mob Spawn
 local OrangeLocation = Location:new(myWorld, 832, 101, 132);
-local OrangeLane = Entity:new(OrangeLocation);
+local oTimer = Timer:new("o_despawn", 1);
+local oCount = 0;
+local oMobs = {};
 
--- The boundaries of Orange Lane.
-local orangelanearea = {
-	minX = 831,
-	minY = 103,
-	minX = 142,
-	maxX = 833,
-	maxY = 101,
-	maxZ = 130
-};
-
---Location of Blue Mob Spawn
 local BlueLocation = Location:new(myWorld, 835, 101, 132);
-local BlueLane = Entity:new(BlueLocation);
+local bTimer = Timer:new("b_despawn", 1);
+local bCount = 0;
+local bMobs = {};
 
--- The boundaries of Blue Lane.
-local bluelanearea = {
-	minX = 834,
-	minY = 103,
-	minX = 142,
-	maxX = 836,
-	maxY = 101,
-	maxZ = 130
-};
-
---Location of Green Mob Spawn
 local GreenLocation = Location:new(myWorld, 838, 101, 132);
-local GreenLane = Entity:new(GreenLocation);
+local gTimer = Timer:new("g_despawn", 1);
+local gCount = 0;
+local gMobs = {};
 
--- The boundaries of Green Lane.
-local greenlanearea = {
-	minX = 837,
-	minY = 103,
-	minX = 142,
-	maxX = 839,
-	maxY = 101,
-	maxZ = 130
-};
-
---Location of Yellow Mob Spawn
 local YellowLocation = Location:new(myWorld, 841, 101, 132);
-local YellowLane = Entity:new(YellowLocation);
-
--- The boundaries of Yellow Lane.
-local yellowlanearea = {
-	minX = 840,
-	minY = 103,
-	minX = 142,
-	maxX = 842,
-	maxY = 101,
-	maxZ = 130
-};
+local yTimer = Timer:new("y_despawn", 1);
+local yCount = 0;
+local yMobs = {};
 
 
-
-function orange_test_spawn(data)
-         OrangeLane:spawn("CREEPER");
+local function orangelane(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+        table.insert(oMobs, entity);
 end
 
-function orange_test_despawn(data)
-         OrangeLane:despawn();
+local function purgeEntityList_o()
+	for index, value in pairs(oMobs) do
+		oMobs[index] = nil;
+	end
 end
 
-function blue_test_spawn(data)
-         BlueLane:spawn("ZOMBIE");
+function check_alive_stats_o()
+	for key, value in pairs(oMobs) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
 end
 
-function blue_test_despawn(data)
-         BlueLane:despawn();
+function o_spawn(data)
+     if oCount < 4 then
+        oTimer:startRepeating()
+	orangelane(OrangeLocation, "CREEPER");
+        oCount = oCount + 1;
+      else
+          local player = Player:new(data.player);
+          a_whisper_npc(Message, "&cSorry you can't spawn more mobs until the current 4 are dead!", player);
+end
 end
 
-function green_test_spawn(data)
-         GreenLane:spawn("SKELETON");
+function o_despawn(data)
+      if check_alive_stats_o() then
+        oCount = 0;
+        oTimer:cancel()
+end
 end
 
-function green_test_despawn(data)
-         GreenLane:despawn();
+local function bluelane(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+        table.insert(bMobs, entity);
 end
 
-function yellow_test_spawn(data)
-         YellowLane:spawn("WITCH");
+local function purgeEntityList_b()
+	for index, value in pairs(oMobs) do
+		bMobs[index] = nil;
+	end
 end
 
-function yellow_test_despawn(data)
-         YellowLane:despawn();
+function check_alive_stats_b()
+	for key, value in pairs(bMobs) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
 end
 
-registerHook("INTERACT", "orange_test_spawn", 77, "mobarena", 831, 101, 143);
-registerHook("INTERACT", "orange_test_despawn", 77, "mobarena", 832, 101, 143);
-registerHook("INTERACT", "blue_test_spawn", 77, "mobarena", 834, 101, 143);
-registerHook("INTERACT", "blue_test_despawn", 77, "mobarena", 835, 101, 143);
-registerHook("INTERACT", "green_test_spawn", 77, "mobarena", 837, 101, 143);
-registerHook("INTERACT", "green_test_despawn", 77, "mobarena", 838, 101, 143);
-registerHook("INTERACT", "yellow_test_spawn", 77, "mobarena", 840, 101, 143);
-registerHook("INTERACT", "yellow_test_despawn", 77, "mobarena", 841, 101, 143);
+function b_spawn(data)
+     if bCount < 4 then
+        bTimer:startRepeating()
+	bluelane(BlueLocation, "ZOMBIE");
+        bCount = bCount + 1;
+      else
+          local player = Player:new(data.player);
+          a_whisper_npc(Message, "&cSorry you can't spawn more mobs until the current 4 are dead!", player);
+end
+end
+
+function b_despawn(data)
+      if check_alive_stats_b() then
+        bCount = 0;
+        bTimer:cancel()
+end
+end
+
+local function greenlane(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+        table.insert(gMobs, entity);
+end
+
+local function purgeEntityList_g()
+	for index, value in pairs(gMobs) do
+		gMobs[index] = nil;
+	end
+end
+
+function check_alive_stats_g()
+	for key, value in pairs(gMobs) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
+end
+
+function g_spawn(data)
+     if gCount < 4 then
+        gTimer:startRepeating()
+	greenlane(GreenLocation, "SKELETON");
+        gCount = gCount + 1;
+      else
+          local player = Player:new(data.player);
+          a_whisper_npc(Message, "&cSorry you can't spawn more mobs until the current 4 are dead!", player);
+end
+end
+
+function g_despawn(data)
+      if check_alive_stats_g() then
+        gCount = 0;
+        gTimer:cancel()
+end
+end
+
+local function yellowlane(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+        table.insert(yMobs, entity);
+end
+
+local function purgeEntityList_y()
+	for index, value in pairs(oMobs) do
+		bMobs[index] = nil;
+	end
+end
+
+function check_alive_stats_y()
+	for key, value in pairs(yMobs) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
+end
+
+function y_spawn(data)
+     if yCount < 4 then
+        yTimer:startRepeating()
+	yellowlane(YellowLocation, "WITCH");
+        yCount = yCount + 1;
+      else
+          local player = Player:new(data.player);
+          a_whisper_npc(Message, "&cSorry you can't spawn more mobs until the current 4 are dead!", player);
+end
+end
+
+function y_despawn(data)
+      if check_alive_stats_y() then
+        yCount = 0;
+        yTimer:cancel()
+end
+end
+
+
+registerHook("INTERACT", "o_spawn", 77, "mobarena", 831, 101, 143);
+registerHook("INTERACT", "b_spawn", 77, "mobarena", 834, 101, 143);
+registerHook("INTERACT", "g_spawn", 77, "mobarena", 837, 101, 143);
+registerHook("INTERACT", "y_spawn", 77, "mobarena", 840, 101, 143);
 
 --------------
 --Teleports---
