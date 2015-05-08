@@ -67,10 +67,12 @@ function tp_to_arena(data)
           player:teleport(surfacearenaenter);
           arenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
-      else
-        a_whisper_npc(Message, "&cSorry this Arena is full, try joining when someone leaves!", player);
+        if playerCount > 1 then
+         local player = Player:new(data.player);
+          a_whisper_npc(Message, "&cSorry this Arena is full, try joining when someone leaves!", player);
           player:teleport(surfacearenaexit);
-    end
+      end
+   end
 end
 
 function button_out_arena(data)
