@@ -231,6 +231,32 @@ end
 registerHook("REGION_ENTER", "to_easter_door", "mobarena-lobby_secret_door");
 registerHook("REGION_ENTER", "to_lobby_door", "mobarena-lobby_tolobby");
 
+
+-----------------------
+------ Effects ------
+-----------------------
+
+
+local surfacearenaeffects = {
+	Location:new(myWorld, 801.0, 101.0, 165.0),
+	Location:new(myWorld, 803.0, 101.0, 165.0),
+	Location:new(myWorld, 805.0, 100.0, 167.0),
+	Location:new(myWorld, 805.0, 100.0, 163.0),
+	Location:new(myWorld, 814.0, 100.0, 172.0),
+	Location:new(myWorld, 810.0, 100.0, 172.0),
+	Location:new(myWorld, 812.0, 101.0, 174.0),
+	Location:new(myWorld, 812.0, 101.0, 176.0)
+};
+
+function surface_effects()
+	for key, value in pairs(surfacearenaeffects) do
+		value:playEffect('PORTAL', 1, 5, 5);
+	end
+end
+
+registerHook("BLOCK_GAINS_CURRENT", "surface_effects", "mobarena", 837, 132, 160);
+
+
 ---------------------
 --Cheeves------------
 ---------------------
