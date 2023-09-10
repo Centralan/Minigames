@@ -152,7 +152,9 @@ local R1S2 = Location:new(myWorld, 22.0, 65.0, -4.0);
 local R1S3 = Location:new(myWorld, 4.0, 65.0,-4.0);
 local R1S4 = Location:new(myWorld, -14.0, 66.0, -14.0);
 local R1S5 = Location:new(myWorld, -27.0, 66.0, 7.0);
-
+local R1Chest = Location:new(myWorld, -52.0, 114.0, 9.0);
+local R1ChestPlayers = {};
+local R1ChestTimerRunning = false;
 
 function start_r1(data)
         for playerName, value in pairs(arenaPlayers) do
@@ -199,6 +201,9 @@ function end_r1()
            sRoundRunning = false;
            sR1Done = true;
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!");
+		player:sendMessage("&dRound completed, you earned 3 Mob Bones.");
+		R1ChestOpen:playSound('HORSE_SADDLE', 1, 0);
+		R1Chest:cloneChestToPlayer(player.name);
 
 	end
 end 
