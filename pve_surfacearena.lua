@@ -601,6 +601,59 @@ registerHook("BLOCK_GAINS_CURRENT", "s_re_fence", "mobarena", -49.0, 114.0, 9.0)
 registerHook("BLOCK_GAINS_CURRENT", "s_pl_fence", "mobarena", -49.0, 114.0, 9.0);
 
 ------------------------------------------------------
+--Rewards----------
+------------------------------------------------------
+
+local current = 1;
+local maxData = 14;
+local blocks = {
+	Location:new(myWorld, -3.0, 65.0, -1.0),
+};
+
+function s_placechest(data)
+	if current == maxData then
+		current = 1;
+	else
+		current = current + 1;
+	end
+	s_pl_placechest();
+end
+
+function s_pl_chest()
+       if sRoundRunning then
+	for index, key in ipairs(blocks) do
+		key:setBlock(54, current);
+      end
+   end
+end
+
+local current = 1;
+local maxData = 14;
+local blocks = {
+	Location:new(myWorld, -3.0, 65.0, -1.0),
+};
+
+function s_removechest(data)
+	if current == maxData then
+		current = 1;
+	else
+		current = current + 1;
+	end
+	s_re_fence();
+end
+
+function s_re_chest()
+       if not sRoundRunning then
+	for index, key in ipairs(blocks) do
+		key:setBlock(367, current);
+      end
+   end
+end
+
+registerHook("BLOCK_GAINS_CURRENT", "s_re_chest", "mobarena", -49.0, 114.0, 9.0);
+registerHook("BLOCK_GAINS_CURRENT", "s_pl_chest", "mobarena", -49.0, 114.0, 9.0);
+
+------------------------------------------------------
 --Remove levers----------
 ------------------------------------------------------
 
