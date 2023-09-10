@@ -282,7 +282,7 @@ local bugbook = Location:new(myWorld, 832, 133, 164);
 function bug_report(data)
        local player = Player:new(data.player);
              bugbook:cloneChestToPlayer(player.name);
-       a_whisper_npc(Message, "&dType /may to send this book. Please use this book to report bugs only! Visit our sub-reddit r/RunsafeMinecraft to see a list of bugs!", player);
+       a_whisper_npc(Message, "&dType /may to send this book. Please use this book to report bugs only! Visit our discord for more bug reports!", player);
 end
 
 registerHook("INTERACT", "bug_report", 77, "mobarena", 834.0, 99.0, 152.0);
