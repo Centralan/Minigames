@@ -92,12 +92,20 @@ local surfacearenaenter = Location:new(myWorld, 41, 67, 1);
 local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
 local surfaceround5 = Location:new(myWorld, 834, 119, 153);
 local pve1reset = Location:new(myWorld, -2.7, 74, -0);
+local world = World:new('mobarena');
+local GearChest = Location:new(world, 834.0, 133.0, 164.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
 
 function tp_to_arena(data)
        if playerCount < 4 then
         local player = Player:new(data.player);
           player:teleport(surfacearenaenter);
+	  GearChest:cloneChestToPlayer(player.name);
+	  surfacesound:playSound('HORSE_SADDLE', 1, 0);
+	  player:sendMessage("&dYou have been granted with free gear.");
           arenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
