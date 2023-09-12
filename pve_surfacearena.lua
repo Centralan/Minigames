@@ -196,8 +196,6 @@ function start_r1(data)
 end
 
 function end_r1()
-    for playerName, value in pairs(arenaPlayers) do
-    local player = Player:new(data.player);
 	if check_alive_stats() then
            R1:cancel()
            sRoundRunning = false;
