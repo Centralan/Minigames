@@ -195,7 +195,7 @@ function start_r1(data)
    end
 end
 
-function end_r1(data)
+function end_r1()
 	if check_alive_stats() then
            R1:cancel()
            sRoundRunning = false;
