@@ -200,6 +200,8 @@ function end_r1()
            R1:cancel()
            sRoundRunning = false;
            sR1Done = true;
+for playerName, value in pairs(arenaPlayers) do
+local player = Player:new(playerName);
 	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!")
 	end
@@ -273,10 +275,12 @@ function end_r2()
            R2:cancel()
            sRoundRunning = false;
            sR2Done = true;
+for playerName, value in pairs(arenaPlayers) do
+local player = Player:new(playerName);
 	   player:teleport(pve1reset);
-           a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Surface Arena &fhas ended!");
+           a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Surface Arena &fhas ended!")
 	end
-end 
+end
 
 registerHook("INTERACT", "start_r2", 143, "mobarena", -7.0, 66.0, 0.0);  
 
@@ -350,10 +354,12 @@ function end_r3()
            R3:cancel()
            sRoundRunning = false;
            sR3Done = true;
+for playerName, value in pairs(arenaPlayers) do
+local player = Player:new(playerName);
 	   player:teleport(pve1reset);
-           a_broadcast_npc(Overlord, "&aRound 3 &fin the &6Surface Arena &fhas ended!");
+           a_broadcast_npc(Overlord, "&aRound 3 &fin the &6Surface Arena &fhas ended!")
 	end
-end 
+end
 
 registerHook("INTERACT", "start_r3", 143, "mobarena", -7.0, 66.0, -1.0); 
 
@@ -432,10 +438,12 @@ function end_r4()
            R4:cancel()
            sRoundRunning = false;
            sR4Done = true;
+for playerName, value in pairs(arenaPlayers) do
+local player = Player:new(playerName);
 	   player:teleport(pve1reset);
-           a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Surface Arena &fhas ended!");
+           a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Surface Arena &fhas ended!")
 	end
-end 
+end
 
 registerHook("INTERACT", "start_r4", 143, "mobarena", -7.0, 66.0, -2.0);
 
