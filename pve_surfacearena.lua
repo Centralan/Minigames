@@ -571,7 +571,7 @@ registerHook("INTERACT", "r1_rewards", 54, "mobarena", -3.0, 65.0, -1.0);
 
 
 local world = World:new('mobarena');
-local R2Chest = Location:new(world, -52.0, 114.0, 9.0);
+local R2Chest = Location:new(world, -52.0, 114.0, 11.0);
 local R2ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
 local ChestPlayers = {};
 local ChestTimerRunning = false;
