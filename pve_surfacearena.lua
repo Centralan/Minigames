@@ -555,7 +555,7 @@ function r1_rewards(data)
 		player:closeInventory();
 		R1Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 1 Rewards: you earned 2 Mob Bones!";
+                player:sendMessage("&dRound 1 Rewards: you earned 2 Mob Bones!");
 							end 
 						end
 					end
@@ -591,7 +591,7 @@ function r2_rewards(data)
 		player:closeInventory();
 		R1Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 2 Rewards: you earned 3 Mob Bones!";
+                player:sendMessage("&dRound 2 Rewards: you earned 3 Mob Bones!");
 								end
 						end
 					end
@@ -627,7 +627,7 @@ function r3_rewards(data)
 		player:closeInventory();
 		R3Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 3 Rewards: you earned 4 Mob Bones!";
+                player:sendMessage("&dRound 3 Rewards: you earned 4 Mob Bones!");
 								end
 						end
 					end
@@ -662,7 +662,7 @@ function r4_rewards(data)
 		player:closeInventory();
 		R4Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 4 Rewards: you earned 5 Mob Bones!";
+                player:sendMessage("&dRound 4 Rewards: you earned 5 Mob Bones!");
 								end
 						end
 					end
@@ -697,7 +697,7 @@ function r5_rewards(data)
 		player:closeInventory();
 		R5Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 5 Rewards: you earned 6 Mob Bones!";
+                player:sendMessage("&dRound 5 Rewards: you earned 6 Mob Bones!");
 								end
 						end
 					end
