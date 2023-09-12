@@ -543,6 +543,37 @@ local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest",
 function r1_rewards(data)
      local player = Player:new(data.player);
 	if sR1Done then
+	if not sR2Done then
+	if not sR3Done then
+        if not sR4Done then
+        if not sR5Done then
+		ChestPlayers[player.name] = true;
+		player:closeInventory();
+		R1Chest:cloneChestToPlayer(player.name);
+                surfacesound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 1 Rewards: you earned 2 Mob Bones!";
+		end
+
+registerHook("INTERACT", "r1_rewards", 54, mobarena, -3.0, 65.0, -1.0);
+
+------------------------------------------------------
+--R2 Rewards----------
+------------------------------------------------------
+
+local world = World:new('mobarena');
+local R1Chest = Location:new(world, -52.0, 114.0, 11.0);
+local R1ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+
+function r2_rewards(data)
+     local player = Player:new(data.player);
+	if sR2Done then
+	if not sR1Done then
+	if not sR3Done then
+        if not sR4Done then
+        if not sR5Done then
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		R1Chest:cloneChestToPlayer(player.name);
@@ -550,4 +581,4 @@ function r1_rewards(data)
                 player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!";
 		end
 
-registerHook("INTERACT", "r1_rewards", 54, mobarena, -3.0, 65.0, -1.0);
+	registerHook("INTERACT", "r2_rewards", 54, mobarena, -3.0, 65.0, -1.0);
