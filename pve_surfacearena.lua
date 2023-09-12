@@ -196,13 +196,13 @@ function start_r1(data)
 end
 
 function end_r1()
+    for playerName, value in pairs(arenaPlayers) do
+    local player = Player:new(data.player);
 	if check_alive_stats() then
            R1:cancel()
            sRoundRunning = false;
            sR1Done = true;
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!");
-              for playerName, value in pairs(arenaPlayers) do
-              local player = Player:new(data.player);
 		a_whisper_good1(Message, "Round completed, you earned 3 Mob Bones.", player);
 		surfacesound:playSound('HORSE_SADDLE', 1, 0);
 		R1Chest:cloneChestToPlayer(player.name);
