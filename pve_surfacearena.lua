@@ -204,7 +204,7 @@ function end_r1(data)
 	end
 end 
 
-function R1_rewards(data)
+function r1_rewards(data)
 	local player = Player:new(data.player);
 	if R1ChestPlayers[player.name] == nil then
 	sR1Done = true;
