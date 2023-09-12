@@ -562,7 +562,7 @@ function r1_rewards(data)
 	end
 	
 
-registerHook("INTERACT", "r1_rewards", 54, "mobarena", -3.0, 65.0, -1.0);
+registerHook("INTERACT", "r1_rewards", 143, "mobarena", -7.0, 66.0, 0.0);
 
 ------------------------------------------------------
 --R2 Rewards----------
