@@ -538,10 +538,10 @@ local R1Chest = Location:new(world, -52.0, 114.0, 9.0);
 local R1ChestOpen = Location:new(world, -52.0, 114.0, 9.0);
 local ChestPlayers = {};
 local ChestTimerRunning = false;
+local player = Player:new(data.player);
 
 function r1_rewards(data)
-	local player = Player:new(data.player);
-	if ChestPlayers[player.name] == nil then
+	if sR1Done then
 		ChestPlayers[player.name] = true;
 		player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!");
 		surfacesound:playSound('HORSE_SADDLE', 1, 0);
@@ -549,6 +549,3 @@ function r1_rewards(data)
 		R1Chest:cloneChestToPlayer(player.name);
        end
    end
-end
-
-registerHook("INTERACT", "r1_rewards", 143, 'mobarena', -7.0, 66, 0);
