@@ -533,6 +533,7 @@ registerHook("INTERACT", "start_r5", 143, "mobarena", -7.0, 66.0, -3.0);
 --Rewards----------
 ------------------------------------------------------
 
+local world = World:new('mobarena');
 local R1Chest = Location:new(world, -52.0, 114.0, 9.0);
 local ChestPlayers = {};
 local player = Player:new(data.player);
