@@ -205,6 +205,7 @@ local player = Player:new(playerName);
 	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!")
 	end
+	end
 end 
 
 
@@ -279,6 +280,7 @@ for playerName, value in pairs(arenaPlayers) do
 local player = Player:new(playerName);
 	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Surface Arena &fhas ended!")
+	end
 	end
 end
 
@@ -359,6 +361,7 @@ local player = Player:new(playerName);
 	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 3 &fin the &6Surface Arena &fhas ended!")
 	end
+		end
 end
 
 registerHook("INTERACT", "start_r3", 143, "mobarena", -7.0, 66.0, -1.0); 
@@ -443,6 +446,7 @@ local player = Player:new(playerName);
 	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Surface Arena &fhas ended!")
 	end
+		end
 end
 
 registerHook("INTERACT", "start_r4", 143, "mobarena", -7.0, 66.0, -2.0);
