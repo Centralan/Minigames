@@ -195,7 +195,10 @@ function start_r1(data)
    end
 end
 
-function end_r1()
+function end_r1(data)
+   local player = Player:new(data.player);
+   if R1ChestPlayers[player.name] == nil then
+   R1ChestPlayers[player.name] = true;
 	if check_alive_stats() then
            R1:cancel()
            sRoundRunning = false;
