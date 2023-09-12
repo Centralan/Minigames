@@ -217,7 +217,7 @@ function r1_rewards(data)
    end
 end
 
-registerHook("INTERACT", "start_r1", 69, "mobarena", -7.0, 66.0, 1.0);   
+registerHook("INTERACT", "start_r1", 143, "mobarena", -7.0, 66.0, 1.0);   
 
 -----------------------
 ---ROUND 2 (25 Mobs)---
@@ -288,7 +288,7 @@ function end_r2()
 	end
 end 
 
-registerHook("INTERACT", "start_r2", 69, "mobarena", -7.0, 66.0, 0.0);  
+registerHook("INTERACT", "start_r2", 143, "mobarena", -7.0, 66.0, 0.0);  
 
 -----------------------
 ---ROUND 3 (30 Mobs)---
@@ -364,7 +364,7 @@ function end_r3()
 	end
 end 
 
-registerHook("INTERACT", "start_r3", 69, "mobarena", -7.0, 66.0, -1.0); 
+registerHook("INTERACT", "start_r3", 143, "mobarena", -7.0, 66.0, -1.0); 
 
 -----------------------
 ---ROUND 4 (35 Mobs)---
@@ -445,7 +445,7 @@ function end_r4()
 	end
 end 
 
-registerHook("INTERACT", "start_r4", 69, "mobarena", -7.0, 66.0, -2.0);
+registerHook("INTERACT", "start_r4", 143, "mobarena", -7.0, 66.0, -2.0);
 
 -----------------------
 ---ROUND 5 (40 Mobs)---
@@ -543,76 +543,7 @@ function reset_rounds()
    end
 end 
 
-registerHook("INTERACT", "start_r5", 69, "mobarena", -7.0, 66.0, -3.0);
-
-------------------------------------------------------
---Local shop----------
-------------------------------------------------------
-
-local current = 1;
-local maxData = 14;
-local blocks = {
-	Location:new(myWorld, -32.0, 66.0, 2.0),
-	Location:new(myWorld, -32.0, 66.0, 1.0),
-	Location:new(myWorld, -32.0, 66.0, 0.0),
-	Location:new(myWorld, -32.0, 67.0, 2.0),
-	Location:new(myWorld, -32.0, 67.0, 1.0),
-	Location:new(myWorld, -32.0, 67.0, 0.0),
-	Location:new(myWorld, -32.0, 68.0, 2.0),
-	Location:new(myWorld, -32.0, 68.0, 1.0),
-	Location:new(myWorld, -32.0, 68.0, 0.0),
-};
-
-function s_placefence(data)
-	if current == maxData then
-		current = 1;
-	else
-		current = current + 1;
-	end
-	s_pl_fence();
-end
-
-function s_pl_fence()
-       if sRoundRunning then
-	for index, key in ipairs(blocks) do
-		key:setBlock(85, current);
-      end
-   end
-end
-
-local current = 1;
-local maxData = 14;
-local blocks = {
-	Location:new(myWorld, -32.0, 66.0, 2.0),
-	Location:new(myWorld, -32.0, 66.0, 1.0),
-	Location:new(myWorld, -32.0, 66.0, 0.0),
-	Location:new(myWorld, -32.0, 67.0, 2.0),
-	Location:new(myWorld, -32.0, 67.0, 1.0),
-	Location:new(myWorld, -32.0, 67.0, 0.0),
-	Location:new(myWorld, -32.0, 68.0, 2.0),
-	Location:new(myWorld, -32.0, 68.0, 1.0),
-	Location:new(myWorld, -32.0, 68.0, 0.0),
-};
-
-function s_removefence(data)
-	if current == maxData then
-		current = 1;
-	else
-		current = current + 1;
-	end
-	s_re_fence();
-end
-
-function s_re_fence()
-       if not sRoundRunning then
-	for index, key in ipairs(blocks) do
-		key:setBlock(367, current);
-      end
-   end
-end
-
-registerHook("BLOCK_GAINS_CURRENT", "s_re_fence", "mobarena", -49.0, 114.0, 9.0);
-registerHook("BLOCK_GAINS_CURRENT", "s_pl_fence", "mobarena", -49.0, 114.0, 9.0);
+registerHook("INTERACT", "start_r5", 143, "mobarena", -7.0, 66.0, -3.0);
 
 ------------------------------------------------------
 --Rewards----------
@@ -665,67 +596,6 @@ function s_re_chest()
 end
 
 registerHook("BLOCK_GAINS_CURRENT", "s_re_chest", "mobarena", -49.0, 114.0, 9.0);
-registerHook("BLOCK_GAINS_CURRENT", "s_pl_chest", "mobarena", -49.0, 114.0, 9.0);
-
-------------------------------------------------------
---Remove levers----------
-------------------------------------------------------
-
-local current = 1;
-local maxData = 14;
-local blocks = {
-	Location:new(myWorld, -7.0, 66.0, 1.0),
-	Location:new(myWorld, -7.0, 66.0, 0.0),
-	Location:new(myWorld, -7.0, 66.0, -1.0),
-	Location:new(myWorld, -7.0, 66.0, -2.0),
-	Location:new(myWorld, -7.0, 66.0, -3.0),
-};
-
-function s_removelevers(data)
-	if current == maxData then
-		current = 1;
-	else
-		current = current + 1;
-	end
-	s_re_lever();
-end
-
-function s_re_lever()
-       if sRoundRunning then
-	for index, key in ipairs(blocks) do
-		key:setBlock(50, current);
-      end
-   end
-end
-
-local current = 1;
-local maxData = 14;
-local blocks = {
-	Location:new(myWorld, -7.0, 66.0, 1.0),
-	Location:new(myWorld, -7.0, 66.0, 0.0),
-	Location:new(myWorld, -7.0, 66.0, -1.0),
-	Location:new(myWorld, -7.0, 66.0, -2.0),
-	Location:new(myWorld, -7.0, 66.0, -3.0),
-};
-
-function s_placelevers(data)
-	if current == maxData then
-		current = 1;
-	else
-		current = current + 1;
-	end
-	s_pl_lever();
-end
-
-function s_pl_lever()
-       if not sRoundRunning then
-	for index, key in ipairs(blocks) do
-		key:setBlock(69, current);
-      end
-   end
-end
-
-registerHook("BLOCK_GAINS_CURRENT", "s_re_lever", "mobarena", -49.0, 114.0, 9.0);
-registerHook("BLOCK_GAINS_CURRENT", "s_pl_lever", "mobarena", -49.0, 114.0, 9.0);
+registerHook("BLOCK_GAINS_CURRENT", "s_pl_chest", "mobarena", -49.0, 114.0, 9.0)
 
 
