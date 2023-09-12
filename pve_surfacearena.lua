@@ -589,6 +589,7 @@ function r2_rewards(data)
 		R1Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!";
+								end
 						end
 					end
 				end
