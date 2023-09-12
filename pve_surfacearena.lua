@@ -152,9 +152,6 @@ local R1S2 = Location:new(myWorld, 22.0, 65.0, -4.0);
 local R1S3 = Location:new(myWorld, 4.0, 65.0,-4.0);
 local R1S4 = Location:new(myWorld, -14.0, 66.0, -14.0);
 local R1S5 = Location:new(myWorld, -27.0, 66.0, 7.0);
-local R1Chest = Location:new(myWorld, -52.0, 114.0, 9.0);
-local R1ChestPlayers = {};
-local R1ChestTimerRunning = false;
 
 function start_r1(data)
         for playerName, value in pairs(arenaPlayers) do
@@ -203,19 +200,6 @@ function end_r1()
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!")
 	end
 end 
-
-function r1_rewards(data)
-	local player = Player:new(data.player);
-	if R1ChestPlayers[player.name] == nil then
-	if sR1Done then
-		R1ChestPlayers[player.name] = true;
-		player:sendMessage("&dRound Completed, you earned 3 Mob Bones!");
-		surfacesound:playSound('HORSE_SADDLE', 1, 0);
-		player:closeInventory();
-		R1Chest:cloneChestToPlayer(player.name);
-      end
-   end
-end
 
 registerHook("INTERACT", "start_r1", 143, "mobarena", -7.0, 66.0, 1.0);   
 
@@ -549,53 +533,22 @@ registerHook("INTERACT", "start_r5", 143, "mobarena", -7.0, 66.0, -3.0);
 --Rewards----------
 ------------------------------------------------------
 
-local current = 1;
-local maxData = 14;
-local blocks = {
-	Location:new(myWorld, -3.0, 65.0, -1.0),
-};
+local myWorld = World:new('mobarena');
+local R1Chest = Location:new(world, -52.0, 114.0, 9.0);
+local R1ChestOpen = Location:new(world, -52.0, 114.0, 9.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
 
-function s_placechest(data)
-	if current == maxData then
-		current = 1;
-	else
-		current = current + 1;
-	end
-	s_pl_placechest();
-end
-
-function s_pl_chest()
-       if sRoundRunning then
-	for index, key in ipairs(blocks) do
-		key:setBlock(54, current);
-      end
+function r1_rewards(data)
+	local player = Player:new(data.player);
+	if ChestPlayers[player.name] == nil then
+		ChestPlayers[player.name] = true;
+		player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!");
+		surfacesound:playSound('HORSE_SADDLE', 1, 0);
+		player:closeInventory();
+		R1Chest:cloneChestToPlayer(player.name);
+       end
    end
 end
 
-local current = 1;
-local maxData = 14;
-local blocks = {
-	Location:new(myWorld, -3.0, 65.0, -1.0),
-};
-
-function s_removechest(data)
-	if current == maxData then
-		current = 1;
-	else
-		current = current + 1;
-	end
-	s_re_fence();
-end
-
-function s_re_chest()
-       if not sRoundRunning then
-	for index, key in ipairs(blocks) do
-		key:setBlock(367, current);
-      end
-   end
-end
-
-registerHook("BLOCK_GAINS_CURRENT", "s_re_chest", "mobarena", -49.0, 114.0, 9.0);
-registerHook("BLOCK_GAINS_CURRENT", "s_pl_chest", "mobarena", -49.0, 114.0, 9.0)
-
-
+registerHook("INTERACT", "r1_rewards", 143, world.name, -7.0, 66, 0);
