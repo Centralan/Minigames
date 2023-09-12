@@ -536,9 +536,9 @@ registerHook("INTERACT", "start_r5", 143, "mobarena", -7.0, 66.0, -3.0);
 local world = World:new('mobarena');
 local R1Chest = Location:new(world, -52.0, 114.0, 9.0);
 local ChestPlayers = {};
-local player = Player:new(data.player);
 
 function r1_rewards(data)
+     local player = Player:new(data.player);
 	if sR1Done then
 		ChestPlayers[player.name] = true;
 		R1Chest:cloneChestToPlayer(player.name);
