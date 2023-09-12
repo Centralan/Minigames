@@ -706,4 +706,4 @@ function r5_rewards(data)
 		end
 	end
 	
-registerHook("REGION_ENTER", "r5_rewards", "mobarena-pve1_5");
+registerHook("REGION_ENTER", "r5_rewards", "mobarena-pve1_r5");
