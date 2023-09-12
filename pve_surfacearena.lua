@@ -207,14 +207,14 @@ end
 function r1_rewards(data)
 	local player = Player:new(data.player);
 	if R1ChestPlayers[player.name] == nil then
-	sR1Done = true;
+	if sR1Done then
 		R1ChestPlayers[player.name] = true;
 		player:sendMessage("&dRound Completed, you earned 3 Mob Bones!");
 		surfacesound:playSound('HORSE_SADDLE', 1, 0);
 		player:closeInventory();
 		R1Chest:cloneChestToPlayer(player.name);
-	      end
-	end
+      end
+   end
 end
 
 registerHook("INTERACT", "start_r1", 69, "mobarena", -7.0, 66.0, 1.0);   
