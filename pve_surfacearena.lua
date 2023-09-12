@@ -91,6 +91,7 @@ local R5 = Timer:new("reset_rounds", 1);
 local surfacearenaenter = Location:new(myWorld, 41, 67, 1);
 local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
 local surfaceround5 = Location:new(myWorld, 834, 119, 153);
+local pve1reset = Location:new(myWorld, -2.7, 74, -0);
 
 
 function tp_to_arena(data)
@@ -199,6 +200,7 @@ function end_r1()
            R1:cancel()
            sRoundRunning = false;
            sR1Done = true;
+	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!")
 	end
 end 
@@ -271,6 +273,7 @@ function end_r2()
            R2:cancel()
            sRoundRunning = false;
            sR2Done = true;
+	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Surface Arena &fhas ended!");
 	end
 end 
@@ -347,6 +350,7 @@ function end_r3()
            R3:cancel()
            sRoundRunning = false;
            sR3Done = true;
+	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 3 &fin the &6Surface Arena &fhas ended!");
 	end
 end 
@@ -428,6 +432,7 @@ function end_r4()
            R4:cancel()
            sRoundRunning = false;
            sR4Done = true;
+	   player:teleport(pve1reset);
            a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Surface Arena &fhas ended!");
 	end
 end 
@@ -565,7 +570,7 @@ function r1_rewards(data)
 	end
 	
 
-registerHook("INTERACT", "r1_rewards", 54, "mobarena", -7.0, 65.0, -1.0);
+registerHook("REGION_ENTER", "r1_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R2 Rewards----------
@@ -601,7 +606,7 @@ function r2_rewards(data)
 	end
 	
 
-registerHook("INTERACT", "r2_rewards", 54, "mobarena", -7.0, 65.0, -1.0);
+registerHook("REGION_ENTER", "r2_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R3 Rewards----------
@@ -636,7 +641,7 @@ function r3_rewards(data)
 		end
 	end
 
-registerHook("INTERACT", "r3_rewards", 54, "mobarena", -7.0, 65.0, -1.0);
+registerHook("REGION_ENTER", "r3_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R4 Rewards----------
@@ -671,7 +676,7 @@ function r4_rewards(data)
 		end
 	end
 
-registerHook("INTERACT", "r4_rewards", 54, "mobarena", -7.0, 65.0, -1.0);
+registerHook("REGION_ENTER", "r4_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R5 Rewards----------
