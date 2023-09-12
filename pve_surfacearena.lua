@@ -550,15 +550,4 @@ function r1_rewards(data)
                 player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!";
 		end
 
-	if not ChestTimerRunning then
-		ChestTimerRunning = true;
-		ChestTimer:start();
-	end
-end
-
-	function r1_reset_chest()
-	ChestPlayers = {};
-	ChestTimerRunning = false;
-end
-
 	registerHook("INTERACT", "r1_rewards", 54, mobarena, -3.0, 65.0, -1.0);
