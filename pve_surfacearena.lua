@@ -550,4 +550,4 @@ function r1_rewards(data)
                 player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!";
 		end
 
-	registerHook("INTERACT", "r1_rewards", 54, mobarena, -3.0, 65.0, -1.0);
+registerHook("INTERACT", "r1_rewards", 54, mobarena, -3.0, 65.0, -1.0);
