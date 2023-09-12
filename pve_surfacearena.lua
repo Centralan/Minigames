@@ -1,4 +1,7 @@
 local myWorld = World:new('mobarena');
+local myWorld2 = World:new('spawn2');
+local myWorld3 = World:new('survival3');
+local myWorld4 = World:new('creative');
 local surfacesound = Location:new(myWorld, -3, 65, -1);
 
 --------
@@ -11,6 +14,18 @@ local Message2 = ''
 
 function a_broadcast(msg)
 	myWorld:broadcast(msg);
+end
+
+function a_broadcast2(msg)
+	myWorld2:broadcast(msg);
+end
+
+function a_broadcast3(msg)
+	myWorld3:broadcast(msg);
+end
+
+function a_broadcast4(msg)
+	myWorld4:broadcast(msg);
 end
 
 function a_broadcast_npc(npc, msg)
@@ -109,6 +124,9 @@ function tp_to_arena(data)
           arenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
+	  a_broadcast2(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
+	   a_broadcast3(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
+	   a_broadcast4(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
         else
          local player = Player:new(data.player);
           a_whisper_error(Message, "Sorry this Arena is full, try joining when someone leaves!", player);
