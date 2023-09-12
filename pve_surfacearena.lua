@@ -202,29 +202,6 @@ function end_r1()
 	end
 end 
 
-local current = 1;
-local maxData = 14;
-local blocks = {
-	Location:new(myWorld, -7.0, 65.0, 1.0),
-
-};
-
-function r1_placechest(data)
-	if current == maxData then
-		current = 1;
-	else
-		current = current + 1;
-	end
-	r_1_chest();
-end
-
-function r_1_chest()
-       if sR1Done then
-	for index, key in ipairs(blocks) do
-		key:setBlock(54, current);
-      end
-   end
-end
 
 registerHook("INTERACT", "start_r1", 143, "mobarena", -7.0, 66.0, 1.0);   
 
@@ -587,7 +564,7 @@ function r1_rewards(data)
 	end
 	
 
-registerHook("INTERACT", "r1_rewards", 54, "mobarena", -7.0, 65.0, 1.0);
+registerHook("INTERACT", "r1_rewards", 54, "mobarena", -7.0, 65.0, -1.0);
 
 ------------------------------------------------------
 --R2 Rewards----------
@@ -623,4 +600,4 @@ function r2_rewards(data)
 	end
 	
 
-registerHook("INTERACT", "r2_rewards", 54, "mobarena", -3.0, 65.0, -1.0);
+registerHook("INTERACT", "r2_rewards", 54, "mobarena", -7.0, 65.0, -1.0);
