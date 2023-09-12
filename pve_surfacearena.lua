@@ -542,6 +542,7 @@ local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest",
 
 function r1_rewards(data)
      local player = Player:new(data.player);
+	if not sRoundRunning then 
 	if sR1Done then
 	if not sR2Done then
 	if not sR3Done then
@@ -576,6 +577,7 @@ local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest",
 
 function r2_rewards(data)
      local player = Player:new(data.player);
+	if not sRoundRunning then 	
 	if sR1Done then
 	if sR2Done then
 	if not sR3Done then
