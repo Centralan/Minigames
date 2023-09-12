@@ -25,6 +25,10 @@ function a_whisper_good(npc, msg, player)
 	player:sendMessage('&f&c' .. npc .. '&f' .. msg);
 end
 
+function a_whisper_good2(npc, msg, player)
+	player:sendMessage('&f&c' .. npc .. '&f' .. msg);
+end
+
 --------------------------------
 --Player Control--
 --------------------------------
@@ -201,7 +205,7 @@ function end_r1()
            sRoundRunning = false;
            sR1Done = true;
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!");
-		a_whisper_good(Message, "&dRound completed, you earned 3 Mob Bones.", player);
+		a_whisper_good2(Message, "Round completed, you earned 3 Mob Bones.", player);
 		surfacesound:playSound('HORSE_SADDLE', 1, 0);
 		R1Chest:cloneChestToPlayer(player.name);
 
