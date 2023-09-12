@@ -704,12 +704,6 @@ local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest",
 
 function r5_rewards(data)
      local player = Player:new(data.player);
-	if not sRoundRunning then 	
-	if sR1Done then
-	if sR2Done then
-	if sR3Done then
-        if sR4Done then
-        if sR5Done then
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		R5Chest:cloneChestToPlayer(player.name);
