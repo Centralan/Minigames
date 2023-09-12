@@ -542,9 +542,9 @@ local player = Player:new(data.player);
 function r1_rewards(data)
 	if sR1Done then
 		ChestPlayers[player.name] = true;
-		player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!");
-		surfacesound:playSound('HORSE_SADDLE', 1, 0);
-		player:closeInventory();
 		R1Chest:cloneChestToPlayer(player.name);
-       end
-   end
+                surfacesound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 1 Rewards: you earned 3 Mob Bones!");
+
+	end
+end
