@@ -201,7 +201,7 @@ function end_r1()
            sRoundRunning = false;
            sR1Done = true;
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Surface Arena &fhas ended!");
-		player:sendMessage("&dRound completed, you earned 3 Mob Bones.");
+		a_whisper_good(Message, "&dRound completed, you earned 3 Mob Bones.", player);
 		surfacesound:playSound('HORSE_SADDLE', 1, 0);
 		R1Chest:cloneChestToPlayer(player.name);
 
