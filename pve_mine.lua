@@ -3,14 +3,88 @@ local myWorld2 = World:new('spawn2');
 local myWorld3 = World:new('survival3');
 local myWorld4 = World:new('creative');
 local minesound = Location:new(myWorld, -2999.0, 111.0, 3001.0);
+local Overlord = 'PVE'
+local Message = ''
+local Message2 = ''
+local arenaPlayers = {};
+local playerCount = 0;
+local entityList = {};
+local mR1Done = false;
+local mR2Done = false;
+local mR3Done = false;
+local mR4Done = false;
+local mR5Done = false;
+local mRoundRunning = false;
+local mR1 = Timer:new("end_r1", 1);
+local mR2 = Timer:new("end_r2", 1);
+local mR3 = Timer:new("end_r3", 1);
+local mR4 = Timer:new("end_r4", 1);
+local mR5 = Timer:new("reset_rounds", 1);
+local minearenaenter = Location:new(myWorld, -3000.0, 105.0, 2975.0);
+local minearenaexit = Location:new(myWorld, -837.0, 97, 149.0);
+local mineround5 = Location:new(myWorld, 836, 119, 153);
+local pve2reset = Location:new(myWorld, -2999.0, 118, -3001.0);
+local world = World:new('mobarena');
+local GearChest = Location:new(world, 834.0, 133.0, 164.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+local minerespawn = Location:new(myWorld, -2999.0, 105.0, 2975);
+local respawngear = Location:new(myWorld, 48, 67, 1);
+local mS1 = Location:new(myWorld, -2980.0, 106.0, 2980.0);
+local mS2 = Location:new(myWorld, -2980.0, 106.0, 2991.0);
+local mS3 = Location:new(myWorld, -2988.0, 106.0, 3004.0);
+local mS4 = Location:new(myWorld, -2979.0, 106.0, 3015.0);
+local mS5 = Location:new(myWorld, -2999.0, 106.0, 3018.0);
+local mS6 = Location:new(myWorld, -2996.0, 106.0, 2982.0);
+local mS7 = Location:new(myWorld, -2987.0, 106.0, 2998.0);
+local mS8 = Location:new(myWorld, -2987.0, 106.0, 2983.0);
+local mS9 = Location:new(myWorld, -3010.0, 106.0, 3001.0);
+local mS10 = Location:new(myWorld, -3008.0, 106.0, 3007.0);
+local mS11 = Location:new(myWorld, -2994.0, 106.0, 2988.0);
+local mS12 = Location:new(myWorld, -2981.0, 106.0, 3009.0);
+local mS13 = Location:new(myWorld, -3015.0, 106.0, 2995.0);
+local mS14 = Location:new(myWorld, -3015.0, 106.0, 3005.0);
+local mS15 = Location:new(myWorld, -3010.0, 106.0, 2983.0);
+local mS16 = Location:new(myWorld, -3021.0, 106.0, 2981.0);
+local mS17 = Location:new(myWorld, -3002.0, 106.0, 3011.0);
+local mS18 = Location:new(myWorld, -3009.0, 106.0, 3021.0);
+local mS19 = Location:new(myWorld, -3015.0, 106.0, 3023.0);
+local mS20 = Location:new(myWorld, -3022.0, 106.0, 3017.0);
+local mS21 = Location:new(myWorld, -2998.0, 106.0, 3025.0);
+local mS22 = Location:new(myWorld, -2987.0, 113.0, 3001.0);
+local mS23 = Location:new(myWorld, -2980.0, 113.0, 3000.0);
+local mS24 = Location:new(myWorld, -3013.0, 113.0, 3001.0);
+local mS25 = Location:new(myWorld, -3023.0, 113.0, 3001.0);
+local mS26 = Location:new(myWorld, -3028.0, 106.0, 3019.0);
+local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
+local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
+local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
+local mS30 = Location:new(myWorld, -2969.0, 106.0, 3018.0);
+local mS31 = Location:new(myWorld, -2973.0, 106.0, 2984.0);
+local mS32 = Location:new(myWorld, -2964.0, 106.0, 2985.0);
+local mS33 = Location:new(myWorld, -2964.0, 106.0, 2996.0);
+local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
+local mS35 = Location:new(myWorld, -3032.0, 106.0, 3019.0);
+local mS36 = Location:new(myWorld, -3039.0, 106.0, 3013.0);
+local mS37 = Location:new(myWorld, -3039.0, 106.0, 3009.0);
+local mS38 = Location:new(myWorld, -3039.0, 106.0, 2996.0);
+local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
+local mS40 = Location:new(myWorld, -3030.0, 106.0, 2985.0);
+local mS41 = Location:new(myWorld, -3026.0, 106.0, 2987.0);
+local mS42 = Location:new(myWorld, -3030.0, 113.0, 3000.0);
+local mS43 = Location:new(myWorld, -2973.0, 113.0, 3001.0);
+local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
+local mS45 = Location:new(myWorld, -3004.0, 106.0, 2991.0);
+
+
+
+
 
 --------
 ---AI---
 --------
 
-local Overlord = 'PVE'
-local Message = ''
-local Message2 = ''
 
 function a_broadcast(msg)
 	myWorld:broadcast(msg);
@@ -41,17 +115,8 @@ function a_whisper_good(npc, msg, player)
 end
 
 --------------------------------
---Player Control--
---------------------------------
-
-local arenaPlayers = {};
-local playerCount = 0;
-
---------------------------------
 --Mob Control--
 --------------------------------
-
-local entityList = {};
 
 local function spawnMob(position, mobType)
 	local entity = Entity:new(position);
@@ -75,44 +140,9 @@ function check_alive_stats()
 	return true;
 end
 
-
----------------------
---Toggles------
----------------------
-
---To know when a Round is completed.
-local mR1Done = false;
-local mR2Done = false;
-local mR3Done = false;
-local mR4Done = false;
-local mR5Done = false;
---To know when a Round is in-progress.
-local mRoundRunning = false;
-
----------------------
---Timers------
----------------------
-
-local mR1 = Timer:new("end_r1_", 1);
-local mR2 = Timer:new("end_r2_", 1);
-local mR3 = Timer:new("end_r3_", 1);
-local mR4 = Timer:new("end_r4_", 1);
-local mR5 = Timer:new("reset_rounds_", 1);
-
 ---------------------
 --Teleports------
 ---------------------
-
-local minearenaenter = Location:new(myWorld, -3000.0, 105.0, 2975.0);
-local minearenaexit = Location:new(myWorld, -837.0, 97, 149.0);
-local mineround5 = Location:new(myWorld, 836, 119, 153);
-local pve2reset = Location:new(myWorld, -2999.0, 118, -3001.0);
-local world = World:new('mobarena');
-local GearChest = Location:new(world, 834.0, 133.0, 164.0);
-local ChestPlayers = {};
-local ChestTimerRunning = false;
-local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
-
 
 function tp_to_arena(data)
        if playerCount < 4 then
@@ -149,10 +179,6 @@ registerHook("INTERACT", "button_out_arena", 143, "mobarena", -3002.0, 105.0, -2
 --Respawning/Game Over----
 --------------------------
 
-local minerespawn = Location:new(myWorld, -2999.0, 105.0, 2975);
-local respawngear = Location:new(myWorld, 48, 67, 1);
-
---When Player dies repspawn here.
 function respawn2(data)
        if mRoundRunning then
          for playerName, value in pairs(arenaPlayers) do
@@ -171,39 +197,6 @@ registerHook("PLAYER_DEATH", "respawn2", "mobarena");
 -----------------------
 ---ROUND 1 (30 Mobs)---
 -----------------------
-
-
-local mS1 = Location:new(myWorld, -2980.0, 106.0, 2980.0);
-local mS2 = Location:new(myWorld, -2980.0, 106.0, 2991.0);
-local mS3 = Location:new(myWorld, -2988.0, 106.0, 3004.0);
-local mS4 = Location:new(myWorld, -2979.0, 106.0, 3015.0);
-local mS5 = Location:new(myWorld, -2999.0, 106.0, 3018.0);
-local mS6 = Location:new(myWorld, -2996.0, 106.0, 2982.0);
-local mS7 = Location:new(myWorld, -2987.0, 106.0, 2998.0);
-local mS8 = Location:new(myWorld, -2987.0, 106.0, 2983.0);
-local mS9 = Location:new(myWorld, -3010.0, 106.0, 3001.0);
-local mS10 = Location:new(myWorld, -3008.0, 106.0, 3007.0);
-local mS11 = Location:new(myWorld, -2994.0, 106.0, 2988.0);
-local mS12 = Location:new(myWorld, -2981.0, 106.0, 3009.0);
-local mS13 = Location:new(myWorld, -3015.0, 106.0, 2995.0);
-local mS14 = Location:new(myWorld, -3015.0, 106.0, 3005.0);
-local mS15 = Location:new(myWorld, -3010.0, 106.0, 2983.0);
-local mS16 = Location:new(myWorld, -3021.0, 106.0, 2981.0);
-local mS17 = Location:new(myWorld, -3002.0, 106.0, 3011.0);
-local mS18 = Location:new(myWorld, -3009.0, 106.0, 3021.0);
-local mS19 = Location:new(myWorld, -3015.0, 106.0, 3023.0);
-local mS20 = Location:new(myWorld, -3022.0, 106.0, 3017.0);
-local mS21 = Location:new(myWorld, -2998.0, 106.0, 3025.0);
-local mS22 = Location:new(myWorld, -2987.0, 113.0, 3001.0);
-local mS23 = Location:new(myWorld, -2980.0, 113.0, 3000.0);
-local mS24 = Location:new(myWorld, -3013.0, 113.0, 3001.0);
-local mS25 = Location:new(myWorld, -3023.0, 113.0, 3001.0);
-local mS26 = Location:new(myWorld, -3028.0, 106.0, 3019.0);
-local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
-local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
-local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
-
-local world = World:new('mobarena');
 
 function start_r1(data)
         for playerName, value in pairs(arenaPlayers) do
@@ -276,43 +269,6 @@ registerHook("INTERACT", "start_r1", 143, "mobarena", -2997, 108.0, 3003.0);
 
 --Added creeper and witch
 
-local mS1 = Location:new(myWorld, -2980.0, 106.0, 2980.0);
-local mS2 = Location:new(myWorld, -2980.0, 106.0, 2991.0);
-local mS3 = Location:new(myWorld, -2988.0, 106.0, 3004.0);
-local mS4 = Location:new(myWorld, -2979.0, 106.0, 3015.0);
-local mS5 = Location:new(myWorld, -2999.0, 106.0, 3018.0);
-local mS6 = Location:new(myWorld, -2996.0, 106.0, 2982.0);
-local mS7 = Location:new(myWorld, -2987.0, 106.0, 2998.0);
-local mS8 = Location:new(myWorld, -2987.0, 106.0, 2983.0);
-local mS9 = Location:new(myWorld, -3010.0, 106.0, 3001.0);
-local mS10 = Location:new(myWorld, -3008.0, 106.0, 3007.0);
-local mS11 = Location:new(myWorld, -2994.0, 106.0, 2988.0);
-local mS12 = Location:new(myWorld, -2981.0, 106.0, 3009.0);
-local mS13 = Location:new(myWorld, -3015.0, 106.0, 2995.0);
-local mS14 = Location:new(myWorld, -3015.0, 106.0, 3005.0);
-local mS15 = Location:new(myWorld, -3010.0, 106.0, 2983.0);
-local mS16 = Location:new(myWorld, -3021.0, 106.0, 2981.0);
-local mS17 = Location:new(myWorld, -3002.0, 106.0, 3011.0);
-local mS18 = Location:new(myWorld, -3009.0, 106.0, 3021.0);
-local mS19 = Location:new(myWorld, -3015.0, 106.0, 3023.0);
-local mS20 = Location:new(myWorld, -3022.0, 106.0, 3017.0);
-local mS21 = Location:new(myWorld, -2998.0, 106.0, 3025.0);
-local mS22 = Location:new(myWorld, -2987.0, 113.0, 3001.0);
-local mS23 = Location:new(myWorld, -2980.0, 113.0, 3000.0);
-local mS24 = Location:new(myWorld, -3013.0, 113.0, 3001.0);
-local mS25 = Location:new(myWorld, -3023.0, 113.0, 3001.0);
-local mS26 = Location:new(myWorld, -3028.0, 106.0, 3019.0);
-local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
-local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
-local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
-local mS30 = Location:new(myWorld, -2969.0, 106.0, 3018.0);
-local mS31 = Location:new(myWorld, -2973.0, 106.0, 2984.0);
-local mS32 = Location:new(myWorld, -2964.0, 106.0, 2985.0);
-local mS33 = Location:new(myWorld, -2964.0, 106.0, 2996.0);
-local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
-
-local world = World:new('mobarena');
-
 function start_r2(data)
         for playerName, value in pairs(arenaPlayers) do
          local player = Player:new(data.player);
@@ -363,6 +319,7 @@ function start_r2(data)
       else
          a_whisper_error(Message, "Round 2 Already Running!", player);
 
+				end
          end
       end
    end
@@ -388,48 +345,6 @@ registerHook("INTERACT", "start_r2", 143, "mobarena", -2998, 108.0, 3003.0);
 -----------------------
 
 --Added slime
-
-local mS1 = Location:new(myWorld, -2980.0, 106.0, 2980.0);
-local mS2 = Location:new(myWorld, -2980.0, 106.0, 2991.0);
-local mS3 = Location:new(myWorld, -2988.0, 106.0, 3004.0);
-local mS4 = Location:new(myWorld, -2979.0, 106.0, 3015.0);
-local mS5 = Location:new(myWorld, -2999.0, 106.0, 3018.0);
-local mS6 = Location:new(myWorld, -2996.0, 106.0, 2982.0);
-local mS7 = Location:new(myWorld, -2987.0, 106.0, 2998.0);
-local mS8 = Location:new(myWorld, -2987.0, 106.0, 2983.0);
-local mS9 = Location:new(myWorld, -3010.0, 106.0, 3001.0);
-local mS10 = Location:new(myWorld, -3008.0, 106.0, 3007.0);
-local mS11 = Location:new(myWorld, -2994.0, 106.0, 2988.0);
-local mS12 = Location:new(myWorld, -2981.0, 106.0, 3009.0);
-local mS13 = Location:new(myWorld, -3015.0, 106.0, 2995.0);
-local mS14 = Location:new(myWorld, -3015.0, 106.0, 3005.0);
-local mS15 = Location:new(myWorld, -3010.0, 106.0, 2983.0);
-local mS16 = Location:new(myWorld, -3021.0, 106.0, 2981.0);
-local mS17 = Location:new(myWorld, -3002.0, 106.0, 3011.0);
-local mS18 = Location:new(myWorld, -3009.0, 106.0, 3021.0);
-local mS19 = Location:new(myWorld, -3015.0, 106.0, 3023.0);
-local mS20 = Location:new(myWorld, -3022.0, 106.0, 3017.0);
-local mS21 = Location:new(myWorld, -2998.0, 106.0, 3025.0);
-local mS22 = Location:new(myWorld, -2987.0, 113.0, 3001.0);
-local mS23 = Location:new(myWorld, -2980.0, 113.0, 3000.0);
-local mS24 = Location:new(myWorld, -3013.0, 113.0, 3001.0);
-local mS25 = Location:new(myWorld, -3023.0, 113.0, 3001.0);
-local mS26 = Location:new(myWorld, -3028.0, 106.0, 3019.0);
-local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
-local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
-local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
-local mS30 = Location:new(myWorld, -2969.0, 106.0, 3018.0);
-local mS31 = Location:new(myWorld, -2973.0, 106.0, 2984.0);
-local mS32 = Location:new(myWorld, -2964.0, 106.0, 2985.0);
-local mS33 = Location:new(myWorld, -2964.0, 106.0, 2996.0);
-local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
-local mS35 = Location:new(myWorld, -3032.0, 106.0, 3019.0);
-local mS36 = Location:new(myWorld, -3039.0, 106.0, 3013.0);
-local mS37 = Location:new(myWorld, -3039.0, 106.0, 3009.0);
-local mS38 = Location:new(myWorld, -3039.0, 106.0, 2996.0);
-local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
-
-local world = World:new('mobarena');
 
 function start_r3(data)
         for playerName, value in pairs(arenaPlayers) do
@@ -486,7 +401,8 @@ function start_r3(data)
 
       else
          a_whisper_error(Message, "Round 3 Already Running!", player);
-
+					end
+				end
          end
       end
    end
@@ -513,53 +429,6 @@ registerHook("INTERACT", "start_r3", 143, "mobarena", -2999, 108.0, 3003.0);
 -----------------------
 
 --Added iron golem
-
-local mS1 = Location:new(myWorld, -2980.0, 106.0, 2980.0);
-local mS2 = Location:new(myWorld, -2980.0, 106.0, 2991.0);
-local mS3 = Location:new(myWorld, -2988.0, 106.0, 3004.0);
-local mS4 = Location:new(myWorld, -2979.0, 106.0, 3015.0);
-local mS5 = Location:new(myWorld, -2999.0, 106.0, 3018.0);
-local mS6 = Location:new(myWorld, -2996.0, 106.0, 2982.0);
-local mS7 = Location:new(myWorld, -2987.0, 106.0, 2998.0);
-local mS8 = Location:new(myWorld, -2987.0, 106.0, 2983.0);
-local mS9 = Location:new(myWorld, -3010.0, 106.0, 3001.0);
-local mS10 = Location:new(myWorld, -3008.0, 106.0, 3007.0);
-local mS11 = Location:new(myWorld, -2994.0, 106.0, 2988.0);
-local mS12 = Location:new(myWorld, -2981.0, 106.0, 3009.0);
-local mS13 = Location:new(myWorld, -3015.0, 106.0, 2995.0);
-local mS14 = Location:new(myWorld, -3015.0, 106.0, 3005.0);
-local mS15 = Location:new(myWorld, -3010.0, 106.0, 2983.0);
-local mS16 = Location:new(myWorld, -3021.0, 106.0, 2981.0);
-local mS17 = Location:new(myWorld, -3002.0, 106.0, 3011.0);
-local mS18 = Location:new(myWorld, -3009.0, 106.0, 3021.0);
-local mS19 = Location:new(myWorld, -3015.0, 106.0, 3023.0);
-local mS20 = Location:new(myWorld, -3022.0, 106.0, 3017.0);
-local mS21 = Location:new(myWorld, -2998.0, 106.0, 3025.0);
-local mS22 = Location:new(myWorld, -2987.0, 113.0, 3001.0);
-local mS23 = Location:new(myWorld, -2980.0, 113.0, 3000.0);
-local mS24 = Location:new(myWorld, -3013.0, 113.0, 3001.0);
-local mS25 = Location:new(myWorld, -3023.0, 113.0, 3001.0);
-local mS26 = Location:new(myWorld, -3028.0, 106.0, 3019.0);
-local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
-local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
-local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
-local mS30 = Location:new(myWorld, -2969.0, 106.0, 3018.0);
-local mS31 = Location:new(myWorld, -2973.0, 106.0, 2984.0);
-local mS32 = Location:new(myWorld, -2964.0, 106.0, 2985.0);
-local mS33 = Location:new(myWorld, -2964.0, 106.0, 2996.0);
-local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
-local mS35 = Location:new(myWorld, -3032.0, 106.0, 3019.0);
-local mS36 = Location:new(myWorld, -3039.0, 106.0, 3013.0);
-local mS37 = Location:new(myWorld, -3039.0, 106.0, 3009.0);
-local mS38 = Location:new(myWorld, -3039.0, 106.0, 2996.0);
-local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
-local mS40 = Location:new(myWorld, -3030.0, 106.0, 2985.0);
-local mS41 = Location:new(myWorld, -3026.0, 106.0, 2987.0);
-local mS42 = Location:new(myWorld, -3030.0, 113.0, 3000.0);
-local mS43 = Location:new(myWorld, -2973.0, 113.0, 3001.0);
-local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
-
-local world = World:new('mobarena');
 
 function start_r4(data)
         for playerName, value in pairs(arenaPlayers) do
@@ -622,7 +491,9 @@ function start_r4(data)
 
       else
          a_whisper_error(Message, "Round 4 Already Running!", player);
-
+						end
+					end
+				end
          end
       end
    end
@@ -650,53 +521,6 @@ registerHook("INTERACT", "start_r4", 143, "mobarena", -3000, 108.0, 3003.0);
 
 --Has Zombies, Skellys, Spiders, Creeper, Witches, Endermen
 --Added Giants
-
-local mS1 = Location:new(myWorld, -2980.0, 106.0, 2980.0);
-local mS2 = Location:new(myWorld, -2980.0, 106.0, 2991.0);
-local mS3 = Location:new(myWorld, -2988.0, 106.0, 3004.0);
-local mS4 = Location:new(myWorld, -2979.0, 106.0, 3015.0);
-local mS5 = Location:new(myWorld, -2999.0, 106.0, 3018.0);
-local mS6 = Location:new(myWorld, -2996.0, 106.0, 2982.0);
-local mS7 = Location:new(myWorld, -2987.0, 106.0, 2998.0);
-local mS8 = Location:new(myWorld, -2987.0, 106.0, 2983.0);
-local mS9 = Location:new(myWorld, -3010.0, 106.0, 3001.0);
-local mS10 = Location:new(myWorld, -3008.0, 106.0, 3007.0);
-local mS11 = Location:new(myWorld, -2994.0, 106.0, 2988.0);
-local mS12 = Location:new(myWorld, -2981.0, 106.0, 3009.0);
-local mS13 = Location:new(myWorld, -3015.0, 106.0, 2995.0);
-local mS14 = Location:new(myWorld, -3015.0, 106.0, 3005.0);
-local mS15 = Location:new(myWorld, -3010.0, 106.0, 2983.0);
-local mS16 = Location:new(myWorld, -3021.0, 106.0, 2981.0);
-local mS17 = Location:new(myWorld, -3002.0, 106.0, 3011.0);
-local mS18 = Location:new(myWorld, -3009.0, 106.0, 3021.0);
-local mS19 = Location:new(myWorld, -3015.0, 106.0, 3023.0);
-local mS20 = Location:new(myWorld, -3022.0, 106.0, 3017.0);
-local mS21 = Location:new(myWorld, -2998.0, 106.0, 3025.0);
-local mS22 = Location:new(myWorld, -2987.0, 113.0, 3001.0);
-local mS23 = Location:new(myWorld, -2980.0, 113.0, 3000.0);
-local mS24 = Location:new(myWorld, -3013.0, 113.0, 3001.0);
-local mS25 = Location:new(myWorld, -3023.0, 113.0, 3001.0);
-local mS26 = Location:new(myWorld, -3028.0, 106.0, 3019.0);
-local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
-local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
-local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
-local mS30 = Location:new(myWorld, -2969.0, 106.0, 3018.0);
-local mS31 = Location:new(myWorld, -2973.0, 106.0, 2984.0);
-local mS32 = Location:new(myWorld, -2964.0, 106.0, 2985.0);
-local mS33 = Location:new(myWorld, -2964.0, 106.0, 2996.0);
-local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
-local mS35 = Location:new(myWorld, -3032.0, 106.0, 3019.0);
-local mS36 = Location:new(myWorld, -3039.0, 106.0, 3013.0);
-local mS37 = Location:new(myWorld, -3039.0, 106.0, 3009.0);
-local mS38 = Location:new(myWorld, -3039.0, 106.0, 2996.0);
-local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
-local mS40 = Location:new(myWorld, -3030.0, 106.0, 2985.0);
-local mS41 = Location:new(myWorld, -3026.0, 106.0, 2987.0);
-local mS42 = Location:new(myWorld, -3030.0, 113.0, 3000.0);
-local mS43 = Location:new(myWorld, -2973.0, 113.0, 3001.0);
-local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
-local mS45 = Location:new(myWorld, -3004.0, 106.0, 2991.0);
-
 
 function start_r5(data)
         for playerName, value in pairs(arenaPlayers) do
@@ -765,7 +589,9 @@ function start_r5(data)
 
       else
          a_whisper_error(Message, "Round 5 Already Running!", player);
- 
+							end
+						end
+					end
             end
          end
       end
