@@ -142,7 +142,7 @@ function button_out_arena(data)
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Mine Arena&f!");
 end
 
-registerHook("REGION_ENTER", "tp_to_arena", "mobarena-portal_minearena_e");
+registerHook("REGION_ENTER", "tp_to_arena", "mobarena-minearena_e");
 registerHook("INTERACT", "button_out_arena", 143, "mobarena", -3002.0, 105.0, -2977.0);
 
 --------------------------
