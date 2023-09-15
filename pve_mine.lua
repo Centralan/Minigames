@@ -302,7 +302,7 @@ function mr1_rewards(data)
 	end
 	
 
-registerHook("REGION_ENTER", "m_r1_rewards", "mobarena-pve2_reset");
+registerHook("REGION_ENTER", "mr1_rewards", "mobarena-pve2_reset");
 
 -----------------------
 ---ROUND 2 (35 Mobs)---
