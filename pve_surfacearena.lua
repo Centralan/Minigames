@@ -44,28 +44,28 @@ end
 --Player Control--
 --------------------------------
 
-local SarenaPlayers = {};
-local SplayerCount = 0;
+local arenaPlayers = {};
+local playerCount = 0;
 
 --------------------------------
 --Mob Control--
 --------------------------------
 
-local SentityList = {};
+local entityList = {};
 
-local function spawnMob1(position, mobType)
+local function spawnMob(position, mobType)
 	local entity = Entity:new(position);
 	entity:spawn(mobType);
 	table.insert(entityList, entity);
 end
 
-local function purgeEntityList1()
+local function purgeEntityList()
 	for index, value in pairs(entityList) do
 		entityList[index] = nil;
 	end
 end
 
-function check_alive_stats1()
+function check_alive_stats()
 	for key, value in pairs(entityList) do
 		if value:isAlive() then
 			return false;
@@ -93,11 +93,11 @@ local sRoundRunning = false;
 --Timers------
 ---------------------
 
-local R1 = Timer:new("s_end_r1", 1);
-local R2 = Timer:new("s_end_r2", 1);
-local R3 = Timer:new("s_end_r3", 1);
-local R4 = Timer:new("s_end_r4", 1);
-local R5 = Timer:new("s_reset_rounds", 1);
+local R1 = Timer:new("end_r1", 1);
+local R2 = Timer:new("end_r2", 1);
+local R3 = Timer:new("end_r3", 1);
+local R4 = Timer:new("end_r4", 1);
+local R5 = Timer:new("reset_rounds", 1);
 
 ---------------------
 --Teleports------
@@ -108,21 +108,26 @@ local surfacearenaexit = Location:new(myWorld, 837, 97, 149);
 local surfaceround5 = Location:new(myWorld, 834, 119, 153);
 local pve1reset = Location:new(myWorld, -2.7, 74, -0);
 local world = World:new('mobarena');
-local GearChest1 = Location:new(world, 834.0, 133.0, 164.0);
-local ChestPlayers1 = {};
-local ChestTimerRunning1 = false;
-local ChestTimer1 = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+local GearChest = Location:new(world, 834.0, 133.0, 164.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
 
 function tp_to_arena1(data)
        if SplayerCount < 4 then
         local player = Player:new(data.player);
           player:teleport(surfacearenaenter);
-	  GearChest1:cloneChestToPlayer(player.name);
+	  GearChest:cloneChestToPlayer(player.name);
 	  surfacesound:playSound('HORSE_SADDLE', 1, 0);
 	  player:sendMessage("&dYou have been granted with free gear.");
+<<<<<<< HEAD
           SarenaPlayers[player.name] = true;
           SplayerCount = SplayerCount + 1;
+=======
+          arenaPlayers[player.name] = true;
+          playerCount = playerCount + 1;
+>>>>>>> parent of 62181f2 (Change to make mine work)
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	  a_broadcast2(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	   a_broadcast3(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
@@ -137,8 +142,8 @@ end
 function button_out_arena1(data)
         local player = Player:new(data.player);
           player:teleport(surfacearenaexit);
-          SarenaPlayers[player.name] = nil;
-          SplayerCount = playerCount - 1;
+          arenaPlayers[player.name] = nil;
+          playerCount = playerCount - 1;
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Surface Arena&f!");
 end
 
@@ -150,10 +155,10 @@ registerHook("INTERACT", "button_out_arena1", 77, "mobarena", 30, 65, -2);
 --------------------------
 
 local surfacerespawn = Location:new(myWorld, 41, 67, 1);
-local respawngear1 = Location:new(myWorld, 48, 67, 1);
+local respawngear = Location:new(myWorld, 48, 67, 1);
 
 --When Player dies repspawn here.
-function respawn1(data)
+function respawn(data)
        if sRoundRunning then
          for playerName, value in pairs(arenaPlayers) do
              local player = Player:new(data.player);
@@ -182,7 +187,7 @@ local R1S4 = Location:new(myWorld, -14.0, 66.0, -14.0);
 local R1S5 = Location:new(myWorld, -27.0, 66.0, 7.0);
 local world = World:new('mobarena');
 
-function s_start_r1(data)
+function start_r1(data)
         for playerName, value in pairs(arenaPlayers) do
          local player = Player:new(data.player);
       if not sR1Done then
@@ -192,26 +197,26 @@ function s_start_r1(data)
          surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
-	spawnMob1(R1S1, "ZOMBIE");
-	spawnMob1(R1S1, "ZOMBIE");
-	spawnMob1(R1S1, "SKELETON");
-	spawnMob1(R1S1, "SKELETON");
-	spawnMob1(R1S2, "ZOMBIE");
-	spawnMob1(R1S2, "ZOMBIE");
-	spawnMob1(R1S2, "SKELETON");
-	spawnMob1(R1S2, "SKELETON");
-	spawnMob1(R1S3, "ZOMBIE");
-	spawnMob1(R1S3, "SKELETON");
-	spawnMob1(R1S3, "ZOMBIE");
-	spawnMob1(R1S3, "SKELETON");
-	spawnMob1(R1S4, "ZOMBIE");
-	spawnMob1(R1S4, "ZOMBIE");
-	spawnMob1(R1S4, "SKELETON");
-	spawnMob1(R1S4, "SKELETON");
-	spawnMob1(R1S5, "ZOMBIE");
-	spawnMob1(R1S5, "ZOMBIE");
-	spawnMob1(R1S5, "SKELETON");
-	spawnMob1(R1S5, "SKELETON");
+	spawnMob(R1S1, "ZOMBIE");
+	spawnMob(R1S1, "ZOMBIE");
+	spawnMob(R1S1, "SKELETON");
+	spawnMob(R1S1, "SKELETON");
+	spawnMob(R1S2, "ZOMBIE");
+	spawnMob(R1S2, "ZOMBIE");
+	spawnMob(R1S2, "SKELETON");
+	spawnMob(R1S2, "SKELETON");
+	spawnMob(R1S3, "ZOMBIE");
+	spawnMob(R1S3, "SKELETON");
+	spawnMob(R1S3, "ZOMBIE");
+	spawnMob(R1S3, "SKELETON");
+	spawnMob(R1S4, "ZOMBIE");
+	spawnMob(R1S4, "ZOMBIE");
+	spawnMob(R1S4, "SKELETON");
+	spawnMob(R1S4, "SKELETON");
+	spawnMob(R1S5, "ZOMBIE");
+	spawnMob(R1S5, "ZOMBIE");
+	spawnMob(R1S5, "SKELETON");
+	spawnMob(R1S5, "SKELETON");
 
       else
          a_whisper_error(Message, "Round 1 Already Running!", player);
@@ -221,8 +226,8 @@ function s_start_r1(data)
    end
 end
 
-function s_end_r1()
-	if check_alive_stats1() then
+function end_r1()
+	if check_alive_stats() then
            R1:cancel()
            sRoundRunning = false;
            sR1Done = true;
@@ -235,7 +240,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "s_start_r1", 143, "mobarena", -7.0, 66.0, 1.0);   
+registerHook("INTERACT", "start_r1", 143, "mobarena", -7.0, 66.0, 1.0);   
 
 -----------------------
 ---ROUND 2 (25 Mobs)---
@@ -251,7 +256,7 @@ local R2S4 = Location:new(myWorld, -23.0, 66.0, 20.0);
 local R2S5 = Location:new(myWorld, -1.0, 65.0, 30.0);
 
 
-function s_start_r2(data)
+function start_r2(data)
         for playerName, value in pairs(arenaPlayers) do
          local player = Player:new(data.player);
       if sR1Done then
@@ -262,31 +267,31 @@ function s_start_r2(data)
          surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 2 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 2 has started, kill all mobs to move to Round 3.", player);
-	spawnMob1(R2S1, "ZOMBIE");
-	spawnMob1(R2S1, "ZOMBIE");
-	spawnMob1(R2S1, "SKELETON");
-	spawnMob1(R2S1, "SKELETON");
-	spawnMob1(R2S1, "SPIDER");
-	spawnMob1(R2S2, "ZOMBIE");
-	spawnMob1(R2S2, "SKELETON");
-	spawnMob1(R2S2, "SKELETON");
-	spawnMob1(R2S2, "SPIDER");
-	spawnMob1(R2S2, "SPIDER");
-	spawnMob1(R2S3, "ZOMBIE");
-	spawnMob1(R2S3, "SKELETON");
-	spawnMob1(R2S3, "SPIDER");
-	spawnMob1(R2S3, "SPIDER");
-	spawnMob1(R2S3, "SPIDER");
-	spawnMob1(R2S4, "ZOMBIE");
-	spawnMob1(R2S4, "SKELETON");
-	spawnMob1(R2S4, "SKELETON");
-	spawnMob1(R2S4, "SPIDER");
-	spawnMob1(R2S4, "SPIDER");
-	spawnMob1(R2S5, "ZOMBIE");
-	spawnMob1(R2S5, "ZOMBIE");
-	spawnMob1(R2S5, "SKELETON");
-	spawnMob1(R2S5, "SKELETON");
-	spawnMob1(R2S5, "SKELETON");
+	spawnMob(R2S1, "ZOMBIE");
+	spawnMob(R2S1, "ZOMBIE");
+	spawnMob(R2S1, "SKELETON");
+	spawnMob(R2S1, "SKELETON");
+	spawnMob(R2S1, "SPIDER");
+	spawnMob(R2S2, "ZOMBIE");
+	spawnMob(R2S2, "SKELETON");
+	spawnMob(R2S2, "SKELETON");
+	spawnMob(R2S2, "SPIDER");
+	spawnMob(R2S2, "SPIDER");
+	spawnMob(R2S3, "ZOMBIE");
+	spawnMob(R2S3, "SKELETON");
+	spawnMob(R2S3, "SPIDER");
+	spawnMob(R2S3, "SPIDER");
+	spawnMob(R2S3, "SPIDER");
+	spawnMob(R2S4, "ZOMBIE");
+	spawnMob(R2S4, "SKELETON");
+	spawnMob(R2S4, "SKELETON");
+	spawnMob(R2S4, "SPIDER");
+	spawnMob(R2S4, "SPIDER");
+	spawnMob(R2S5, "ZOMBIE");
+	spawnMob(R2S5, "ZOMBIE");
+	spawnMob(R2S5, "SKELETON");
+	spawnMob(R2S5, "SKELETON");
+	spawnMob(R2S5, "SKELETON");
 
       else
          a_whisper_error(Message, "Round 2 Already Running!", player);
@@ -297,8 +302,8 @@ function s_start_r2(data)
    end
 end
 
-function s_end_r2()
-	if check_alive_stats1() then
+function end_r2()
+	if check_alive_stats() then
            R2:cancel()
            sRoundRunning = false;
            sR2Done = true;
@@ -310,7 +315,7 @@ local player = Player:new(playerName);
 	end
 end
 
-registerHook("INTERACT", "s_start_r2", 143, "mobarena", -7.0, 66.0, 0.0);  
+registerHook("INTERACT", "start_r2", 143, "mobarena", -7.0, 66.0, 0.0);  
 
 -----------------------
 ---ROUND 3 (30 Mobs)---
@@ -326,7 +331,7 @@ local R3S4 = Location:new(myWorld, -10.0, 65.0, 26.0);
 local R3S5 = Location:new(myWorld, -21.0, 65.0, 7.0);
 
 
-function s_start_r3(data)
+function start_r3(data)
         for playerName, value in pairs(arenaPlayers) do
          local player = Player:new(data.player);
       if sR2Done then
@@ -337,36 +342,36 @@ function s_start_r3(data)
          surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 3 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 3 has started, kill all mobs to move to Round 4.", player);
-	spawnMob1(R3S1, "ZOMBIE");
-	spawnMob1(R3S1, "ZOMBIE");
-	spawnMob1(R3S1, "CREEPER");
-	spawnMob1(R3S1, "SPIDER");
-	spawnMob1(R3S1, "SPIDER");
-	spawnMob1(R3S1, "SKELETON");
-	spawnMob1(R3S2, "ZOMBIE");
-	spawnMob1(R3S2, "ZOMBIE");
-	spawnMob1(R3S2, "CREEPER");
-	spawnMob1(R3S2, "SPIDER");
-	spawnMob1(R3S2, "SKELETON");
-	spawnMob1(R3S2, "SKELETON");
-	spawnMob1(R3S3, "ZOMBIE");
-	spawnMob1(R3S3, "CREEPER");
-	spawnMob1(R3S3, "CREEPER");
-	spawnMob1(R3S3, "SPIDER");
-	spawnMob1(R3S3, "SPIDER");
-	spawnMob1(R3S3, "WITCH");
-	spawnMob1(R3S4, "ZOMBIE");
-	spawnMob1(R3S4, "ZOMBIE");
-	spawnMob1(R3S4, "CREEPER");
-	spawnMob1(R3S4, "CREEPER");
-	spawnMob1(R3S4, "SPIDER");
-	spawnMob1(R3S4, "SPIDER");
-	spawnMob1(R3S5, "ZOMBIE");
-	spawnMob1(R3S5, "CREEPER");
-	spawnMob1(R3S5, "CREEPER");
-	spawnMob1(R3S5, "SKELETON");
-	spawnMob1(R3S5, "SKELETON");
-	spawnMob1(R3S5, "SPIDER");
+	spawnMob(R3S1, "ZOMBIE");
+	spawnMob(R3S1, "ZOMBIE");
+	spawnMob(R3S1, "CREEPER");
+	spawnMob(R3S1, "SPIDER");
+	spawnMob(R3S1, "SPIDER");
+	spawnMob(R3S1, "SKELETON");
+	spawnMob(R3S2, "ZOMBIE");
+	spawnMob(R3S2, "ZOMBIE");
+	spawnMob(R3S2, "CREEPER");
+	spawnMob(R3S2, "SPIDER");
+	spawnMob(R3S2, "SKELETON");
+	spawnMob(R3S2, "SKELETON");
+	spawnMob(R3S3, "ZOMBIE");
+	spawnMob(R3S3, "CREEPER");
+	spawnMob(R3S3, "CREEPER");
+	spawnMob(R3S3, "SPIDER");
+	spawnMob(R3S3, "SPIDER");
+	spawnMob(R3S3, "WITCH");
+	spawnMob(R3S4, "ZOMBIE");
+	spawnMob(R3S4, "ZOMBIE");
+	spawnMob(R3S4, "CREEPER");
+	spawnMob(R3S4, "CREEPER");
+	spawnMob(R3S4, "SPIDER");
+	spawnMob(R3S4, "SPIDER");
+	spawnMob(R3S5, "ZOMBIE");
+	spawnMob(R3S5, "CREEPER");
+	spawnMob(R3S5, "CREEPER");
+	spawnMob(R3S5, "SKELETON");
+	spawnMob(R3S5, "SKELETON");
+	spawnMob(R3S5, "SPIDER");
 
       else
          a_whisper_error(Message, "Round 3 Already Running!", player);
@@ -377,8 +382,8 @@ function s_start_r3(data)
    end
 end
 
-function s_end_r3()
-	if check_alive_stats1() then
+function end_r3()
+	if check_alive_stats() then
            R3:cancel()
            sRoundRunning = false;
            sR3Done = true;
@@ -390,7 +395,7 @@ local player = Player:new(playerName);
 		end
 end
 
-registerHook("INTERACT", "s_start_r3", 143, "mobarena", -7.0, 66.0, -1.0); 
+registerHook("INTERACT", "start_r3", 143, "mobarena", -7.0, 66.0, -1.0); 
 
 -----------------------
 ---ROUND 4 (35 Mobs)---
@@ -406,7 +411,7 @@ local R4S4 = Location:new(myWorld, 25.0, 65.0, 20.0);
 local R4S5 = Location:new(myWorld, 5.0, 65.0, -20.0);
 
 
-function s_start_r4(data)
+function start_r4(data)
         for playerName, value in pairs(arenaPlayers) do
          local player = Player:new(data.player);
       if sR3Done then
@@ -417,41 +422,41 @@ function s_start_r4(data)
          surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 4 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 4 has started, kill all mobs to move to Round 5.", player);
-	spawnMob1(R4S1, "ZOMBIE");
-	spawnMob1(R4S1, "WITCH");
-	spawnMob1(R4S1, "CREEPER");
-	spawnMob1(R4S1, "SPIDER");
-	spawnMob1(R4S1, "SPIDER");
-	spawnMob1(R4S1, "SKELETON");
-	spawnMob1(R4S1, "SKELETON");
-	spawnMob1(R4S2, "ZOMBIE");
-	spawnMob1(R4S2, "ZOMBIE");
-	spawnMob1(R4S2, "CREEPER");
-	spawnMob1(R4S2, "SPIDER");
-	spawnMob1(R4S2, "SPIDER");
-	spawnMob1(R4S2, "ENDERMAN");
-	spawnMob1(R4S2, "SKELETON");
-	spawnMob1(R4S3, "ZOMBIE");
-	spawnMob1(R4S3, "WITCH");
-	spawnMob1(R4S3, "CREEPER");
-	spawnMob1(R4S3, "CREEPER");
-	spawnMob1(R4S3, "SPIDER");
-	spawnMob1(R4S3, "ENDERMAN");
-	spawnMob1(R4S3, "SKELETON");
-	spawnMob1(R4S4, "ZOMBIE");
-	spawnMob1(R4S4, "ZOMBIE");
-	spawnMob1(R4S4, "WITCH");
-	spawnMob1(R4S4, "SPIDER");
-	spawnMob1(R4S4, "SPIDER");
-	spawnMob1(R4S4, "SKELETON");
-	spawnMob1(R4S4, "SKELETON");
-	spawnMob1(R4S5, "ZOMBIE");
-	spawnMob1(R4S5, "CREEPER");
-	spawnMob1(R4S5, "CREEPER");
-	spawnMob1(R4S5, "SPIDER");
-	spawnMob1(R4S5, "SPIDER");
-	spawnMob1(R4S5, "ENDERMAN");
-	spawnMob1(R4S5, "SKELETON");
+	spawnMob(R4S1, "ZOMBIE");
+	spawnMob(R4S1, "WITCH");
+	spawnMob(R4S1, "CREEPER");
+	spawnMob(R4S1, "SPIDER");
+	spawnMob(R4S1, "SPIDER");
+	spawnMob(R4S1, "SKELETON");
+	spawnMob(R4S1, "SKELETON");
+	spawnMob(R4S2, "ZOMBIE");
+	spawnMob(R4S2, "ZOMBIE");
+	spawnMob(R4S2, "CREEPER");
+	spawnMob(R4S2, "SPIDER");
+	spawnMob(R4S2, "SPIDER");
+	spawnMob(R4S2, "ENDERMAN");
+	spawnMob(R4S2, "SKELETON");
+	spawnMob(R4S3, "ZOMBIE");
+	spawnMob(R4S3, "WITCH");
+	spawnMob(R4S3, "CREEPER");
+	spawnMob(R4S3, "CREEPER");
+	spawnMob(R4S3, "SPIDER");
+	spawnMob(R4S3, "ENDERMAN");
+	spawnMob(R4S3, "SKELETON");
+	spawnMob(R4S4, "ZOMBIE");
+	spawnMob(R4S4, "ZOMBIE");
+	spawnMob(R4S4, "WITCH");
+	spawnMob(R4S4, "SPIDER");
+	spawnMob(R4S4, "SPIDER");
+	spawnMob(R4S4, "SKELETON");
+	spawnMob(R4S4, "SKELETON");
+	spawnMob(R4S5, "ZOMBIE");
+	spawnMob(R4S5, "CREEPER");
+	spawnMob(R4S5, "CREEPER");
+	spawnMob(R4S5, "SPIDER");
+	spawnMob(R4S5, "SPIDER");
+	spawnMob(R4S5, "ENDERMAN");
+	spawnMob(R4S5, "SKELETON");
 
       else
          a_whisper_error(Message, "Round 4 Already Running!", player);
@@ -462,8 +467,8 @@ function s_start_r4(data)
    end
 end
 
-function s_end_r4()
-	if check_alive_stats1() then
+function end_r4()
+	if check_alive_stats() then
            R4:cancel()
            sRoundRunning = false;
            sR4Done = true;
@@ -475,7 +480,7 @@ local player = Player:new(playerName);
 		end
 end
 
-registerHook("INTERACT", "s_start_r4", 143, "mobarena", -7.0, 66.0, -2.0);
+registerHook("INTERACT", "start_r4", 143, "mobarena", -7.0, 66.0, -2.0);
 
 -----------------------
 ---ROUND 5 (40 Mobs)---
@@ -491,7 +496,7 @@ local R5S4 = Location:new(myWorld, 18.0, 65.0, 2.0);
 local R5S5 = Location:new(myWorld, -15.0, 65.0, 12.0);
 
 
-function s_start_r5(data)
+function start_r5(data)
         for playerName, value in pairs(arenaPlayers) do
          local player = Player:new(data.player);
       if sR4Done then
@@ -502,46 +507,46 @@ function s_start_r5(data)
          surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 5 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 5 has started, kill all mobs to beat the arena!", player);
-	spawnMob1(R5S1, "ZOMBIE");
-	spawnMob1(R5S1, "ZOMBIE");
-	spawnMob1(R5S1, "CREEPER");
-	spawnMob1(R5S1, "SPIDER");
-	spawnMob1(R5S1, "SPIDER");
-	spawnMob1(R5S1, "GIANT");
-	spawnMob1(R5S1, "SKELETON");
-	spawnMob1(R5S1, "WITCH");
-	spawnMob1(R5S2, "ZOMBIE");
-	spawnMob1(R5S2, "ZOMBIE");
-	spawnMob1(R5S2, "CREEPER");
-	spawnMob1(R5S2, "ENDERMAN");
-	spawnMob1(R5S2, "SPIDER");
-	spawnMob1(R5S2, "SKELETON");
-	spawnMob1(R5S2, "SKELETON");
-	spawnMob1(R5S2, "WITCH");
-	spawnMob1(R5S3, "ZOMBIE");
-	spawnMob1(R5S3, "CREEPER");
-	spawnMob1(R5S3, "CREEPER");
-	spawnMob1(R5S3, "CREEPER");
-	spawnMob1(R5S3, "SPIDER");
-	spawnMob1(R5S3, "SKELETON");
-	spawnMob1(R5S3, "WITCH");
-	spawnMob1(R5S3, "ENDERMAN");
-	spawnMob1(R5S4, "ZOMBIE");
-	spawnMob1(R5S4, "ZOMBIE");
-	spawnMob1(R5S4, "CREEPER");
-	spawnMob1(R5S4, "ENDERMAN");
-	spawnMob1(R5S4, "CREEPER");
-	spawnMob1(R5S4, "SPIDER");
-	spawnMob1(R5S4, "SPIDER");
-	spawnMob1(R5S4, "WITCH");
-	spawnMob1(R5S5, "ZOMBIE");
-	spawnMob1(R5S5, "CREEPER");
-	spawnMob1(R5S5, "CREEPER");
-	spawnMob1(R5S5, "GIANT");
-	spawnMob1(R5S5, "SKELETON");
-	spawnMob1(R5S5, "WITCH");
-	spawnMob1(R5S5, "WITCH");
-	spawnMob1(R5S5, "ENDERMAN");
+	spawnMob(R5S1, "ZOMBIE");
+	spawnMob(R5S1, "ZOMBIE");
+	spawnMob(R5S1, "CREEPER");
+	spawnMob(R5S1, "SPIDER");
+	spawnMob(R5S1, "SPIDER");
+	spawnMob(R5S1, "GIANT");
+	spawnMob(R5S1, "SKELETON");
+	spawnMob(R5S1, "WITCH");
+	spawnMob(R5S2, "ZOMBIE");
+	spawnMob(R5S2, "ZOMBIE");
+	spawnMob(R5S2, "CREEPER");
+	spawnMob(R5S2, "ENDERMAN");
+	spawnMob(R5S2, "SPIDER");
+	spawnMob(R5S2, "SKELETON");
+	spawnMob(R5S2, "SKELETON");
+	spawnMob(R5S2, "WITCH");
+	spawnMob(R5S3, "ZOMBIE");
+	spawnMob(R5S3, "CREEPER");
+	spawnMob(R5S3, "CREEPER");
+	spawnMob(R5S3, "CREEPER");
+	spawnMob(R5S3, "SPIDER");
+	spawnMob(R5S3, "SKELETON");
+	spawnMob(R5S3, "WITCH");
+	spawnMob(R5S3, "ENDERMAN");
+	spawnMob(R5S4, "ZOMBIE");
+	spawnMob(R5S4, "ZOMBIE");
+	spawnMob(R5S4, "CREEPER");
+	spawnMob(R5S4, "ENDERMAN");
+	spawnMob(R5S4, "CREEPER");
+	spawnMob(R5S4, "SPIDER");
+	spawnMob(R5S4, "SPIDER");
+	spawnMob(R5S4, "WITCH");
+	spawnMob(R5S5, "ZOMBIE");
+	spawnMob(R5S5, "CREEPER");
+	spawnMob(R5S5, "CREEPER");
+	spawnMob(R5S5, "GIANT");
+	spawnMob(R5S5, "SKELETON");
+	spawnMob(R5S5, "WITCH");
+	spawnMob(R5S5, "WITCH");
+	spawnMob(R5S5, "ENDERMAN");
 
       else
          a_whisper_error(Message, "Round 5 Already Running!", player);
@@ -552,8 +557,8 @@ function s_start_r5(data)
    end
 end
 
-function s_reset_rounds()
-	if check_alive_stats1() then
+function reset_rounds()
+	if check_alive_stats() then
            R5:cancel()
            sRoundRunning = false;
            sR1Done = false;
@@ -564,29 +569,29 @@ function s_reset_rounds()
          for playerName, value in pairs(arenaPlayers) do
              local player = Player:new(playerName);
              player:teleport(surfaceround5);
-             player:sendEvent("achievement.surfacechampion");
+             player:sendEvent("achievement.mobgrinder");
             local player = Player:new(data.player);
-             SarenaPlayers[player.name] = nil;
-             SplayerCount = playerCount - 1;
+             arenaPlayers[player.name] = nil;
+             playerCount = playerCount - 1;
 
       end
    end
 end 
 
-registerHook("INTERACT", "s_start_r5", 143, "mobarena", -7.0, 66.0, -3.0);
+registerHook("INTERACT", "start_r5", 143, "mobarena", -7.0, 66.0, -3.0);
 
 ------------------------------------------------------
 --R1 Rewards----------
 ------------------------------------------------------
 
 local world = World:new('mobarena');
-local sR1Chest = Location:new(world, -52.0, 114.0, 9.0);
-local sR1ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
-local sChestPlayers = {};
-local sChestTimerRunning = false;
-local sChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+local R1Chest = Location:new(world, -52.0, 114.0, 9.0);
+local R1ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
-function s_r1_rewards(data)
+function r1_rewards(data)
      local player = Player:new(data.player);
 	if not sRoundRunning then 
 	if sR1Done then
@@ -594,9 +599,9 @@ function s_r1_rewards(data)
 	if not sR3Done then
         if not sR4Done then
         if not sR5Done then
-		sChestPlayers[player.name] = true;
+		ChestPlayers[player.name] = true;
 		player:closeInventory();
-		sR1Chest:cloneChestToPlayer(player.name);
+		R1Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 1 Rewards: you earned 2 Mob Bones!");
 							end 
@@ -608,7 +613,7 @@ function s_r1_rewards(data)
 	end
 	
 
-registerHook("REGION_ENTER", "s_r1_rewards", "mobarena-pve1_reset");
+registerHook("REGION_ENTER", "r1_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R2 Rewards----------
@@ -616,13 +621,13 @@ registerHook("REGION_ENTER", "s_r1_rewards", "mobarena-pve1_reset");
 
 
 local world = World:new('mobarena');
-local sR2Chest = Location:new(world, -52.0, 114.0, 11.0);
-local sR2ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
-local sChestPlayers = {};
-local sChestTimerRunning = false;
-local sChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+local R2Chest = Location:new(world, -52.0, 114.0, 11.0);
+local R2ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
-function s_r2_rewards(data)
+function r2_rewards(data)
      local player = Player:new(data.player);
 	if not sRoundRunning then 	
 	if sR1Done then
@@ -630,9 +635,9 @@ function s_r2_rewards(data)
 	if not sR3Done then
         if not sR4Done then
         if not sR5Done then
-		sChestPlayers[player.name] = true;
+		ChestPlayers[player.name] = true;
 		player:closeInventory();
-		sR1Chest:cloneChestToPlayer(player.name);
+		R1Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 2 Rewards: you earned 3 Mob Bones!");
 								end
@@ -644,7 +649,7 @@ function s_r2_rewards(data)
 	end
 	
 
-registerHook("REGION_ENTER", "s_r2_rewards", "mobarena-pve1_reset");
+registerHook("REGION_ENTER", "r2_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R3 Rewards----------
@@ -652,13 +657,13 @@ registerHook("REGION_ENTER", "s_r2_rewards", "mobarena-pve1_reset");
 
 
 local world = World:new('mobarena');
-local sR3Chest = Location:new(world, -52.0, 114.0, 13.0);
-local sR3ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
-local sChestPlayers = {};
-local sChestTimerRunning = false;
-local sChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+local R3Chest = Location:new(world, -52.0, 114.0, 13.0);
+local R3ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
-function s_r3_rewards(data)
+function r3_rewards(data)
      local player = Player:new(data.player);
 	if not sRoundRunning then 	
 	if sR1Done then
@@ -666,9 +671,9 @@ function s_r3_rewards(data)
 	if sR3Done then
         if not sR4Done then
         if not sR5Done then
-		sChestPlayers[player.name] = true;
+		ChestPlayers[player.name] = true;
 		player:closeInventory();
-		sR3Chest:cloneChestToPlayer(player.name);
+		R3Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 3 Rewards: you earned 4 Mob Bones!");
 								end
@@ -679,7 +684,7 @@ function s_r3_rewards(data)
 		end
 	end
 
-registerHook("REGION_ENTER", "s_r3_rewards", "mobarena-pve1_reset");
+registerHook("REGION_ENTER", "r3_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R4 Rewards----------
@@ -687,13 +692,13 @@ registerHook("REGION_ENTER", "s_r3_rewards", "mobarena-pve1_reset");
 
 
 local world = World:new('mobarena');
-local sR4Chest = Location:new(world, -52.0, 114.0, 15.0);
-local sR4ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
-local sChestPlayers = {};
-local sChestTimerRunning = false;
-local sChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+local R4Chest = Location:new(world, -52.0, 114.0, 15.0);
+local R4ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
-function s_r4_rewards(data)
+function r4_rewards(data)
      local player = Player:new(data.player);
 	if not sRoundRunning then 	
 	if sR1Done then
@@ -701,9 +706,9 @@ function s_r4_rewards(data)
 	if sR3Done then
         if sR4Done then
         if not sR5Done then
-		sChestPlayers[player.name] = true;
+		ChestPlayers[player.name] = true;
 		player:closeInventory();
-		sR4Chest:cloneChestToPlayer(player.name);
+		R4Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 4 Rewards: you earned 5 Mob Bones!");
 								end
@@ -714,7 +719,7 @@ function s_r4_rewards(data)
 		end
 	end
 
-registerHook("REGION_ENTER", "s_r4_rewards", "mobarena-pve1_reset");
+registerHook("REGION_ENTER", "r4_rewards", "mobarena-pve1_reset");
 
 ------------------------------------------------------
 --R5 Rewards----------
@@ -722,17 +727,17 @@ registerHook("REGION_ENTER", "s_r4_rewards", "mobarena-pve1_reset");
 
 
 local world = World:new('mobarena');
-local sR5Chest = Location:new(world, -52.0, 114.0, 17.0);
-local sR5ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
-local sChestPlayers = {};
-local sChestTimerRunning = false;
-local sChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+local R5Chest = Location:new(world, -52.0, 114.0, 17.0);
+local R5ChestOpen = Location:new(world, -3.0, 65.0, -1.0);
+local ChestPlayers = {};
+local ChestTimerRunning = false;
+local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
-function s_r5_rewards(data)
+function r5_rewards(data)
      local player = Player:new(data.player);
-		sChestPlayers[player.name] = true;
+		ChestPlayers[player.name] = true;
 		player:closeInventory();
-		sR5Chest:cloneChestToPlayer(player.name);
+		R5Chest:cloneChestToPlayer(player.name);
                 surfacesound:playSound('HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 5 Rewards: you earned 6 Mob Bones!");
 								end
@@ -743,4 +748,4 @@ function s_r5_rewards(data)
 		end
 	end
 	
-registerHook("REGION_ENTER", "s_r5_rewards", "mobarena-pve1_r5");
+registerHook("REGION_ENTER", "r5_rewards", "mobarena-pve1_r5");
