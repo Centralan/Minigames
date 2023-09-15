@@ -44,8 +44,8 @@ end
 --Player Control--
 --------------------------------
 
-local arenaPlayers = {};
-local playerCount = 0;
+local MarenaPlayers = {};
+local MplayerCount = 0;
 
 --------------------------------
 --Mob Control--
@@ -115,13 +115,13 @@ local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest",
 
 
 function tp_to_arena2(data)
-       if playerCount < 4 then
+       if MplayerCount < 4 then
         local player = Player:new(data.player);
           player:teleport(minearenaenter);
 	  GearChest:cloneChestToPlayer(player.name);
 	  minesound:playSound('HORSE_SADDLE', 1, 0);
 	  player:sendMessage("&dYou have been granted with free gear.");
-          arenaPlayers[player.name] = true;
+          MarenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Mine Arena&f!");
 	  a_broadcast2(Overlord, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
@@ -137,8 +137,8 @@ end
 function button_out_arena2(data)
         local player = Player:new(data.player);
           player:teleport(minearenaexit);
-          arenaPlayers[player.name] = nil;
-          playerCount = playerCount - 1;
+          MarenaPlayers[player.name] = nil;
+          MplayerCount = playerCount - 1;
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Mine Arena&f!");
 end
 
