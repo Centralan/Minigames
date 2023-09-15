@@ -269,6 +269,41 @@ end
 
 registerHook("INTERACT", "start_r1", 143, "mobarena", -2997, 108.0, 3003.0);   
 
+------------------------------------------------------
+--R1 Rewards----------
+------------------------------------------------------
+
+local world = World:new('mobarena');
+local mR1Chest = Location:new(world, -2997.0, 121.0, 3017.0);
+local mR1ChestOpen = Location:new(world, -2997.0, 121.0, 3017.0);
+local mChestPlayers = {};
+local mChestTimerRunning = false;
+local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+
+function mr1_rewards(data)
+     local player = Player:new(data.player);
+	if not mRoundRunning then 
+	if mR1Done then
+	if not mR2Done then
+	if not mR3Done then
+        if not mR4Done then
+        if not mR5Done then
+		ChestPlayers[player.name] = true;
+		player:closeInventory();
+		mR1Chest:cloneChestToPlayer(player.name);
+                minesound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 1 Rewards: you earned 4 Mob Bones!");
+							end 
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "mr1_rewards", "mobarena-pve2_reset");
+
 -----------------------
 ---ROUND 2 (35 Mobs)---
 -----------------------
@@ -382,6 +417,43 @@ end
 
 
 registerHook("INTERACT", "start_r2", 143, "mobarena", -2998, 108.0, 3003.0);  
+
+------------------------------------------------------
+--R2 Rewards----------
+------------------------------------------------------
+
+
+local world = World:new('mobarena');
+local mR2Chest = Location:new(world, -2999.0, 121.0, 3017.0);
+local mR2ChestOpen = Location:new(world, -2999.0, 121.0, 3017.0);
+local mChestPlayers = {};
+local mChestTimerRunning = false;
+local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+
+function mr2_rewards(data)
+     local player = Player:new(data.player);
+	if not mRoundRunning then 	
+	if mR1Done then
+	if mR2Done then
+	if not mR3Done then
+        if not mR4Done then
+        if not mR5Done then
+		ChestPlayers[player.name] = true;
+		player:closeInventory();
+		mR2Chest:cloneChestToPlayer(player.name);
+                minesound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 2 Rewards: you earned 5 Mob Bones!");
+								end
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "mr2_rewards", "mobarena-pve2_reset");
+	
 -----------------------
 ---ROUND 3 (40 Mobs)---
 -----------------------
@@ -506,6 +578,42 @@ end
 
 
 registerHook("INTERACT", "start_r3", 143, "mobarena", -2999, 108.0, 3003.0);  
+
+------------------------------------------------------
+--R3 Rewards----------
+------------------------------------------------------
+
+
+local world = World:new('mobarena');
+local mR3Chest = Location:new(world, -3001.0, 121.0, 3017.0);
+local mR3ChestOpen = Location:new(world, -3001.0, 121.0, 3017.0);
+local mChestPlayers = {};
+local mChestTimerRunning = false;
+local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+
+function mr3_rewards(data)
+     local player = Player:new(data.player);
+	if not mRoundRunning then 	
+	if mR1Done then
+	if mR2Done then
+	if mR3Done then
+        if not mR4Done then
+        if not mR5Done then
+		ChestPlayers[player.name] = true;
+		player:closeInventory();
+		mR3Chest:cloneChestToPlayer(player.name);
+                minesound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 3 Rewards: you earned 6 Mob Bones!");
+								end
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "mr3_rewards", "mobarena-pve2_reset");
 
 -----------------------
 ---ROUND 4 (45 Mobs)---
@@ -642,6 +750,42 @@ end
 
 
 registerHook("INTERACT", "start_r4", 143, "mobarena", -3000, 108.0, 3003.0);  
+
+------------------------------------------------------
+--R4 Rewards----------
+------------------------------------------------------
+
+
+local world = World:new('mobarena');
+local mR4Chest = Location:new(world, -3003.0, 121.0, 3017.0);
+local mR4ChestOpen = Location:new(world, -3003.0, 121.0, 3017.0);
+local mChestPlayers = {};
+local mChestTimerRunning = false;
+local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+
+function mr4_rewards(data)
+     local player = Player:new(data.player);
+	if not mRoundRunning then 	
+	if mR1Done then
+	if mR2Done then
+	if mR3Done then
+        if mR4Done then
+        if not mR5Done then
+		ChestPlayers[player.name] = true;
+		player:closeInventory();
+		mR4Chest:cloneChestToPlayer(player.name);
+                minesound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 4 Rewards: you earned 7 Mob Bones!");
+								end
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "mr4_rewards", "mobarena-pve2_reset");
 
 -----------------------
 ---ROUND 5 (50 Mobs)---
@@ -792,151 +936,9 @@ function reset_rounds()
    end
 end 
 
-registerHook("INTERACT", "start_r5", 143, "mobarena", -3001, 108.0, 3003.0);  
+registerHook("INTERACT", "start_r5", 143, "mobarena", -3001, 108.0, 3003.0); 
 
-------------------------------------------------------
---R1 Rewards----------
-------------------------------------------------------
-
-local world = World:new('mobarena');
-local mR1Chest = Location:new(world, -2997.0, 121.0, 3017.0);
-local mR1ChestOpen = Location:new(world, -2997.0, 121.0, 3017.0);
-local mChestPlayers = {};
-local mChestTimerRunning = false;
-local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
-
-function mr1_rewards(data)
-     local player = Player:new(data.player);
-	if not mRoundRunning then 
-	if mR1Done then
-	if not mR2Done then
-	if not mR3Done then
-        if not mR4Done then
-        if not mR5Done then
-		ChestPlayers[player.name] = true;
-		player:closeInventory();
-		mR1Chest:cloneChestToPlayer(player.name);
-                minesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 1 Rewards: you earned 4 Mob Bones!");
-							end 
-						end
-					end
-				end
-			end
-		end
-	end
-	
-
-registerHook("REGION_ENTER", "mr1_rewards", "mobarena-pve2_reset");
-
-------------------------------------------------------
---R2 Rewards----------
-------------------------------------------------------
-
-
-local world = World:new('mobarena');
-local mR2Chest = Location:new(world, -2999.0, 121.0, 3017.0);
-local mR2ChestOpen = Location:new(world, -2999.0, 121.0, 3017.0);
-local mChestPlayers = {};
-local mChestTimerRunning = false;
-local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
-
-function mr2_rewards(data)
-     local player = Player:new(data.player);
-	if not mRoundRunning then 	
-	if mR1Done then
-	if mR2Done then
-	if not mR3Done then
-        if not mR4Done then
-        if not mR5Done then
-		ChestPlayers[player.name] = true;
-		player:closeInventory();
-		mR2Chest:cloneChestToPlayer(player.name);
-                minesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 2 Rewards: you earned 5 Mob Bones!");
-								end
-						end
-					end
-				end
-			end
-		end
-	end
-	
-
-registerHook("REGION_ENTER", "mr2_rewards", "mobarena-pve2_reset");
-
-------------------------------------------------------
---R3 Rewards----------
-------------------------------------------------------
-
-
-local world = World:new('mobarena');
-local mR3Chest = Location:new(world, -3001.0, 121.0, 3017.0);
-local mR3ChestOpen = Location:new(world, -3001.0, 121.0, 3017.0);
-local mChestPlayers = {};
-local mChestTimerRunning = false;
-local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
-
-function mr3_rewards(data)
-     local player = Player:new(data.player);
-	if not mRoundRunning then 	
-	if mR1Done then
-	if mR2Done then
-	if mR3Done then
-        if not mR4Done then
-        if not mR5Done then
-		ChestPlayers[player.name] = true;
-		player:closeInventory();
-		mR3Chest:cloneChestToPlayer(player.name);
-                minesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 3 Rewards: you earned 6 Mob Bones!");
-								end
-						end
-					end
-				end
-			end
-		end
-	end
-	
-
-registerHook("REGION_ENTER", "mr3_rewards", "mobarena-pve2_reset");
-
-------------------------------------------------------
---R4 Rewards----------
-------------------------------------------------------
-
-
-local world = World:new('mobarena');
-local mR4Chest = Location:new(world, -3003.0, 121.0, 3017.0);
-local mR4ChestOpen = Location:new(world, -3003.0, 121.0, 3017.0);
-local mChestPlayers = {};
-local mChestTimerRunning = false;
-local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
-
-function mr4_rewards(data)
-     local player = Player:new(data.player);
-	if not mRoundRunning then 	
-	if mR1Done then
-	if mR2Done then
-	if mR3Done then
-        if mR4Done then
-        if not mR5Done then
-		ChestPlayers[player.name] = true;
-		player:closeInventory();
-		mR4Chest:cloneChestToPlayer(player.name);
-                minesound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 4 Rewards: you earned 7 Mob Bones!");
-								end
-						end
-					end
-				end
-			end
-		end
-	end
-	
-
-registerHook("REGION_ENTER", "mr4_rewards", "mobarena-pve2_reset");
-
+									
 ------------------------------------------------------
 --R5 Rewards----------
 ------------------------------------------------------
