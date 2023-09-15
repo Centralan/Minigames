@@ -258,7 +258,7 @@ function m_end_r1()
            mR1:cancel()
            mRoundRunning = false;
            mR1Done = true;
-for playerName, value in pairs(arenaPlayers) do
+for playerName, value in pairs(MarenaPlayers) do
 local player = Player:new(playerName);
 	   player:teleport(pve2reset);
            a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Mine Arena &fhas ended!")
