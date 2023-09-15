@@ -204,7 +204,7 @@ local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
 local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
 local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
 
-function start_r1(data)
+function m_start_r1(data)
         for playerName, value in pairs(arenaPlayers) do
          local player = Player:new(data.player);
       if not mR1Done then
@@ -214,36 +214,36 @@ function start_r1(data)
          minesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
-	spawnMob(mS1, "ZOMBIE");
-	spawnMob(mS1, "ZOMBIE");
-	spawnMob(mS2, "SKELETON");
-	spawnMob(mS3, "SKELETON");
-	spawnMob(mS4, "ZOMBIE");
-	spawnMob(mS5, "ZOMBIE");
-	spawnMob(mS6, "SKELETON");
-	spawnMob(mS7, "SKELETON");
-	spawnMob(mS7, "ZOMBIE");
-	spawnMob(mS9, "SPIDER");
-	spawnMob(mS10, "ZOMBIE");
-	spawnMob(mS11, "CAVESPIDER");
-	spawnMob(mS12, "ZOMBIE");
-	spawnMob(mS13, "ZOMBIE");
-	spawnMob(mS14, "SKELETON");
-	spawnMob(mS15, "SKELETON");
-	spawnMob(mS16, "SPIDER");
-	spawnMob(mS17, "ZOMBIE");
-	spawnMob(mS18, "SKELETON");
-	spawnMob(mS19, "SKELETON");
-	spawnMob(mS20, "ZOMBIE");
-	spawnMob(mS21, "CAVESPIDER");
-	spawnMob(mS22, "ZOMBIE");
-	spawnMob(mS23, "ZOMBIE");
-	spawnMob(mS24, "SKELETON");
-	spawnMob(mS25, "SKELETON");
-	spawnMob(mS26, "ZOMBIE");
-	spawnMob(mS27, "ZOMBIE");
-	spawnMob(mS28, "SKELETON");
-	spawnMob(mS29, "SKELETON");
+	mspawnMob(mS1, "ZOMBIE");
+	mspawnMob(mS1, "ZOMBIE");
+	mspawnMob(mS2, "SKELETON");
+	mspawnMob(mS3, "SKELETON");
+	mspawnMob(mS4, "ZOMBIE");
+	mspawnMob(mS5, "ZOMBIE");
+	mspawnMob(mS6, "SKELETON");
+	mspawnMob(mS7, "SKELETON");
+	mspawnMob(mS7, "ZOMBIE");
+	mspawnMob(mS9, "SPIDER");
+	mspawnMob(mS10, "ZOMBIE");
+	mspawnMob(mS11, "CAVESPIDER");
+	mspawnMob(mS12, "ZOMBIE");
+	mspawnMob(mS13, "ZOMBIE");
+	mspawnMob(mS14, "SKELETON");
+	mspawnMob(mS15, "SKELETON");
+	mspawnMob(mS16, "SPIDER");
+	mspawnMob(mS17, "ZOMBIE");
+	mspawnMob(mS18, "SKELETON");
+	mspawnMob(mS19, "SKELETON");
+	mspawnMob(mS20, "ZOMBIE");
+	mspawnMob(mS21, "CAVESPIDER");
+	mspawnMob(mS22, "ZOMBIE");
+	mspawnMob(mS23, "ZOMBIE");
+	mspawnMob(mS24, "SKELETON");
+	mspawnMob(mS25, "SKELETON");
+	mspawnMob(mS26, "ZOMBIE");
+	mspawnMob(mS27, "ZOMBIE");
+	mspawnMob(mS28, "SKELETON");
+	mspawnMob(mS29, "SKELETON");
 
       else
          a_whisper_error(Message, "Round 1 Already Running!", player);
@@ -253,7 +253,7 @@ function start_r1(data)
    end
 end
 
-function end_r1()
+function m_end_r1()
 	if check_alive_stats() then
            mR1:cancel()
            mRoundRunning = false;
@@ -267,7 +267,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "start_r1", 143, "mobarena", -2997, 108.0, 3003.0);   
+registerHook("INTERACT", "m_start_r1", 143, "mobarena", -2997, 108.0, 3003.0);   
 
 ------------------------------------------------------
 --R1 Rewards----------
@@ -302,7 +302,7 @@ function mr1_rewards(data)
 	end
 	
 
-registerHook("REGION_ENTER", "mr1_rewards", "mobarena-pve2_reset");
+registerHook("REGION_ENTER", "m_r1_rewards", "mobarena-pve2_reset");
 
 -----------------------
 ---ROUND 2 (35 Mobs)---
