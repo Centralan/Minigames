@@ -396,7 +396,7 @@ function start_r2(data)
 
       else
          a_whisper_error(Message, "Round 2 Already Running!", player);
-
+				end
          end
       end
    end
