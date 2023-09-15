@@ -173,6 +173,7 @@ registerHook("PLAYER_DEATH", "respawn2", "mobarena");
 -----------------------
 
 
+local world = World:new('mobarena');
 local mS1 = Location:new(myWorld, -2980.0, 106.0, 2980.0);
 local mS2 = Location:new(myWorld, -2980.0, 106.0, 2991.0);
 local mS3 = Location:new(myWorld, -2988.0, 106.0, 3004.0);
@@ -202,8 +203,6 @@ local mS26 = Location:new(myWorld, -3028.0, 106.0, 3019.0);
 local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
 local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
 local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
-
-local world = World:new('mobarena');
 
 function start_r1(data)
         for playerName, value in pairs(arenaPlayers) do
