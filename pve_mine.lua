@@ -93,11 +93,11 @@ local mRoundRunning = false;
 --Timers------
 ---------------------
 
-local mR1 = Timer:new("end_r1", 1);
-local mR2 = Timer:new("end_r2", 1);
-local mR3 = Timer:new("end_r3", 1);
-local mR4 = Timer:new("end_r4", 1);
-local mR5 = Timer:new("reset_rounds", 1);
+local mR1 = Timer:new("m_end_r1", 1);
+local mR2 = Timer:new("m_end_r2", 1);
+local mR3 = Timer:new("m_end_r3", 1);
+local mR4 = Timer:new("m_end_r4", 1);
+local mR5 = Timer:new("m_reset_rounds", 1);
 
 ---------------------
 --Teleports------
@@ -143,7 +143,7 @@ function button_out_arena2(data)
 end
 
 registerHook("REGION_ENTER", "tp_to_arena2", "mobarena-mine_arena_e");
-registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3002.0, 105.0, -2977.0);
+registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3002.0, 105.0, 2977.0);
 
 --------------------------
 --Respawning/Game Over----
