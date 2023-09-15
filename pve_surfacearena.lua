@@ -115,14 +115,14 @@ local ChestTimer1 = Timer:new("local world = World:new('mobarena');_reset_chest"
 
 
 function tp_to_arena1(data)
-       if playerCount < 4 then
+       if SplayerCount < 4 then
         local player = Player:new(data.player);
           player:teleport(surfacearenaenter);
 	  GearChest1:cloneChestToPlayer(player.name);
 	  surfacesound:playSound('HORSE_SADDLE', 1, 0);
 	  player:sendMessage("&dYou have been granted with free gear.");
           SarenaPlayers[player.name] = true;
-          SplayerCount = playerCount + 1;
+          SplayerCount = SplayerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	  a_broadcast2(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	   a_broadcast3(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
