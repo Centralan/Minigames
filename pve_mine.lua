@@ -122,7 +122,7 @@ function tp_to_arena2(data)
 	  minesound:playSound('HORSE_SADDLE', 1, 0);
 	  Mplayer:sendMessage("&dYou have been granted with free gear.");
           MarenaPlayers[player.name] = true;
-          playerCount = playerCount + 1;
+          MplayerCount = MplayerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Mine Arena&f!");
 	  a_broadcast2(Overlord, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
 	   a_broadcast3(Overlord, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
