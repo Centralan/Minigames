@@ -114,7 +114,7 @@ local ChestTimerRunning = false;
 local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
 
-function tp_to_arena(data)
+function tp_to_arena2(data)
        if playerCount < 4 then
         local player = Player:new(data.player);
           player:teleport(minearenaenter);
@@ -134,7 +134,7 @@ function tp_to_arena(data)
   end
 end
 
-function button_out_arena(data)
+function button_out_arena2(data)
         local player = Player:new(data.player);
           player:teleport(minearenaexit);
           arenaPlayers[player.name] = nil;
@@ -142,8 +142,8 @@ function button_out_arena(data)
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Mine Arena&f!");
 end
 
-registerHook("REGION_ENTER", "tp_to_arena", "mobarena-mine_arena_e");
-registerHook("INTERACT", "button_out_arena", 143, "mobarena", -3002.0, 105.0, -2977.0);
+registerHook("REGION_ENTER", "tp_to_arena2", "mobarena-mine_arena_e");
+registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3002.0, 105.0, -2977.0);
 
 --------------------------
 --Respawning/Game Over----
