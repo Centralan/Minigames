@@ -115,9 +115,12 @@ local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest",
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function tp_to_arena1(data)
        if SplayerCount < 4 then
 =======
+=======
+>>>>>>> parent of 8a4d4c7 (Update pve_surfacearena.lua)
 function tp_to_arena(data)
        if playerCount < 4 then
 >>>>>>> parent of 8a4d4c7 (Update pve_surfacearena.lua)
