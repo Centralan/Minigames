@@ -53,7 +53,7 @@ local MplayerCount = 0;
 
 local entityList = {};
 
-local function spawnMob(position, mobType)
+local function mspawnMob(position, mobType)
 	local entity = Entity:new(position);
 	entity:spawn(mobType);
 	table.insert(entityList, entity);
