@@ -65,7 +65,7 @@ local function purgeEntityList()
 	end
 end
 
-function check_alive_stats()
+function check_alive_statsM()
 	for key, value in pairs(entityList) do
 		if value:isAlive() then
 			return false;
@@ -205,7 +205,7 @@ local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
 local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
 
 function m_start_r1(data)
-        for playerName, value in pairs(arenaPlayers) do
+        for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if not mR1Done then
       if not mRoundRunning then  
@@ -254,7 +254,7 @@ function m_start_r1(data)
 end
 
 function m_end_r1()
-	if check_alive_stats() then
+	if check_alive_statsM() then
            mR1:cancel()
            mRoundRunning = false;
            mR1Done = true;
@@ -348,7 +348,7 @@ local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
 local world = World:new('mobarena');
 
 function start_r2(data)
-        for playerName, value in pairs(arenaPlayers) do
+        for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
       if not mR2Done then
@@ -403,11 +403,11 @@ function start_r2(data)
 end
 
 function end_r2()
-	if check_alive_stats() then
+	if check_alive_statsM() then
            mR2:cancel()
            mRoundRunning = false;
            mR2Done = true;
-for playerName, value in pairs(arenaPlayers) do
+for playerName, value in pairs(MarenaPlayers) do
 local player = Player:new(playerName);
 	   player:teleport(pve2reset);
            a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Mine Arena &fhas ended!")
@@ -503,7 +503,7 @@ local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
 local world = World:new('mobarena');
 
 function start_r3(data)
-        for playerName, value in pairs(arenaPlayers) do
+        for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
       if mR2Done then
@@ -564,11 +564,11 @@ function start_r3(data)
 end
 
 function end_r3()
-	if check_alive_stats() then
+	if check_alive_statsM() then
            mR3:cancel()
            mRoundRunning = false;
            mR3Done = true;
-for playerName, value in pairs(arenaPlayers) do
+for playerName, value in pairs(MarenaPlayers) do
 local player = Player:new(playerName);
 	   player:teleport(pve2reset);
            a_broadcast_npc(Overlord, "&aRound 3 &fin the &6Mine Arena &fhas ended!")
@@ -669,7 +669,7 @@ local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
 local world = World:new('mobarena');
 
 function start_r4(data)
-        for playerName, value in pairs(arenaPlayers) do
+        for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
       if mR2Done then
@@ -736,11 +736,11 @@ function start_r4(data)
 end
 
 function end_r4()
-	if check_alive_stats() then
+	if check_alive_statsM() then
            mR4:cancel()
            mRoundRunning = false;
            mR4Done = true;
-for playerName, value in pairs(arenaPlayers) do
+for playerName, value in pairs(MarenaPlayers) do
 local player = Player:new(playerName);
 	   player:teleport(pve2reset);
            a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Mine Arena &fhas ended!")
@@ -842,7 +842,7 @@ local mS45 = Location:new(myWorld, -3004.0, 106.0, 2991.0);
 
 
 function start_r5(data)
-        for playerName, value in pairs(arenaPlayers) do
+        for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
       if mR2Done then
@@ -916,7 +916,7 @@ function start_r5(data)
 end
 
 function reset_rounds()
-	if check_alive_stats() then
+	if check_alive_statsM() then
            mR5:cancel()
            mRoundRunning = false;
            mR1Done = false;
@@ -924,13 +924,13 @@ function reset_rounds()
            mR3Done = false;
            mR4Done = false;
            a_broadcast_npc(Overlord, "The &6Mine Arena &fhas been &adefeated&f!");
-         for playerName, value in pairs(arenaPlayers) do
+         for playerName, value in pairs(MarenaPlayers) do
              local player = Player:new(playerName);
              player:teleport(mineround5);
              player:sendEvent("achievement.minechampion");
             local player = Player:new(data.player);
-             arenaPlayers[player.name] = nil;
-             playerCount = playerCount - 1;
+             MarenaPlayers[player.name] = nil;
+             MplayerCount = playerCount - 1;
 
       end
    end
