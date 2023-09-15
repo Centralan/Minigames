@@ -123,8 +123,13 @@ function tp_to_arena1(data)
 	  player:sendMessage("&dYou have been granted with free gear.");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           SarenaPlayers[player.name] = true;
           SplayerCount = SplayerCount + 1;
+=======
+          arenaPlayers[player.name] = true;
+          playerCount = playerCount + 1;
+>>>>>>> parent of 62181f2 (Change to make mine work)
 =======
           arenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
