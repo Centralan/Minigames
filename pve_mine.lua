@@ -93,11 +93,11 @@ local mRoundRunning = false;
 --Timers------
 ---------------------
 
-local mR1 = Timer:new("end_r1_", 1);
-local mR2 = Timer:new("end_r2_", 1);
-local mR3 = Timer:new("end_r3_", 1);
-local mR4 = Timer:new("end_r4_", 1);
-local mR5 = Timer:new("reset_rounds_", 1);
+local mR1 = Timer:new("end_r1", 1);
+local mR2 = Timer:new("end_r2", 1);
+local mR3 = Timer:new("end_r3", 1);
+local mR4 = Timer:new("end_r4", 1);
+local mR5 = Timer:new("reset_rounds", 1);
 
 ---------------------
 --Teleports------
