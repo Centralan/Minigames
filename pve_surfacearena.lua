@@ -113,39 +113,15 @@ local ChestPlayers = {};
 local ChestTimerRunning = false;
 local ChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-function tp_to_arena1(data)
-       if SplayerCount < 4 then
-=======
-=======
->>>>>>> parent of 8a4d4c7 (Update pve_surfacearena.lua)
 function tp_to_arena(data)
        if playerCount < 4 then
->>>>>>> parent of 8a4d4c7 (Update pve_surfacearena.lua)
         local player = Player:new(data.player);
           player:teleport(surfacearenaenter);
 	  GearChest:cloneChestToPlayer(player.name);
 	  surfacesound:playSound('HORSE_SADDLE', 1, 0);
 	  player:sendMessage("&dYou have been granted with free gear.");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-          SarenaPlayers[player.name] = true;
-          SplayerCount = SplayerCount + 1;
-=======
           arenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
->>>>>>> parent of 62181f2 (Change to make mine work)
-=======
-          arenaPlayers[player.name] = true;
-          playerCount = playerCount + 1;
->>>>>>> parent of 62181f2 (Change to make mine work)
-=======
-          arenaPlayers[player.name] = true;
-          playerCount = playerCount + 1;
->>>>>>> parent of 62181f2 (Change to make mine work)
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	  a_broadcast2(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	   a_broadcast3(Overlord, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
