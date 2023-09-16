@@ -347,7 +347,7 @@ local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
 
 local world = World:new('mobarena');
 
-function start_r2(data)
+function m_start_r2(data)
         for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
@@ -402,7 +402,7 @@ function start_r2(data)
    end
 end
 
-function end_r2()
+function m_end_r2()
 	if check_alive_statsM() then
            mR2:cancel()
            mRoundRunning = false;
@@ -416,7 +416,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "start_r2", 143, "mobarena", -2998, 108.0, 3003.0);  
+registerHook("INTERACT", "m_start_r2", 143, "mobarena", -2998, 108.0, 3003.0);  
 
 ------------------------------------------------------
 --R2 Rewards----------
@@ -502,7 +502,7 @@ local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
 
 local world = World:new('mobarena');
 
-function start_r3(data)
+function m_start_r3(data)
         for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
@@ -563,7 +563,7 @@ function start_r3(data)
    end
 end
 
-function end_r3()
+function m_end_r3()
 	if check_alive_statsM() then
            mR3:cancel()
            mRoundRunning = false;
@@ -577,7 +577,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "start_r3", 143, "mobarena", -2999, 108.0, 3003.0);  
+registerHook("INTERACT", "m_start_r3", 143, "mobarena", -2999, 108.0, 3003.0);  
 
 ------------------------------------------------------
 --R3 Rewards----------
@@ -668,7 +668,7 @@ local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
 
 local world = World:new('mobarena');
 
-function start_r4(data)
+function m_start_r4(data)
         for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
@@ -735,7 +735,7 @@ function start_r4(data)
    end
 end
 
-function end_r4()
+function m_end_r4()
 	if check_alive_statsM() then
            mR4:cancel()
            mRoundRunning = false;
@@ -749,7 +749,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "start_r4", 143, "mobarena", -3000, 108.0, 3003.0);  
+registerHook("INTERACT", "m_start_r4", 143, "mobarena", -3000, 108.0, 3003.0);  
 
 ------------------------------------------------------
 --R4 Rewards----------
@@ -841,7 +841,7 @@ local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
 local mS45 = Location:new(myWorld, -3004.0, 106.0, 2991.0);
 
 
-function start_r5(data)
+function m_start_r5(data)
         for playerName, value in pairs(MarenaPlayers) do
          local player = Player:new(data.player);
       if mR1Done then
@@ -936,7 +936,7 @@ function reset_rounds()
    end
 end 
 
-registerHook("INTERACT", "start_r5", 143, "mobarena", -3001, 108.0, 3003.0); 
+registerHook("INTERACT", "m_start_r5", 143, "mobarena", -3001, 108.0, 3003.0); 
 
 									
 ------------------------------------------------------
