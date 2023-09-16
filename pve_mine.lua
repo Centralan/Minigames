@@ -810,22 +810,6 @@ local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
 local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
 local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
 local mS30 = Location:new(myWorld, -2969.0, 106.0, 3018.0);
-local mS31 = Location:new(myWorld, -2973.0, 106.0, 2984.0);
-local mS32 = Location:new(myWorld, -2964.0, 106.0, 2985.0);
-local mS33 = Location:new(myWorld, -2964.0, 106.0, 2996.0);
-local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
-local mS35 = Location:new(myWorld, -3032.0, 106.0, 3019.0);
-local mS36 = Location:new(myWorld, -3039.0, 106.0, 3013.0);
-local mS37 = Location:new(myWorld, -3039.0, 106.0, 3009.0);
-local mS38 = Location:new(myWorld, -3039.0, 106.0, 2996.0);
-local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
-local mS40 = Location:new(myWorld, -3030.0, 106.0, 2985.0);
-local mS41 = Location:new(myWorld, -3026.0, 106.0, 2987.0);
-local mS42 = Location:new(myWorld, -3030.0, 113.0, 3000.0);
-local mS43 = Location:new(myWorld, -2973.0, 113.0, 3001.0);
-local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
-local mS45 = Location:new(myWorld, -3004.0, 106.0, 2991.0);
-
 
 function m_start_r5(data)
         for playerName, value in pairs(MarenaPlayers) do
@@ -839,7 +823,7 @@ function m_start_r5(data)
          mRoundRunning = true;
          mR5:startRepeating()
          minesound:playSound('PORTAL_TRIGGER', 1, 2);
-         a_broadcast_npc(Overlord, player.name .. " has started &aRound 4 &fin the &6Mine Arena&f!");
+         a_broadcast_npc(Overlord, player.name .. " has started &aRound 5 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 5 has started, kill all mobs to beat the arena!", player);
 	mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS1, "CAVESPIDER");
@@ -872,25 +856,25 @@ function m_start_r5(data)
 	mspawnMob(mS28, "SKELETON");
 	mspawnMob(mS29, "WITCH");
 	mspawnMob(mS30, "CAVESPIDER");
-	mspawnMob(mS31, "CREEPER");
-	mspawnMob(mS32, "SKELETON");
-	mspawnMob(mS33, "ZOMBIE");
-	mspawnMob(mS34, "WITCH");
-	mspawnMob(mS35, "SKELETON");
-	mspawnMob(mS36, "CREEPER");
-	mspawnMob(mS37, "SKELETON");
-	mspawnMob(mS38, "WITCH");
-	mspawnMob(mS39, "WITCH");
-	mspawnMob(mS40, "SKELETON");
-	mspawnMob(mS41, "CREEPER");
-	mspawnMob(mS42, "SKELETON");
-	mspawnMob(mS43, "ZOMBIE");
-	mspawnMob(mS44, "WITCH");
-	mspawnMob(mS45, "WITCH");
-	mspawnMob(mS11, "WITCH");
-	mspawnMob(mS17, "WITCH");
-	mspawnMob(mS23, "WITCH");
+	mspawnMob(mS10, "CREEPER");
+	mspawnMob(mS12, "SKELETON");
+	mspawnMob(mS14, "ZOMBIE");
+	mspawnMob(mS16, "WITCH");
+	mspawnMob(mS18, "SKELETON");
+	mspawnMob(mS20, "CREEPER");
+	mspawnMob(mS22, "SKELETON");
 	mspawnMob(mS24, "WITCH");
+	mspawnMob(mS26, "WITCH");
+	mspawnMob(mS27, "SKELETON");
+	mspawnMob(mS28, "CREEPER");
+	mspawnMob(mS30, "SKELETON");
+	mspawnMob(mS2, "ZOMBIE");
+	mspawnMob(mS8, "WITCH");
+	mspawnMob(mS17, "WITCH");
+	mspawnMob(mS9, "WITCH");
+	mspawnMob(mS6, "WITCH");
+	mspawnMob(mS19, "WITCH");
+	mspawnMob(mS1, "WITCH");
 
       else
          a_whisper_error(Message, "Round 5 Already Running!", player);
