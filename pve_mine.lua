@@ -557,7 +557,8 @@ function m_start_r3(data)
 
       else
          a_whisper_error(Message, "Round 3 Already Running!", player);
-
+					end
+				end
          end
       end
    end
@@ -729,7 +730,9 @@ function m_start_r4(data)
 
       else
          a_whisper_error(Message, "Round 4 Already Running!", player);
-
+						end
+					end
+				end
          end
       end
    end
@@ -908,7 +911,11 @@ function m_start_r5(data)
 
       else
          a_whisper_error(Message, "Round 5 Already Running!", player);
- 
+							end
+						end
+					end
+				end
+			
             end
          end
       end
