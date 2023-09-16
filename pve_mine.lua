@@ -922,7 +922,7 @@ function m_start_r5(data)
    end
 end
 
-function reset_rounds()
+function m_reset_rounds()
 	if check_alive_statsM() then
            mR5:cancel()
            mRoundRunning = false;
