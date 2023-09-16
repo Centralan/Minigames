@@ -649,20 +649,6 @@ local mS27 = Location:new(myWorld, -3037.0, 106.0, 3019.0);
 local mS28 = Location:new(myWorld, -2965.0, 106.0, 3018.0);
 local mS29 = Location:new(myWorld, -2973.0, 106.0, 3018.0);
 local mS30 = Location:new(myWorld, -2969.0, 106.0, 3018.0);
-local mS31 = Location:new(myWorld, -2973.0, 106.0, 2984.0);
-local mS32 = Location:new(myWorld, -2964.0, 106.0, 2985.0);
-local mS33 = Location:new(myWorld, -2964.0, 106.0, 2996.0);
-local mS34 = Location:new(myWorld, -2964.0, 106.0, 3012.0);
-local mS35 = Location:new(myWorld, -3032.0, 106.0, 3019.0);
-local mS36 = Location:new(myWorld, -3039.0, 106.0, 3013.0);
-local mS37 = Location:new(myWorld, -3039.0, 106.0, 3009.0);
-local mS38 = Location:new(myWorld, -3039.0, 106.0, 2996.0);
-local mS39 = Location:new(myWorld, -3037.0, 106.0, 2989.0);
-local mS40 = Location:new(myWorld, -3030.0, 106.0, 2985.0);
-local mS41 = Location:new(myWorld, -3026.0, 106.0, 2987.0);
-local mS42 = Location:new(myWorld, -3030.0, 113.0, 3000.0);
-local mS43 = Location:new(myWorld, -2973.0, 113.0, 3001.0);
-local mS44 = Location:new(myWorld, -2967.0, 113.0, 3003.0);
 
 local world = World:new('mobarena');
 
@@ -710,20 +696,20 @@ function m_start_r4(data)
 	mspawnMob(mS28, "SKELETON");
 	mspawnMob(mS29, "WITCH");
 	mspawnMob(mS30, "CAVESPIDER");
-	mspawnMob(mS31, "CREEPER");
-	mspawnMob(mS32, "SKELETON");
-	mspawnMob(mS33, "IRONGOLEM");
-	mspawnMob(mS34, "WITCH");
-	mspawnMob(mS35, "SKELETON");
-	mspawnMob(mS36, "CREEPER");
-	mspawnMob(mS37, "SKELETON");
-	mspawnMob(mS38, "WITCH");
-	mspawnMob(mS39, "WITCH");
-	mspawnMob(mS40, "SKELETON");
-	mspawnMob(mS41, "CREEPER");
-	mspawnMob(mS42, "SKELETON");
-	mspawnMob(mS43, "ZOMBIE");
-	mspawnMob(mS44, "WITCH");
+	mspawnMob(mS2, "CREEPER");
+	mspawnMob(mS4, "SKELETON");
+	mspawnMob(mS6, "IRONGOLEM");
+	mspawnMob(mS8, "WITCH");
+	mspawnMob(m10, "SKELETON");
+	mspawnMob(mS12, "CREEPER");
+	mspawnMob(mS14, "SKELETON");
+	mspawnMob(mS16, "WITCH");
+	mspawnMob(mS18, "WITCH");
+	mspawnMob(mS20, "SKELETON");
+	mspawnMob(mS22, "CREEPER");
+	mspawnMob(mS24, "SKELETON");
+	mspawnMob(mS26, "ZOMBIE");
+	mspawnMob(mS28, "WITCH");
 
       else
          a_whisper_error(Message, "Round 4 Already Running!", player);
