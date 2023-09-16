@@ -356,7 +356,7 @@ function start_r2(data)
          mRoundRunning = true;
          mR2:startRepeating()
          minesound:playSound('PORTAL_TRIGGER', 1, 2);
-         a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Mine Arena&f!");
+         a_broadcast_npc(Overlord, player.name .. " has started &aRound 2 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 2 has started, kill all mobs to move to Round 3.", player);
 	mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS1, "ZOMBIE");
