@@ -124,9 +124,6 @@ function tp_to_arena2(data)
           MarenaPlayers[player.name] = true;
           MplayerCount = MplayerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Mine Arena&f!");
-	  a_broadcast2(Overlord, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
-	   a_broadcast3(Overlord, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
-	   a_broadcast4(Overlord, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
         else
          local player = Player:new(data.player);
           a_whisper_error(Message, "Sorry this Arena is full, try joining when someone leaves!", player);
@@ -930,7 +927,10 @@ function m_reset_rounds()
            mR2Done = false;
            mR3Done = false;
            mR4Done = false;
-           a_broadcast_npc(Overlord, "The &6Mine Arena &fhas been &adefeated&f!");
+             a_broadcast_npc(Overlord, player.name ..."&fhas defeated The &6Mine Arena!&f!");
+             a_broadcast2(Overlord, player.name ..." &fhas defeated The &6Mine Arena!&f!");
+             a_broadcast3(Overlord, player.name ..." &fhas defeated The &6Mine Arena!&f!");
+             a_broadcast4(Overlord, player.name ..." &fhas defeated The &6Mine Arena!&f!");
          for playerName, value in pairs(MarenaPlayers) do
              local player = Player:new(playerName);
              player:teleport(mineround5);
