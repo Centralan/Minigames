@@ -104,7 +104,7 @@ local mR5 = Timer:new("m_reset_rounds", 1);
 ---------------------
 
 local minearenaenter = Location:new(myWorld, -3000.0, 105.0, 2975.0);
-local minearenaexit = Location:new(myWorld, -837.0, 97, 149.0);
+local minearenaexit = Location:new(myWorld, 837.0, 97, 149.0);
 local mineround5 = Location:new(myWorld, 836, 119, 153);
 local pve2reset = Location:new(myWorld, -2999.0, 118, 3001.0);
 local world = World:new('mobarena');
@@ -138,7 +138,7 @@ function button_out_arena2(data)
         local player = Player:new(data.player);
           player:teleport(minearenaexit);
           MarenaPlayers[player.name] = nil;
-          MplayerCount = playerCount - 1;
+          MplayerCount = MplayerCount - 1;
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Mine Arena&f!");
 end
 
