@@ -897,10 +897,10 @@ function m_reset_rounds()
            mR2Done = false;
            mR3Done = false;
            mR4Done = false;
-             a_broadcast_npc(Overlord, player.name ..."&fhas defeated The &6Mine Arena!&f!");
-             a_broadcast2(Overlord, player.name ..." &fhas defeated The &6Mine Arena!&f!");
-             a_broadcast3(Overlord, player.name ..." &fhas defeated The &6Mine Arena!&f!");
-             a_broadcast4(Overlord, player.name ..." &fhas defeated The &6Mine Arena!&f!");
+             a_broadcast_npc(Overlord, player.name .. "&fhas defeated The &6Mine Arena!&f!");
+             a_broadcast2(Overlord, player.name .. " &fhas defeated The &6Mine Arena!&f!");
+             a_broadcast3(Overlord, player.name .. " &fhas defeated The &6Mine Arena!&f!");
+             a_broadcast4(Overlord, player.name .. " &fhas defeated The &6Mine Arena!&f!");
          for playerName, value in pairs(MarenaPlayers) do
              local player = Player:new(playerName);
              player:teleport(mineround5);
