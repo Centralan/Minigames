@@ -148,7 +148,7 @@ registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3001.0, 110.0, 2
 ----Respawning/Game Over----
 ----------------------------
 
-local minerespawn = Location:new(myWorld, -2999.0, 105.0, 2975);
+local minerespawn = Location:new(myWorld, -2999.0, 110.0, 2975.0);
 local respawngear = Location:new(myWorld, 48, 67, 1);
 
 function respawn2(data)
