@@ -141,15 +141,15 @@ end
 
 function command_out_arena(data)
         local player = Player:new(data.player);
-          player:teleport(minearenaexit);
-          MarenaPlayers[player.name] = nil;
-          MplayerCount = MplayerCount - 1;
+          player:teleport(surfacearenaexit);
+          arenaPlayers[player.name] = nil;
+          playerCount = playerCount - 1;
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Surface Arena&f!");
 end
 
 registerHook("REGION_ENTER", "tp_to_arena", "mobarena-portal_surfacearena_multi");
 registerHook("INTERACT", "button_out_arena", 77, "mobarena", 30, 65, -2);
-registerHook("REGION_EXIT", "command_out_arena", "mobarena-pve_sur_main");
+registerHook("REGION_LEAVE", "command_out_arena", "mobarena-pve_sur_main");
 
 --------------------------
 ----Respawning/Game Over----
