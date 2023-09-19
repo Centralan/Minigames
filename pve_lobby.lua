@@ -1,5 +1,6 @@
-
 local myWorld = World:new('mobarena');
+local lobbysound = Location:new(myWorld, 836.0, 110.0, 161.0);
+
 
 --------
 ---AI---
@@ -272,18 +273,27 @@ function lobby_easter_room(data)
 end
 
 registerHook("INTERACT", "lobby_vanish_ach", 77, "mobarena", 841.0, 99.0, 172.0);
-registerHook("REGION_ENTER", "lobby_easter_room", "mobarena-lobby_secret_door");
+registerHook("REGION_ENTER", "lobby_easter_room", "mobarena-lobby_secret");
+
+---------------------
+--Mine r4 Rewards----
+---------------------
 
 
---Bug Report--
+local world = World:new('mobarena');
+local mR4Chest = Location:new(world, 826.0, 133.0, 164.0);
+local mR4ChestOpen = Location:new(world, 826.0, 133.0, 164.0);
+local mChestPlayers = {};
+local mChestTimerRunning = false;
+local mChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
 
-local bugbook = Location:new(myWorld, 832, 133, 164);
+function mr4_rewards(data)
+     local player = Player:new(data.player);
+		mChestPlayers[player.name] = true;
+		mR4Chest:cloneChestToPlayer(player.name);
+                lobbysound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 4 Rewards: you earned 9 Mob Bones!");
+		end
+	
 
-function bug_report(data)
-       local player = Player:new(data.player);
-             bugbook:cloneChestToPlayer(player.name);
-       a_whisper_npc(Message, "&dType /may to send this book. Please use this book to report bugs only! Visit our discord for more bug reports!", player);
-end
-
-registerHook("INTERACT", "bug_report", 77, "mobarena", 834.0, 99.0, 152.0);
-
+registerHook("REGION_ENTER", "mr4_rewards", "mobarena-pve2_r5");
