@@ -155,7 +155,6 @@ function respawn2(data)
        if mRoundRunning then
          for playerName, value in pairs(MarenaPlayers) do
              local player = Player:new(data.player);
-             respawngear:cloneChestToPlayer(player.name);
              player:setHealth(20);
              player:teleport(minerespawn);
 
