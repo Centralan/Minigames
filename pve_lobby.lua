@@ -257,6 +257,18 @@ end
 
 registerHook("BLOCK_GAINS_CURRENT", "surface_effects", "mobarena", 837, 132, 160);
 
+------------------
+--Endgame---------
+------------------
+function lobby_endgame_portal(data)
+local player = Player:new(data.player);
+          a_whisper_npc(Message, "&4&IYou are not yet worthy", player);
+          lobbysound:playSound('VILLAGER_NO', 1, 1);
+
+registerHook("REGION_ENTER", "lobby_endgame_portal", "mobarena-lobby_endgame1");
+registerHook("REGION_ENTER", "lobby_endgame_portal", "mobarena-lobby_endgame2");
+
+
 
 ---------------------
 --Cheeves------------
