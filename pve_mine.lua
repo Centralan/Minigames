@@ -1,4 +1,4 @@
-local myWorld = World:new('mobarena');
+local myWorld = World:new('mobarena'); 
 local myWorld2 = World:new('spawn2');
 local myWorld3 = World:new('survival3');
 local myWorld4 = World:new('creative');
