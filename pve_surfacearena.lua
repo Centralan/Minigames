@@ -154,7 +154,6 @@ function respawn(data)
        if sRoundRunning then
          for playerName, value in pairs(arenaPlayers) do
              local player = Player:new(data.player);
-             respawngear:cloneChestToPlayer(player.name);
              player:setHealth(20);
              player:teleport(surfacerespawn);
 
