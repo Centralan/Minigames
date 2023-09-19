@@ -238,24 +238,35 @@ registerHook("REGION_ENTER", "to_lobby_door", "mobarena-lobby_tolobby");
 -----------------------
 
 
-local surfacearenaeffects = {
-	Location:new(myWorld, 801.0, 101.0, 165.0),
-	Location:new(myWorld, 803.0, 101.0, 165.0),
-	Location:new(myWorld, 805.0, 100.0, 167.0),
-	Location:new(myWorld, 805.0, 100.0, 163.0),
-	Location:new(myWorld, 814.0, 100.0, 172.0),
-	Location:new(myWorld, 810.0, 100.0, 172.0),
-	Location:new(myWorld, 812.0, 101.0, 174.0),
-	Location:new(myWorld, 812.0, 101.0, 176.0)
+local mobeffects = {
+        {"Angry", "ANGRY_VILLAGER", 0.05, 20, 5},
+        {"Magical", "ENCHANTMENT_TABLE", 20, 20, 5},
 };
 
-function surface_effects()
-	for key, value in pairs(surfacearenaeffects) do
-		value:playEffect('PORTAL', 1, 5, 5);
+function fireTick()
+	processPlayers({world:getPlayers()});
+end
+
+function processPlayers(players)
+	for index, playerName in pairs(players) do
+		for key, effect in pairs(effects) do
+			if playerName ~= nil then
+				local player = Player:new(playerName);
+				if player ~= nil and player:isOnline() then
+					if player:hasItemWithName("" .. effect[1]) then
+						local world, x, y, z = player:getLocation();
+						local playerLoc = Location:new(world, x, y + effect[5], z);
+						playerLoc:playEffect(effect[2], effect[3], effect[4], 20);
+					end
+				end
+			end
+		end
 	end
 end
 
-registerHook("BLOCK_GAINS_CURRENT", "surface_effects", "mobarena", 837, 132, 160);
+registerHook("BLOCK_GAINS_CURRENT", "fireTick", "mobarena", 831.0, 130.0, 156.0);
+
+
 
 ------------------
 --Endgame---------
