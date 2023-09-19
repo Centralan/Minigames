@@ -138,7 +138,6 @@ function button_out_arena2(data)
           player:teleport(minearenaexit);
           MarenaPlayers[player.name] = nil;
           MplayerCount = MplayerCount - 1;
-         a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Mine Arena&f!");
 end
 
 function command_out_arena2(data)
