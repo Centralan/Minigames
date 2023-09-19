@@ -762,4 +762,4 @@ local player = Player:new(playerName);
 end 
 
 
-rregisterHook("REGION_ENTER", "m_start_r4", "mobarena-mine_startr");   
+registerHook("REGION_ENTER", "m_start_r4", "mobarena-mine_startr");   
