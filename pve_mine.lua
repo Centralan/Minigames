@@ -102,9 +102,9 @@ local mR4 = Timer:new("m_end_r4", 1);
 -----------------------
 
 
-local minearenaenter = Location:new(myWorld, -3000.0, 105.0, 2975.0);
+local minearenaenter = Location:new(myWorld, -2999.0, 110.0, 2975.0);
 local minearenaexit = Location:new(myWorld, 837.0, 97, 149.0);
-local pve2reset = Location:new(myWorld, -2999.0, 118, 3001.0);
+local pve2reset = Location:new(myWorld, -2999.0, 117, 2974.0);
 local mineround5 = Location:new(myWorld, 836.0, 119.0, 153.0);
 local world = World:new('mobarena');
 local GearChest = Location:new(world, 834.0, 133.0, 164.0);
@@ -142,7 +142,7 @@ function button_out_arena2(data)
 end
 
 registerHook("REGION_ENTER", "tp_to_arena2", "mobarena-mine_arena_e");
-registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3002.0, 105.0, 2977.0);
+registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3001.0, 110.0, 2975.0);
 
 --------------------------
 ----Respawning/Game Over----
@@ -210,6 +210,7 @@ function m_start_r1(data)
          minesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
+	 a_whisper_good(Message, "&eLook out &630 &eMobs spawning in!", player);
 	mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS2, "SKELETON");
@@ -242,7 +243,7 @@ function m_start_r1(data)
 	mspawnMob(mS29, "SKELETON");
 
       else
-         a_whisper_error(Message, "Round 1 Already Running!", player);
+         a_whisper_error(Message, "Joining the fight for Round 1.", player);
 
          end
       end
@@ -263,7 +264,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "m_start_r1", 143, "mobarena", -2997, 108.0, 3003.0);  
+registerHook("REGION_ENTER", "m_start_r1", "mobarena-mine_startr");
 
 ------------------------------------------------------
 ----R1 Rewards----------
@@ -351,6 +352,7 @@ function m_start_r2(data)
          minesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 2 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 2 has started, kill all mobs to move to Round 3.", player);
+	 a_whisper_good(Message, "&eLook out &640 &eMobs spawning in!", player);
 	mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS2, "WITCH");
@@ -393,7 +395,7 @@ function m_start_r2(data)
         mspawnMob(mS4, "WITCH");
 
       else
-         a_whisper_error(Message, "Round 2 Already Running!", player);
+         a_whisper_error(Message, "Joining the fight for Round 2.", player);
 
          end
       end
@@ -415,7 +417,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "m_start_r2", 143, "mobarena", -2998, 108.0, 3003.0);  
+registerHook("REGION_ENTER", "m_start_r2", "mobarena-mine_startr"); 
 
 ------------------------------------------------------
 ----R2 Rewards----------
@@ -509,6 +511,7 @@ function m_start_r3(data)
          minesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 3 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 3 has started, kill all mobs to move to Round 4.", player);
+	 a_whisper_good(Message, "&eLook out &650 &eMobs spawning in!", player);
 	mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS1, "CAVESPIDER");
 	mspawnMob(mS2, "WITCH");
@@ -562,7 +565,7 @@ function m_start_r3(data)
 
 
       else
-         a_whisper_error(Message, "Round 3 Already Running!", player);
+         a_whisper_error(Message, "Joining the fight for Round 3.", player);
 end
 end
          end
@@ -584,7 +587,7 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "m_start_r3", 143, "mobarena", -2999, 108.0, 3003.0);  
+registerHook("REGION_ENTER", "m_start_r3", "mobarena-mine_startr"); 
 
 ------------------------------------------------------
 ----R3 Rewards----------
@@ -670,7 +673,8 @@ function m_start_r4(data)
          mR4:startRepeating()
          minesound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 4 &fin the &6Mine Arena&f!");
-         a_whisper_good(Message, "&cRound 4 has started, kill all mobs to defeat the arena!", player);
+	 a_whisper_good(Message, "&cRound 4 has started, kill all mobs to defeat the &6Mine Arena&f!.", player);
+         a_whisper_good(Message, "&eLook out &655 &eMobs spawning in!", player);
         mspawnMob(mS1, "ZOMBIE");
 	mspawnMob(mS1, "CAVESPIDER");
 	mspawnMob(mS2, "WITCH");
@@ -725,7 +729,7 @@ function m_start_r4(data)
         mspawnMob(mS11, "WITCH");
 
       else
-         a_whisper_error(Message, "Round 4 Already Running!", player);
+         a_whisper_error(Message, "Joining the fight for Round 4.", player);
 						end
 					end
 				end
@@ -758,4 +762,4 @@ local player = Player:new(playerName);
 end 
 
 
-registerHook("INTERACT", "m_start_r4", 143, "mobarena", -3000, 108.0, 3003.0);   
+rregisterHook("REGION_ENTER", "m_start_r4", "mobarena-mine_startr");   
