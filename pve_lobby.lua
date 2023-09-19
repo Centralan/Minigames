@@ -262,7 +262,7 @@ registerHook("BLOCK_GAINS_CURRENT", "surface_effects", "mobarena", 837, 132, 160
 ------------------
 function lobby_endgame_portal(data)
 local player = Player:new(data.player);
-          a_whisper_npc(Message, "&4&IYou are not yet worthy", player);
+          a_whisper_npc(Message, "&4&lYou are not yet worthy", player);
           lobbysound:playSound('VILLAGER_NO', 1, 1);
 end
 
