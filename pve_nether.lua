@@ -7,7 +7,7 @@ local myWorld = World:new('mobarena');
 local myWorld2 = World:new('spawn2');
 local myWorld3 = World:new('survival3');
 local myWorld4 = World:new('creative');
-local nethersound = Location:new(myWorld, 0.0, 86.0, 0.0);
+local nethersound = Location:new(myWorld5, 0.0, 86.0, 0.0);
 
 -------------
 --teleports--
