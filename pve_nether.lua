@@ -142,6 +142,7 @@ function tp_to_arena3(data)
           NarenaPlayers[player.name] = true;
           NplayerCount = NplayerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Nether Arena&f!");
+	 a_broadcast(Overlord6, player.name .." has &ajoined &fthe struggle in the &6Nether Arena&f!");
          a_broadcast2(Overlord6, player.name .." has &ajoined &fthe struggle in the &6Nether Arena&f!");
          a_broadcast3(Overlord6, player.name .." has &ajoined &fthe struggle in the &6Nether Arena&f!");
          a_broadcast4(Overlord6, player.name .." has &ajoined &fthe struggle in the &6Nther Arena&f!");
