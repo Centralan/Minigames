@@ -21,6 +21,19 @@ function a_whisper_npc(npc, msg, player)
 	player:sendMessage('&f&c' .. npc .. '&f' .. msg);
 end
 
+-------------------------
+---Teleport Failsafe----
+--------------------------
+
+local failsafe = Location:new(oldWorld, 837.0, 97, 149.0);
+
+function failsafe_catch(data)
+       local targetPlayer = Player:new(data.player);
+       targetPlayer:teleport(failsafe);
+end
+
+registerHook("REGION_ENTER", "failsafe_catch", "world-net");
+
 -----------------
 --Testing Lanes--
 -----------------
