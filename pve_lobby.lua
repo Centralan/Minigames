@@ -55,6 +55,11 @@ local blTimer = Timer:new("bl_despawn", 1);
 local blCount = 0;
 local blMobs = {};
 
+local PurpleLocation = Location:new(myWorld, 832.0, 109.0, 135.0);
+local pTimer = Timer:new("p_despawn", 1);
+local pCount = 0;
+local pMobs = {};
+
 -----------------
 --Orange Lane--
 -----------------
@@ -331,6 +336,52 @@ end
 end
 
 registerHook("INTERACT", "bl_spawn", 77, "mobarena", 835, 108, 141);
+
+-----------------
+--purple Lane--
+-----------------
+
+local function purplelane(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+        table.insert(pMobs, entity);
+end
+
+local function purgeEntityList_p()
+	for index, value in pairs(pMobs) do
+		pMobs[index] = nil;
+	end
+end
+
+function check_alive_stats_p()
+	for key, value in pairs(pMobs) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
+end
+
+function p_spawn(data)
+     if pCount < 4 then
+        pTimer:startRepeating()
+	purplelane(PurpleLocation, "SKELETON");
+        pCount = pCount + 1;
+      else
+          local player = Player:new(data.player);
+          a_whisper_npc(Message, "&cSorry you can't spawn more mobs until the current 4 are dead!", player);
+end
+end
+
+function p_despawn(data)
+      if check_alive_stats_p() then
+        pCount = 0;
+        pTimer:cancel()
+end
+end
+
+registerHook("INTERACT", "p_spawn", 77, "mobarena", 831, 108, 141);
 
 
 
