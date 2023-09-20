@@ -164,4 +164,4 @@ end
 
 registerHook("REGION_ENTER", "tp_to_arena3", "mobarena-nether_arena_e");
 registerHook("INTERACT", "button_out_arena3", 143, "mobarena_nether", 1.0, 62.0, 5.0);
-registerHook("REGION_EXIT", "command_out_arena3", "mobarena_nether-pve_nether_main");
+registerHook("REGION_LEAVE", "command_out_arena3", "mobarena_nether-pve_nether_main");
