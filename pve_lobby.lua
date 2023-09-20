@@ -315,7 +315,7 @@ end
 function bl_spawn(data)
      if blCount < 4 then
         blTimer:startRepeating()
-	blacklane(RedLocation, "WITHERSKELETON");
+	blacklane(RedLocation, "BLAZE");
         blCount = blCount + 1;
       else
           local player = Player:new(data.player);
