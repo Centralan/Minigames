@@ -158,6 +158,8 @@ function button_out_arena3(data)
           player:teleport(netherexit);
           NarenaPlayers[player.name] = nil;
           NplayerCount = NplayerCount - 1;
+	 a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Nether Arena&f!");
+	 a_broadcast(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Nether Arena&f!");
 end
 
 function command_out_arena3(data)
@@ -165,6 +167,7 @@ function command_out_arena3(data)
           NarenaPlayers[player.name] = nil;
           NplayerCount = NplayerCount - 1;
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Nether Arena&f!");
+	 a_broadcast(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Nether Arena&f!");
 end
 
 registerHook("REGION_ENTER", "tp_to_arena3", "mobarena-nether_arena_e");
