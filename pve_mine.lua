@@ -2,6 +2,7 @@ local myWorld = World:new('mobarena');
 local myWorld2 = World:new('spawn2');
 local myWorld3 = World:new('survival3');
 local myWorld4 = World:new('creative');
+local myWorld5 = World:new('mobarena_nether');
 local minesound = Location:new(myWorld, -2999.0, 111.0, 3001.0);
 
 --------
@@ -27,6 +28,10 @@ function a_broadcast3(msg)
 end
 
 function a_broadcast4(msg)
+	myWorld4:broadcast(msg);
+end
+
+function a_broadcast5(msg)
 	myWorld4:broadcast(msg);
 end
 
@@ -126,6 +131,7 @@ function tp_to_arena2(data)
          a_broadcast2(Overlord2, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
          a_broadcast3(Overlord2, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
          a_broadcast4(Overlord2, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
+	 a_broadcast5(Overlord2, player.name .." has &ajoined &fthe struggle in the &6Mine Arena&f!");
         else
          local player = Player:new(data.player);
           a_whisper_error(Message, "Sorry this Arena is full, try joining when someone leaves!", player);
@@ -759,6 +765,7 @@ local player = Player:new(playerName);
            a_broadcast2(Overlord3, player.name .." has &adefeated &fthe &6Mine Arena&f!");
            a_broadcast3(Overlord3, player.name .." has &adefeated &fthe &6Mine Arena&f!");
            a_broadcast4(Overlord3, player.name .." has &adefeated &fthe &6Mine Arena&f!");
+	   a_broadcast5(Overlord3, player.name .." has &adefeated &fthe &6Mine Arena&f!");
            player:sendEvent("achievement.minechampion"); 
            mR1Done = false;
            mR2Done = false;
