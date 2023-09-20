@@ -2,8 +2,8 @@
 --Worlds--
 ---------------
 
-local myWorld = World:new('mobarena_nether');
-local oldWorld = World:new('mobarena');
+local myWorld5 = World:new('mobarena_nether');
+local myWorld = World:new('mobarena');
 local myWorld2 = World:new('spawn2');
 local myWorld3 = World:new('survival3');
 local myWorld4 = World:new('creative');
@@ -47,6 +47,10 @@ end
 
 function a_broadcast4(msg)
 	myWorld4:broadcast(msg);
+end
+
+function a_broadcast5(msg)
+	myWorld5:broadcast(msg);
 end
 
 function a_broadcast_npc(npc, msg)
