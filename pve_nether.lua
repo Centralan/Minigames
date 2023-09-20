@@ -13,10 +13,10 @@ local nethersound = Location:new(myWorld, 0.0, 86.0, 0.0);
 --teleports--
 -------------
 
-local nethercatch = Location:new(myWorld, 0, 62.0, 4.0);
-local netherenter = Location:new(myWorld, 0, 62.0, 4.0);
+local nethercatch = Location:new(myWorld5, 0, 62.0, 4.0);
+local netherenter = Location:new(myWorld5, 0, 62.0, 4.0);
 local netherexit = Location:new(myWorld, 837.0, 97, 149.0);
-local netherrespawn = Location:new(myWorld, 0, 62.0, 4.0);
+local netherrespawn = Location:new(myWorld5, 0, 62.0, 4.0);
 
 ----------------
 --Chests--
