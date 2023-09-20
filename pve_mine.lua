@@ -164,6 +164,8 @@ function arena_reset_m(data)
 	    mRoundRunning = false;
 	  a_broadcast_npc(Overlord," &fAll Players have &cabandoned the &6Mine Arena&f, arena is resetting.");
 end
+	end
+end
 
 registerHook("REGION_ENTER", "tp_to_arena2", "mobarena-mine_arena_e");
 registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3001.0, 110.0, 2975.0);
