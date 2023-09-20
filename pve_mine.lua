@@ -32,7 +32,7 @@ function a_broadcast4(msg)
 end
 
 function a_broadcast5(msg)
-	myWorld4:broadcast(msg);
+	myWorld5:broadcast(msg);
 end
 
 function a_broadcast_npc(npc, msg)
