@@ -1,13 +1,16 @@
 ---------------
---local Worlds--
+--Worlds--
 ---------------
 
 local myWorld = World:new('mobarena_nether');
 local oldWorld = World:new('mobarena');
+local myWorld2 = World:new('spawn2');
+local myWorld3 = World:new('survival3');
+local myWorld4 = World:new('creative');
 local nethersound = Location:new(myWorld, 0.0, 86.0, 0.0);
 
 -------------
---local tps--
+--teleports--
 -------------
 
 local nethercatch = Location:new(myWorld, 0, 62.0, 4.0);
@@ -15,10 +18,105 @@ local netherenter = Location:new(myWorld, 0, 62.0, 4.0);
 local netherexit = Location:new(oldWorld, 837.0, 97, 149.0);
 
 ----------------
---local chests--
+--Chests--
 ----------------
 
-local NGearChest = Location:new(myWorld, 834.0, 133.0, 164.0);
+local NGearChest = Location:new(oldWorld, 834.0, 133.0, 164.0);
+
+--------
+-----AI---
+----------
+
+local Overlord = 'PvE'
+local Overlord6 = '&d[PvE] &fA Player has &ajoined &6Nether Arena&f.'
+local Overlord7 = '&d[PvE] &fA Player has &adefeated &6Nether Arena&f.'
+local Message = ''
+local Message2 = ''
+
+function a_broadcast(msg)
+	myWorld:broadcast(msg);
+end
+
+function a_broadcast2(msg)
+	myWorld2:broadcast(msg);
+end
+
+function a_broadcast3(msg)
+	myWorld3:broadcast(msg);
+end
+
+function a_broadcast4(msg)
+	myWorld4:broadcast(msg);
+end
+
+function a_broadcast_npc(npc, msg)
+	a_broadcast('&f&c' .. npc .. '&6: &f' .. msg);
+end
+
+function a_whisper_error(npc, msg, player)
+	player:sendMessage('&f&c' .. npc .. '&c' .. msg);
+end
+
+function a_whisper_good(npc, msg, player)
+	player:sendMessage('&f&c' .. npc .. '&f' .. msg);
+end
+
+--------------------------------
+----Player Control--
+----------------------------------
+
+local NarenaPlayers = {};
+local NplayerCount = 0;
+
+--------------------------------
+----Mob Control--
+----------------------------------
+
+local entityList = {};
+
+local function NspawnMob(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+	table.insert(entityList, entity);
+end
+
+local function purgeEntityListN()
+	for index, value in pairs(entityList) do
+		entityList[index] = nil;
+	end
+end
+
+function check_alive_statsN()
+	for key, value in pairs(entityList) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
+end
+
+---------------------
+----Toggles------
+-----------------------
+
+local nR1Done = false;
+local nR2Done = false;
+local nR3Done = false;
+local nR4Done = false;
+local nR5Done = false;
+local nRoundRunning = false;
+
+---------------------
+----Timers------
+-----------------------
+
+local nR1 = Timer:new("n_end_r1", 1);
+local nR2 = Timer:new("n_end_r2", 1);
+local nR3 = Timer:new("n_end_r3", 1);
+local nR4 = Timer:new("n_end_r4", 1);
+local nR5 = Timer:new("n_end_r5", 1);
+
 
 ----------------
 --Arena Catch --
