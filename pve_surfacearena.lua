@@ -2,6 +2,7 @@ local myWorld = World:new('mobarena');
 local myWorld2 = World:new('spawn2');
 local myWorld3 = World:new('survival3');
 local myWorld4 = World:new('creative');
+local myWorld5 = World:new('mobarena_nether');
 local surfacesound = Location:new(myWorld, -3, 65, -1);
 
 --------
@@ -28,6 +29,10 @@ end
 
 function a_broadcast4(msg)
 	myWorld4:broadcast(msg);
+end
+
+function a_broadcast5(msg)
+	myWorld5:broadcast(msg);
 end
 
 function a_broadcast_npc(npc, msg)
@@ -125,6 +130,7 @@ function tp_to_arena(data)
 	  a_broadcast2(Overlord4, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	   a_broadcast3(Overlord4, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
 	   a_broadcast4(Overlord4, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
+	   a_broadcast5(Overlord4, player.name .." has &ajoined &fthe struggle in the &6Surface Arena&f!");
         else
          local player = Player:new(data.player);
           a_whisper_error(Message, "Sorry this Arena is full, try joining when someone leaves!", player);
@@ -689,6 +695,7 @@ function reset_rounds()
            a_broadcast2(Overlord5, "The &6Surface Arens &f has been &adefeted&f!");
            a_broadcast3(Overlord5, "The &6Surface Arens &f has been &adefeted&f!");
            a_broadcast4(Overlord5, "The &6Surface Arens &f has been &adefeted&f!");
+	   a_broadcast5(Overlord5, "The &6Surface Arens &f has been &adefeted&f!");
          for playerName, value in pairs(arenaPlayers) do
              local player = Player:new(playerName);
              player:teleport(surfaceround5);
