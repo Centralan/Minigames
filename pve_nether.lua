@@ -68,3 +68,7 @@ function command_out_arena3(data)
           NplayerCount = NplayerCount - 1;
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Nether Arena&f!");
 end
+
+registerHook("REGION_ENTER", "tp_to_arena3", "mobarena-nether_arena_e");
+registerHook("INTERACT", "button_out_arena3", 143, "mobarena_nether", 1.0, 62.0, 5.0);
+registerHook("REGION_EXIT", "command_out_arena3", "mobarena_nether-pve_nether_main");
