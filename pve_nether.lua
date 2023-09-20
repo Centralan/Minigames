@@ -138,9 +138,9 @@ function tp_to_arena3(data)
           NarenaPlayers[player.name] = true;
           NplayerCount = NplayerCount + 1;
          a_broadcast_npc(Overlord, player.name .. " has &ajoined &fthe struggle in the &6Nether Arena&f!");
-         a_broadcast2(Overlord2, player.name .." has &ajoined &fthe struggle in the &6Nether Arena&f!");
-         a_broadcast3(Overlord2, player.name .." has &ajoined &fthe struggle in the &6Nether Arena&f!");
-         a_broadcast4(Overlord2, player.name .." has &ajoined &fthe struggle in the &6Nther Arena&f!");
+         a_broadcast2(Overlord6, player.name .." has &ajoined &fthe struggle in the &6Nether Arena&f!");
+         a_broadcast3(Overlord6, player.name .." has &ajoined &fthe struggle in the &6Nether Arena&f!");
+         a_broadcast4(Overlord6, player.name .." has &ajoined &fthe struggle in the &6Nther Arena&f!");
         else
          local player = Player:new(data.player);
           a_whisper_error(Message, "Sorry this Arena is full, try joining when someone leaves!", player);
