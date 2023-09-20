@@ -25,7 +25,7 @@ end
 ---Teleport Failsafe----
 --------------------------
 
-local failsafe = Location:new(oldWorld, 837.0, 97, 149.0);
+local failsafe = Location:new(myWorld, 837.0, 97, 149.0);
 
 function failsafe_catch(data)
        local targetPlayer = Player:new(data.player);
