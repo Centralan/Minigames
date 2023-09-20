@@ -15,13 +15,14 @@ local nethersound = Location:new(myWorld, 0.0, 86.0, 0.0);
 
 local nethercatch = Location:new(myWorld, 0, 62.0, 4.0);
 local netherenter = Location:new(myWorld, 0, 62.0, 4.0);
-local netherexit = Location:new(oldWorld, 837.0, 97, 149.0);
+local netherexit = Location:new(myWorld, 837.0, 97, 149.0);
+local netherrespawn = Location:new(myWorld, 0, 62.0, 4.0);
 
 ----------------
 --Chests--
 ----------------
 
-local NGearChest = Location:new(oldWorld, 834.0, 133.0, 164.0);
+local NGearChest = Location:new(myWorld, 834.0, 133.0, 164.0);
 
 --------
 -----AI---
@@ -172,3 +173,20 @@ end
 registerHook("REGION_ENTER", "tp_to_arena3", "mobarena-nether_arena_e");
 registerHook("INTERACT", "button_out_arena3", 143, "mobarena_nether", 1.0, 62.0, 5.0);
 registerHook("REGION_LEAVE", "command_out_arena3", "mobarena_nether-pve_nether_main");
+
+--------------------------
+----Respawning/Game Over----
+----------------------------
+
+function respawn3(data)
+       if nRoundRunning then
+         for playerName, value in pairs(NarenaPlayers) do
+             local player = Player:new(data.player);
+             player:setHealth(20);
+             player:teleport(netherrespawn);
+
+      end
+   end
+end
+
+registerHook("PLAYER_DEATH", "respawn3", "mobarena_nether");
