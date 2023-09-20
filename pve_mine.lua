@@ -154,6 +154,17 @@ function command_out_arena2(data)
          a_broadcast_npc(Overlord, player.name .. " has &cabandoned &fthe struggle in the &6Mine Arena&f!");
 end
 
+function arena_reset_m(data)
+	  if MplayerCount = 0 then
+	  if mRoundRunning then
+	    mR1Done = false;
+            mR2Done = false;
+            mR3Done = false;
+            mR4Done = false;
+	    mRoundRunning = false;
+	  a_broadcast_npc(Overlord," &fAll Players have &cabandoned the &6Mine Arena&f, arena is resetting.");
+end
+
 registerHook("REGION_ENTER", "tp_to_arena2", "mobarena-mine_arena_e");
 registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3001.0, 110.0, 2975.0);
 registerHook("REGION_EXIT", "command_out_arena2", "mobarena-pve_mine_main");
