@@ -54,7 +54,7 @@ function a_broadcast5(msg)
 end
 
 function a_broadcast_npc(npc, msg)
-	a_broadcast('&f&c' .. npc .. '&6: &f' .. msg);
+	a_broadcast5('&f&c' .. npc .. '&6: &f' .. msg);
 end
 
 function a_whisper_error(npc, msg, player)
