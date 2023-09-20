@@ -1,5 +1,5 @@
 ---------------
---local World--
+--local Worlds--
 ---------------
 
 local myWorld = World:new('mobarena_nether');
