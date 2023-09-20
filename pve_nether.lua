@@ -18,7 +18,7 @@ local nethercatch = Location:new(myWorld, 0, 86.0, 0.0);
 
 function nether_catch(data)
        local targetPlayer = Player:new(data.player);
-       targetPlayer:teleport(location);
+       targetPlayer:teleport(nethercatch);
 end
 
 registerHook("REGION_ENTER", "nether_catch", "mobarena_nether-pve_nether_catch");
