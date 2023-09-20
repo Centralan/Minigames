@@ -45,6 +45,15 @@ local yTimer = Timer:new("y_despawn", 1);
 local yCount = 0;
 local yMobs = {};
 
+local RedLocation = Location:new(myWorld, 841.0, 109.0, 134.0);
+local rTimer = Timer:new("r_despawn", 1);
+local rCount = 0;
+local rMobs = {};
+
+-----------------
+--Orange Lane--
+-----------------
+
 
 local function orangelane(position, mobType)
 	local entity = Entity:new(position);
@@ -86,6 +95,12 @@ function o_despawn(data)
 end
 end
 
+registerHook("INTERACT", "o_spawn", 77, "mobarena", 831, 101, 143);
+
+-----------------
+--Blue Lane--
+-----------------
+
 local function bluelane(position, mobType)
 	local entity = Entity:new(position);
 	entity:spawn(mobType);
@@ -93,7 +108,7 @@ local function bluelane(position, mobType)
 end
 
 local function purgeEntityList_b()
-	for index, value in pairs(oMobs) do
+	for index, value in pairs(bMobs) do
 		bMobs[index] = nil;
 	end
 end
@@ -125,6 +140,12 @@ function b_despawn(data)
         bTimer:cancel()
 end
 end
+
+registerHook("INTERACT", "b_spawn", 77, "mobarena", 834, 101, 143);
+
+-----------------
+--Green Lane--
+-----------------
 
 local function greenlane(position, mobType)
 	local entity = Entity:new(position);
@@ -166,6 +187,12 @@ function g_despawn(data)
 end
 end
 
+registerHook("INTERACT", "g_spawn", 77, "mobarena", 837, 101, 143);
+
+-----------------
+--Yellow Lane--
+-----------------
+
 local function yellowlane(position, mobType)
 	local entity = Entity:new(position);
 	entity:spawn(mobType);
@@ -173,7 +200,7 @@ local function yellowlane(position, mobType)
 end
 
 local function purgeEntityList_y()
-	for index, value in pairs(oMobs) do
+	for index, value in pairs(yMobs) do
 		bMobs[index] = nil;
 	end
 end
@@ -206,11 +233,55 @@ function y_despawn(data)
 end
 end
 
-
-registerHook("INTERACT", "o_spawn", 77, "mobarena", 831, 101, 143);
-registerHook("INTERACT", "b_spawn", 77, "mobarena", 834, 101, 143);
-registerHook("INTERACT", "g_spawn", 77, "mobarena", 837, 101, 143);
 registerHook("INTERACT", "y_spawn", 77, "mobarena", 840, 101, 143);
+
+-----------------
+--Red Lane--
+-----------------
+
+local function redlane(position, mobType)
+	local entity = Entity:new(position);
+	entity:spawn(mobType);
+        table.insert(rMobs, entity);
+end
+
+local function purgeEntityList_r()
+	for index, value in pairs(rMobs) do
+		rMobs[index] = nil;
+	end
+end
+
+function check_alive_stats_r()
+	for key, value in pairs(rMobs) do
+		if value:isAlive() then
+			return false;
+		end
+	end
+
+	return true;
+end
+
+function r_spawn(data)
+     if rCount < 4 then
+        rTimer:startRepeating()
+	redlane(RedLocation, "GHAST");
+        rCount = rCount + 1;
+      else
+          local player = Player:new(data.player);
+          a_whisper_npc(Message, "&cSorry you can't spawn more mobs until the current 4 are dead!", player);
+end
+end
+
+function r_despawn(data)
+      if check_alive_stats_r() then
+        rCount = 0;
+        rTimer:cancel()
+end
+end
+
+registerHook("INTERACT", "r_spawn", 77, "mobarena", 839, 108, 141);
+
+
 
 --------------
 --Teleports---
