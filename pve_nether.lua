@@ -10,7 +10,7 @@ local nethersound = Location:new(myWorld, 0.0, 86.0, 0.0);
 --local tps--
 -------------
 
-local nethercatch = Location:new(myWorld, 0, 86.0, 0.0);
+local nethercatch = Location:new(myWorld, 0, 62.0, 4.0);
 
 ----------------
 --Arena Catch --
