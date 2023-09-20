@@ -97,7 +97,7 @@ function check_alive_statsN()
 end
 
 ---------------------
-----Toggles------
+----Toggles/Timers------
 -----------------------
 
 local nR1Done = false;
@@ -106,11 +106,6 @@ local nR3Done = false;
 local nR4Done = false;
 local nR5Done = false;
 local nRoundRunning = false;
-
----------------------
-----Timers------
------------------------
-
 local nR1 = Timer:new("n_end_r1", 1);
 local nR2 = Timer:new("n_end_r2", 1);
 local nR3 = Timer:new("n_end_r3", 1);
