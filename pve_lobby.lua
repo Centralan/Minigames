@@ -237,14 +237,16 @@ registerHook("REGION_ENTER", "to_lobby_door", "mobarena-lobby_tolobby");
 ------ Effects ------
 -----------------------
 
+local worldMob = World:new('mobarena');
 
 local mobeffects = {
-        {"Angry", "ANGRY_VILLAGER", 0.05, 20, 5},
-        {"Magical", "ENCHANTMENT_TABLE", 20, 20, 5},
+        {"Angry", "ANGRY_VILLAGER", 10, 30, 1},
+        {"Magical", "ENCHANTMENT_TABLE", 10, 30, 1},
 };
 
 function fireTick()
 	processPlayers({world:getPlayers()});
+        processPlayers({worldMob:getPlayers()});
 end
 
 function processPlayers(players)
@@ -265,12 +267,13 @@ function processPlayers(players)
 end
 
 registerHook("BLOCK_GAINS_CURRENT", "fireTick", "mobarena", 831.0, 130.0, 156.0);
-
+registerHook("BLOCK_GAINS_CURRENT", "processPlayers", "mobarena", 831.0, 130.0, 156.0);
 
 
 ------------------
---Endgame---------
-------------------
+----Endgame---------
+--------------------
+
 function lobby_endgame_portal(data)
 local player = Player:new(data.player);
           a_whisper_npc(Message, "&4&lYou are not yet worthy", player);
@@ -279,7 +282,6 @@ end
 
 registerHook("REGION_ENTER", "lobby_endgame_portal", "mobarena-lobby_endgame1");
 registerHook("REGION_ENTER", "lobby_endgame_portal", "mobarena-lobby_endgame2");
-
 
 
 ---------------------
