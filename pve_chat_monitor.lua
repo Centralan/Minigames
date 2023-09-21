@@ -1,3 +1,7 @@
+----------------
+-----Core-----
+----------------
+
 local myWorld = World:new('mobarena'); 
 local myWorld5 = World:new('mobarena_nether');
 
@@ -9,7 +13,11 @@ local function splitPlayerName(message, len)
 	return string.sub(message, len, string.len(message));
 end
 
-function chatMonitor(data)
+----------------
+-----Nether-----
+----------------
+
+function chatMonitor_nether(data)
 	-- Make sure it's you giving the command.
 	if data.player == "Centralan" then
 		local player = Player:new(data.player);
@@ -24,6 +32,18 @@ function chatMonitor(data)
                         nR4Done = false;
 			nR5Done = false;
 			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
+		
+registerHook("CHAT_MESSAGE", "chatMonitor_nether", "mobarena_nether");
+
+----------------
+-----Mine-----
+----------------
+
+function chatMonitor_mine(data)
+	-- Make sure it's you giving the command.
+	if data.player == "Centralan" then
+		local player = Player:new(data.player);
+		local message = data.message;
 
 		if hasPrefix(message, "#ResetMine") then
 			local playerName = splitPlayerName(message, 16);
@@ -34,8 +54,19 @@ function chatMonitor(data)
                         mR4Done = false;
 			player:sendMessage("&5Server:&6Mine &fArena has been reset.");
 
+registerHook("CHAT_MESSAGE", "chatMonitor_mine", "mobarena");
 
-		if hasPrefix(message, "#ResetSurface") then
+----------------
+-----Surface-----
+----------------
+
+function chatMonitor_surface(data)
+	-- Make sure it's you giving the command.
+	if data.player == "Centralan" then
+		local player = Player:new(data.player);
+		local message = data.message;
+
+		if hasPrefix(message, "#ResetMine") then
 			local playerName = splitPlayerName(message, 16);
 			sRoundRunning = false;
 			sR1Done = false;
@@ -44,13 +75,6 @@ function chatMonitor(data)
                         sR4Done = false;
 			sR5Done = false;
 			player:sendMessage("&5Server:&6Surface &fArena has been reset.");
-
-
-				end
-			end
-		end
-	end
-end
-	registerHook("CHAT_MESSAGE", "chatMonitor", "mobarena");
-	registerHook("CHAT_MESSAGE", "chatMonitor", "mobarena_nether");
+					
+	registerHook("CHAT_MESSAGE", "chatMonitor_surface", "mobarena");
 
