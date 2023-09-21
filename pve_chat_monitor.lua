@@ -23,7 +23,7 @@ function chatMonitor(data)
                         nR3Done = false;
                         nR4Done = false;
 			nR5Done = false;
-			player:sendMessage("Reseting &6Nether &fArena.");
+			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
 
 		if hasPrefix(message, "#ResetMine") then
 			local playerName = splitPlayerName(message, 16);
@@ -32,7 +32,7 @@ function chatMonitor(data)
                         mR2Done = false;
                         mR3Done = false;
                         mR4Done = false;
-			player:sendMessage("Reseting &6Mine &fArena.");
+			player:sendMessage("&5Server:&6Mine &fArena has been reset.");
 
 
 		if hasPrefix(message, "#ResetSurface") then
@@ -43,7 +43,7 @@ function chatMonitor(data)
                         sR3Done = false;
                         sR4Done = false;
 			sR5Done = false;
-			player:sendMessage("Reseting &6Surface &fArena.");
+			player:sendMessage("&5Server:&6Surface &fArena has been reset.");
 
 
 				end
