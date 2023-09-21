@@ -1,6 +1,10 @@
 local myWorld = World:new('mobarena'); 
 local myWorld5 = World:new('mobarena_nether');
 
+local function hasPrefix(subject, prefix)
+	return string.sub(subject, 1, string.len(prefix)) == prefix;
+end
+
 function chatMonitor(data)
 	-- Make sure it's you giving the command.
 	if data.player == "Centralan" then
