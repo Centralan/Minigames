@@ -5,6 +5,10 @@ local function hasPrefix(subject, prefix)
 	return string.sub(subject, 1, string.len(prefix)) == prefix;
 end
 
+local function splitPlayerName(message, len)
+	return string.sub(message, len, string.len(message));
+end
+
 function chatMonitor(data)
 	-- Make sure it's you giving the command.
 	if data.player == "Centralan" then
