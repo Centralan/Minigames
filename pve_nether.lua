@@ -191,6 +191,17 @@ end
 
 registerHook("PLAYER_DEATH", "respawn3", "mobarena_nether");
 
+--------------------
+-----traps----------
+--------------------
+
+function applyBlind(data)
+        local player = Player:new(data.player);
+        EventEngine.player.addPotionEffect(player.name, 'BLIND', 10, 5);
+end
+
+registerHook("REGION_ENTER", "applyBlind", "mobarena_nether-pve_nether_b1");
+
 ---------------------------------------
 ---mob spawn points------
 ----------------------------------------
