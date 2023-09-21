@@ -3,7 +3,7 @@ local myWorld5 = World:new('mobarena_nether');
 
 function chatMonitor(data)
 	-- Make sure it's you giving the command.
-	if data.player == "Centralan"
+	if data.player == "Centralan" then
 		local player = Player:new(data.player);
 		local message = data.message;
 
@@ -42,7 +42,8 @@ function chatMonitor(data)
 				end
 			end
 		end
-
+	end
+end
 	registerHook("CHAT_MESSAGE", "chatMonitor", "mobarena");
 	registerHook("CHAT_MESSAGE", "chatMonitor", "mobarena_nether");
 
