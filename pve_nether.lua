@@ -243,3 +243,4 @@ local player = Player:new(playerName);
 	end
 end 
 
+registerHook("INTERACT", "n_start_r1", 143, "mobarena_nether", 1.0, 62.0, 7.0);
