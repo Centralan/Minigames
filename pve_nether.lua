@@ -120,6 +120,33 @@ local nR4 = Timer:new("n_end_r4", 1);
 local nR5 = Timer:new("n_end_r5", 1);
 
 
+----------------------
+----Chat Monitering---
+----------------------
+
+local function hasPrefix(subject, prefix)
+	return string.sub(subject, 1, string.len(prefix)) == prefix;
+end
+
+function chatMonitor(data)
+	if data.player == "Centralan" then
+		local player = Player:new(data.player);
+		local message = data.message;
+		if hasPrefix(message, "#ResetNether") then
+			local playerName = splitPlayerName(message, 16);
+			nR1Done = false;
+                        nR2Done = false;
+                        nR3Done = false;
+                        nR4Done = false;
+			nR5Done = false;
+	                nRoundRunning = false;
+			player:sendMessage("Reseting &6Nether &fArena.");
+		end
+	end
+end
+
+registerHook("CHAT_MESSAGE", "chatMonitor", "mobarena_nether");
+
 ----------------
 --Arena Catch --
 ----------------
