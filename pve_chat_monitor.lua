@@ -17,32 +17,32 @@ function chatMonitor(data)
 
 		if hasPrefix(message, "#ResetNether") then
 			local playerName = splitPlayerName(message, 16);)
+		        nRoundRunning = false;
 			nR1Done = false;
                         nR2Done = false;
                         nR3Done = false;
                         nR4Done = false;
 			nR5Done = false;
-	                nRoundRunning = false;
 			player:sendMessage("Reseting &6Nether &fArena.");
 
 		if hasPrefix(message, "#ResetMine") then
 			local playerName = splitPlayerName(message, 16);
+			mRoundRunning = false;
 			mR1Done = false;
                         mR2Done = false;
                         mR3Done = false;
                         mR4Done = false;
-	                mRoundRunning = false;
 			player:sendMessage("Reseting &6Mine &fArena.");
 
 
 		if hasPrefix(message, "#ResetSurface") then
 			local playerName = splitPlayerName(message, 16);
+			sRoundRunning = false;
 			sR1Done = false;
                         sR2Done = false;
                         sR3Done = false;
                         sR4Done = false;
 			sR5Done = false;
-	                sRoundRunning = false;
 			player:sendMessage("Reseting &6Surface &fArena.");
 
 
