@@ -216,11 +216,11 @@ function n_start_r1(data)
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Nether Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
 	 a_whisper_good(Message, "&eLook out &630 &eMobs spawning in!", player);
-	nspawnMob(mS1, "SKELETON");
-	nspawnMob(mS1, "SKELETON");
-	nspawnMob(mS2, "SKELETON");
-	nspawnMob(mS3, "SKELETON");
-	nspawnMob(mS4, "SKELETON");
+	nspawnMob(nS1, "SKELETON");
+	nspawnMob(nS2, "SKELETON");
+	nspawnMob(nS3, "SKELETON");
+	nspawnMob(nS4, "SKELETON");
+	nspawnMob(nS5, "SKELETON");
 
  else
          a_whisper_error(Message, "Joining the fight for Round 1.", player);
