@@ -17,6 +17,7 @@ local nethercatch = Location:new(myWorld5, 0, 62.0, 4.0);
 local netherenter = Location:new(myWorld5, 0, 62.0, 4.0);
 local netherexit = Location:new(myWorld, 837.0, 97, 149.0);
 local netherrespawn = Location:new(myWorld5, 0, 62.0, 4.0);
+local netherreset = Location:new(myWorld5, 0, 68.0, 4.0);
 
 ----------------
 --Chests--
@@ -190,3 +191,55 @@ function respawn3(data)
 end
 
 registerHook("PLAYER_DEATH", "respawn3", "mobarena_nether");
+
+---------------------------------------
+---mob spawn points------
+----------------------------------------
+local nS1 = Location:new(myWorld5, 2.0, 66.0, 26.0);
+local nS2 = Location:new(myWorld5, 0.0, 66.0, 26.0);
+local nS3 = Location:new(myWorld5, -2.0, 66.0, 26.0);
+local nS4 = Location:new(myWorld5, -4.0, 66.0, 26.0);
+local nS5 = Location:new(myWorld5, -6.0, 66.0, 26.0);
+
+---------------------------
+-----------Round 1---------
+---------------------------
+
+function n_start_r1(data)
+        for playerName, value in pairs(NarenaPlayers) do
+         local player = Player:new(data.player);
+      if not nR1Done then
+      if not nRoundRunning then  
+         nRoundRunning = true;
+         nR1:startRepeating()
+         nethersound:playSound('PORTAL_TRIGGER', 1, 2);
+         a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Nether Arena&f!");
+         a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
+	 a_whisper_good(Message, "&eLook out &630 &eMobs spawning in!", player);
+	nspawnMob(mS1, "SKELETON");
+	nspawnMob(mS1, "SKELETON");
+	nspawnMob(mS2, "SKELETON");
+	nspawnMob(mS3, "SKELETON");
+	nspawnMob(mS4, "SKELETON");
+
+ else
+         a_whisper_error(Message, "Joining the fight for Round 1.", player);
+
+         end
+      end
+   end
+end
+
+function n_end_r1()
+	if check_alive_statsN() then
+           nR1:cancel()
+           nRoundRunning = false;
+           nR1Done = true;
+for playerName, value in pairs(NarenaPlayers) do
+local player = Player:new(playerName);
+	   player:teleport(netherreset);
+           a_broadcast_npc(Overlord, "&aRound 1 &fin the &6Nether Arena &fhas ended!")
+	end
+	end
+end 
+
