@@ -455,6 +455,18 @@ end
 registerHook("BLOCK_GAINS_CURRENT", "fireTick", "mobarena", 831.0, 130.0, 156.0);
 registerHook("BLOCK_GAINS_CURRENT", "processPlayers", "mobarena", 831.0, 130.0, 156.0);
 
+-------------------------------
+----------Signs----------------
+-------------------------------
+--Surface Sign
+local sign = Location:new(world, -810, 100, 168);
+
+function  sur_players(splayers)
+	sign:setSign('', 'Current Players:', 'playerCount', '');
+	local playerCount = Player:new(data.player);
+end
+ 
+
 
 ------------------
 ----Endgame---------
