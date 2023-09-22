@@ -211,6 +211,23 @@ local nS3 = Location:new(myWorld5, -2.0, 66.0, 26.0);
 local nS4 = Location:new(myWorld5, -4.0, 66.0, 26.0);
 local nS5 = Location:new(myWorld5, -6.0, 66.0, 26.0);
 
+
+-----------------------------------
+--block places---------------------
+-----------------------------------
+local current = 1;
+local maxData = 14;
+local blocks = {
+	Location:new(world5, -9.0, 67.0, 16.0),
+
+function nr1_ind(data)
+	if not nR1Done then
+	if nRoundRunning then
+		for index, key in ipairs(blocks) do
+		key:setBlock(89, current);
+				end
+			end
+
 ---------------------------
 -----------Round 1---------
 ---------------------------
