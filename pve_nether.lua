@@ -693,7 +693,7 @@ function n_start_r4(data)
 	NspawnMob(nS5, "PIGZOMBIE");
 	NspawnMob(nS6, "PIGZOMBIE");
 	NspawnMob(nS7, "PIGZOMBIE");
-	NspawnMob(nS8, "PIGZOMBIEN");
+	NspawnMob(nS8, "PIGZOMBIE");
 	NspawnMob(nS9, "PIGZOMBIE");
 	NspawnMob(nS10, "SKELETON");
 	NspawnMob(nS11, "LAVASLIME");
