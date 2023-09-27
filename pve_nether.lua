@@ -205,11 +205,69 @@ registerHook("REGION_ENTER", "applyBlind", "mobarena_nether-pve_nether_b1");
 ---------------------------------------
 ---mob spawn points------
 ----------------------------------------
-local nS1 = Location:new(myWorld5, 2.0, 66.0, 26.0);
-local nS2 = Location:new(myWorld5, 0.0, 66.0, 26.0);
-local nS3 = Location:new(myWorld5, -2.0, 66.0, 26.0);
-local nS4 = Location:new(myWorld5, -4.0, 66.0, 26.0);
-local nS5 = Location:new(myWorld5, -6.0, 66.0, 26.0);
+local nS1 = Location:new(myWorld5, 3.0, 63.0, 26.0);
+local nS2 = Location:new(myWorld5, -2.0, 63.0, 20.0);
+local nS3 = Location:new(myWorld5, 3.0, 63.0, 14.0);
+local nS4 = Location:new(myWorld5, -4.0, 63.0, 11.0);
+local nS5 = Location:new(myWorld5, 5.0, 63.0, 7.0);
+local nS6 = Location:new(myWorld5, 1.0, 63.0, 5.0);
+local nS7 = Location:new(myWorld5, -10.0, 62.0, 4.0);
+local nS8 = Location:new(myWorld5, 11.0, 61.0, 2.0);
+local nS9 = Location:new(myWorld5, 7.0, 58.0, -10.0);
+local nS10 = Location:new(myWorld5, 1.0, 57.0, -15.0);
+local nS11 = Location:new(myWorld5, -3.0, 57.0, -23.0);
+local nS12 = Location:new(myWorld5, 1.0, 57.0, -15.0);
+local nS13 = Location:new(myWorld5, -12.0, 60.0, -3.0);
+local nS14 = Location:new(myWorld5, 4.0, 57.0, -26.0);
+local nS15 = Location:new(myWorld5, -4.0, 57.0, -30.0);
+local nS16 = Location:new(myWorld5, -8.0, 57.0, -36.0);
+local nS17 = Location:new(myWorld5, 5.0, 57.0, -32.0);
+local nS18 = Location:new(myWorld5, 2.0, 56.0, -40.0);
+local nS19 = Location:new(myWorld5, -22.0, 48.0, -20.0);
+local nS20 = Location:new(myWorld5, -17.0, 49.0, -14.0);
+local nS21 = Location:new(myWorld5, -11.0, 49.0, -8.0);
+local nS22 = Location:new(myWorld5, 0.0, 49.0, -14.0);
+local nS23 = Location:new(myWorld5, -2.0, 49.0, -17.0);
+local nS24 = Location:new(myWorld5, 4.0, 49.0, -23.0);
+local nS25 = Location:new(myWorld5, -11.0, 49.0, -30.0);
+local nS26 = Location:new(myWorld5, 7.0, 49.0, -13.0);
+local nS27 = Location:new(myWorld5, 17.0, 49.0, -19.0);
+local nS28 = Location:new(myWorld5, 22.0, 49.0, -28.0);
+local nS29 = Location:new(myWorld5, 32.0, 49.0, -30.0);
+local nS30 = Location:new(myWorld5, -32.0, 49.0, -23.0);
+local nS31 = Location:new(myWorld5, -29.0, 49.0, -12.0);
+local nS32 = Location:new(myWorld5, 20.0, 49.0, -12.0);
+local nS33 = Location:new(myWorld5, 29.0, 49.0, -20.0);
+local nS34 = Location:new(myWorld5, -26.0, 49.0, -4.0);
+local nS35 = Location:new(myWorld5, -12.0, 49.0, 2.0);
+local nS36 = Location:new(myWorld5, -25.0, 49.0, 5.0);
+local nS37 = Location:new(myWorld5, 30.0, 49.0, -3.0);
+local nS38 = Location:new(myWorld5, 15.0, 49.0, -2.0);
+local nS39 = Location:new(myWorld5, -10.0, 48.0, 12.0);
+local nS40 = Location:new(myWorld5, -30.0, 49.0, 12.0);
+local nS41 = Location:new(myWorld5, 0.0, 49.0, 17.0);
+local nS42 = Location:new(myWorld5, 15.0, 49.0, 8.0);
+local nS43 = Location:new(myWorld5, 29.0, 49.0, 14.0);
+local nS44 = Location:new(myWorld5, 21.0, 49.0, 21.0);
+local nS45 = Location:new(myWorld5, -25.0, 49.0, 17.0);
+local nS46 = Location:new(myWorld5, -15.0, 49.0, 23.0);
+local nS47 = Location:new(myWorld5, -4.0, 49.0, 27.0);
+local nS48 = Location:new(myWorld5, -7.0, 49.0, 23.0);
+local nS49 = Location:new(myWorld5, -24.0, 49.0, 32.0);
+local nS50 = Location:new(myWorld5, -20.0, 70.0, 8.0);  --air spawn point
+local nS51 = Location:new(myWorld5, 16.0, 71.0, 23.0);  --air spawn point
+local nS52 = Location:new(myWorld5, 22.0, 70.0, 10.0);  --air spawn point
+local nS53 = Location:new(myWorld5, 27.0, 70.0, -9.0);  --air spawn point
+local nS54 = Location:new(myWorld5, 18.0, 70.0, -22.0);  --air spawn point
+local nS55 = Location:new(myWorld5, -20.0, 70.0, 8.0);  --air spawn point
+local nS56 = Location:new(myWorld5, 2.0, 75.0, -21.0);  --air spawn point
+local nS57 = Location:new(myWorld5, -26.0, 68.0, -15.0);  --air spawn point
+local nS58 = Location:new(myWorld5, -1.0, 79.0, 20.0);  --air spawn point
+local nS59 = Location:new(myWorld5, 14.0, 80.0, 1.0);  --air spawn point
+local nS60 = Location:new(myWorld5, 0.0, 63.0, -4.0);  --LAVA spawn point
+
+
+
 
 ---------------------------
 -----------Round 1---------
