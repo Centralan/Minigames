@@ -518,7 +518,7 @@ function nr2_rewards(data)
         if not nR5Done then
 		nChestPlayers[player.name] = true;
 		player:closeInventory();
-		nR1Chest:cloneChestToPlayer(player.name);
+		nR2Chest:cloneChestToPlayer(player.name);
                 nethersound:playSound('HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 2 Rewards: you earned 8 Mob Bones!");
 							end 
