@@ -171,7 +171,7 @@ function command_out_arena3(data)
 end
 
 registerHook("REGION_ENTER", "tp_to_arena3", "mobarena-nether_arena_e");
-registerHook("INTERACT", "button_out_arena3", 143, "mobarena_nether", 1.0, 62.0, 5.0);
+registerHook("REGION_ENTER", "command_out_back3", "mobarena-pve_n_back");
 registerHook("REGION_LEAVE", "command_out_arena3", "mobarena_nether-pve_nether_main");
 
 --------------------------
