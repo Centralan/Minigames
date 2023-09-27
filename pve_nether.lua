@@ -961,7 +961,11 @@ function n_end_light()
 	   player:teleport(netherreset);
            a_broadcast_npc(Overlord, "&aThe Lightning round has ended!")
 	   player:sendEvent("achievement.lightninground");
-	else
+			end
+		end
+	end
+end
+	function n_end_light2()
 	    if check_alive_statsN() then
 	    if nRoundRunning then
            nR5:cancel()
@@ -983,10 +987,7 @@ function n_end_light()
 	end
 	end
 end 
-													end
-												end
-											end
-										end
+end
 
 registerHook("REGION_ENTER", "n_start_light", "mobarena_nether-nether_round");
 
