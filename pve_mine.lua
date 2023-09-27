@@ -196,7 +196,8 @@ function chatMonitor_mine(data)
                         mR2Done = false;
                         mR3Done = false;
                         mR4Done = false;
-			nR5Done = false;
+			MarenaPlayers[player.name] = nil;
+                        MplayerCount = MplayerCount - 1;
 			player:sendMessage("&5Server:&6Mine &fArena has been reset.");
 		end
 	end
