@@ -508,3 +508,26 @@ function mr4_rewards(data)
 	
 
 registerHook("REGION_ENTER", "mr4_rewards", "mobarena-pve2_r5");
+
+---------------------
+--Nether r5 Rewards----
+---------------------
+
+
+local world = World:new('mobarena');
+local nR5Chest = Location:new(world, 836.0, 135.0, 164.0);
+local nR5ChestOpen = Location:new(world, 836.0, 135.0, 164.0);
+local nChestPlayers = {};
+local nChestTimerRunning = false;
+local nChestTimer = Timer:new("local world = World:new('mobarena');_reset_chest", 1 * 2 * 5);
+
+function nr5_rewards(data)
+     local player = Player:new(data.player);
+		nChestPlayers[player.name] = true;
+		nR5Chest:cloneChestToPlayer(player.name);
+                lobbysound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 5 Rewards: you earned 15 Mob Bones!");
+		end
+	
+
+registerHook("REGION_ENTER", "nr5_rewards", "mobarena-pve3_r5");
