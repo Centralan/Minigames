@@ -340,7 +340,7 @@ function n_start_r1(data)
       if not nRoundRunning then  
          nRoundRunning = true;
          nR1:startRepeating()
-         nethersound:playSound('PORTAL_TRIGGER', 1, 2);
+         nethersound:playSound('PORTAL_TRIGGER', 100, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Nether Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
 	 a_whisper_good(Message, "&eLook out &620 &eMobs spawning in!", player);
@@ -1012,4 +1012,136 @@ function nrL_rewards(data)
 										end
 
 registerHook("REGION_ENTER", "nrL_rewards", "mobarena_nether-nether_rewards");
-         
+
+---------------------------------------
+-----------Round  5 ---------
+---------------------------------------
+
+function n_start_r5(data)
+        for playerName, value in pairs(NarenaPlayers) do
+         local player = Player:new(data.player);
+      if nR1Done then
+      if nR2Done then
+      if nR3Done then
+      if nR4Done then	
+      if nRLDone then
+      if not nRoundRunning then  
+         nRoundRunning = true;
+         nR5:startRepeating()
+         nethersound:playSound('PORTAL_TRIGGER', 1, 2);
+         a_broadcast_npc(Overlord, player.name .. " has started &aRound 5 &fin the &6Nether Arena&f!");
+         a_whisper_good(Message, "&cRound 5 has started, kill all mobs defeat the Nether Arena.", player);
+	 a_whisper_good(Message, "&eLook out &660 &eMobs spawning in!", player);
+         NspawnMob(nS1, "PIGZOMBIE");
+	NspawnMob(nS1, "SKELETON");
+	NspawnMob(nS2, "PIGZOMBIE");
+	NspawnMob(nS3, "PIGZOMBIE");
+	NspawnMob(nS4, "PIGZOMBIE");
+	NspawnMob(nS4, "SKELETON");
+	NspawnMob(nS5, "PIGZOMBIE");
+	NspawnMob(nS6, "PIGZOMBIE");
+	NspawnMob(nS7, "PIGZOMBIE");
+	NspawnMob(nS8, "PIGZOMBIE");
+	NspawnMob(nS10, "SKELETON");
+	NspawnMob(nS9, "PIGZOMBIE");
+	NspawnMob(nS10, "SKELETON");
+	NspawnMob(nS10, "PIGZOMBIE");
+	NspawnMob(nS11, "LAVASLIME");
+	NspawnMob(nS12, "PIGZOMBIE");
+	NspawnMob(nS12, "LAVASLIME");
+	NspawnMob(nS13, "SKELETON");
+	NspawnMob(nS14, "SKELETON");
+	NspawnMob(nS15, "LAVASLIME");
+	NspawnMob(nS16, "SKELETON");
+	NspawnMob(nS17, "PIGZOMBIE");
+	NspawnMob(nS18, "PIGZOMBIE");
+	NspawnMob(nS19, "LAVASLIME");
+	NspawnMob(nS20, "SKELETON");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS21, "LAVASLIME");
+	NspawnMob(nS22, "PIGZOMBIE");
+	NspawnMob(nS23, "SKELETON");
+	NspawnMob(nS24, "SKELETON");
+	NspawnMob(nS25, "SKELETON");
+	NspawnMob(nS26, "SKELETON");
+	NspawnMob(nS27, "LAVASLIME");
+	NspawnMob(nS28, "LAVASLIME");
+	NspawnMob(nS29, "SKELETON");
+	NspawnMob(nS30, "SKELETON");
+	NspawnMob(nS31, "PIGZOMBIE");
+	NspawnMob(nS32, "LAVASLIME");
+	NspawnMob(nS33, "LAVASLIME");
+	NspawnMob(nS33, "PIGZOMBIE");
+	NspawnMob(nS34, "LAVASLIME");
+	NspawnMob(nS35, "SKELETON");
+	NspawnMob(nS36, "SKELETON");
+	NspawnMob(nS37, "LAVASLIME");
+	NspawnMob(nS38, "SKELETON");
+	NspawnMob(nS39, "SKELETON");
+	NspawnMob(nS39, "LAVASLIME");
+	NspawnMob(nS40, "PIGZOMBIE");
+	NspawnMob(nS41, "PIGZOMBIE");
+	NspawnMob(nS42, "LAVASLIME");
+	NspawnMob(nS43, "SKELETON");
+	NspawnMob(nS44, "LAVASLIME");
+	NspawnMob(nS45, "SKELETON");
+	NspawnMob(nS46, "LAVASLIME");
+	NspawnMob(nS47, "PIGZOMBIE");
+	NspawnMob(nS47, "LAVASLIME");
+	NspawnMob(nS48, "LAVASLIME");
+	NspawnMob(nS49, "LAVASLIME");
+	NspawnMob(nS49, "PIGZOMBIE");
+	NspawnMob(nS50, "GHAST");
+	NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS58, "BLAZE");
+	NspawnMob(nS52, "BLAZE");
+	NspawnMob(nS53, "GHAST");
+        NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS54, "BLAZE");
+	NspawnMob(nS55, "GHAST");
+	NspawnMob(nS56, "BLAZE");
+	NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS57, "BLAZE");
+	NspawnMob(nS58, "GHAST");
+	NspawnMob(nS51, "GHAST");
+	NspawnMob(nS59, "BLAZE");
+	NspawnMob(nS60, "PIGZOMBIE");
+
+ else
+         a_whisper_error(Message, "Joining the fight for Round 5.", player);
+
+         end
+      end
+   end
+end
+end
+end
+end
+
+function n_end_r5()
+	if check_alive_statsM() then
+           nR5:cancel()
+           nRoundRunning = false;
+           nR5Done = true;
+for playerName, value in pairs(MarenaPlayers) do
+local player = Player:new(playerName);
+	   player:teleport(netherr5);
+           a_broadcast_npc(Overlord, "&fThe &6Nether Arena &fhas been defeated!")
+           a_broadcast2(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
+           a_broadcast3(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
+           a_broadcast4(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
+           player:sendEvent("achievement.netherchampion"); 
+           nR1Done = false;
+           nR2Done = false;
+           nR3Done = false;
+           nR4Done = false;
+	   nR5Done = false;
+	   nRLDone = false;
+	   NarenaPlayers[player.name] = nil;
+           NplayerCount = NplayerCount - 1;
+	end
+	end
+end 
+
+registerHook("REGION_ENTER", "n_start_r5", "mobarena_nether-nether_round");
