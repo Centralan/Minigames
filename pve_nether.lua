@@ -615,6 +615,7 @@ function n_start_r3(data)
    end
 end
 end
+end
 
 function n_end_r3()
 	if check_alive_statsN() then
