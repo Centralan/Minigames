@@ -266,8 +266,12 @@ local nS58 = Location:new(myWorld5, -1.0, 79.0, 20.0);  --air spawn point
 local nS59 = Location:new(myWorld5, 14.0, 80.0, 1.0);  --air spawn point
 local nS60 = Location:new(myWorld5, 0.0, 63.0, -4.0);  --LAVA spawn point
 
-
-
+--BLAZE
+--GHAST
+--LAVASLIME
+--PIGZOMBIE
+--SKELETON
+--WITHER
 
 ---------------------------
 -----------Round 1---------
@@ -283,12 +287,27 @@ function n_start_r1(data)
          nethersound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Nether Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
-	 a_whisper_good(Message, "&eLook out &630 &eMobs spawning in!", player);
+	 a_whisper_good(Message, "&eLook out &620 &eMobs spawning in!", player);
 	NspawnMob(nS1, "SKELETON");
 	NspawnMob(nS2, "SKELETON");
 	NspawnMob(nS3, "SKELETON");
 	NspawnMob(nS4, "SKELETON");
 	NspawnMob(nS5, "SKELETON");
+	NspawnMob(nS6, "SKELETON");
+	NspawnMob(nS7, "SKELETON");
+	NspawnMob(nS8, "SKELETON");
+	NspawnMob(nS9, "SKELETON");
+	NspawnMob(nS10, "SKELETON");
+	NspawnMob(nS11, "SKELETON");
+	NspawnMob(nS12, "SKELETON");
+	NspawnMob(nS13, "SKELETON");
+	NspawnMob(nS14, "SKELETON");
+	NspawnMob(nS15, "SKELETON");
+	NspawnMob(nS16, "SKELETON");
+	NspawnMob(nS17, "SKELETON");
+	NspawnMob(nS18, "SKELETON");
+	NspawnMob(nS19, "SKELETON");
+	NspawnMob(nS20, "SKELETON");
 
  else
          a_whisper_error(Message, "Joining the fight for Round 1.", player);
