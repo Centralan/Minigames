@@ -18,6 +18,7 @@ local netherenter = Location:new(myWorld5, 0, 75.0, 42.0);
 local netherexit = Location:new(myWorld, 837.0, 97, 149.0);
 local netherrespawn = Location:new(myWorld5, 0, 62.0, 4.0);
 local netherreset = Location:new(myWorld5, 0, 85.0, 38.0);
+local netherr5 = Location:new(myWorld, 838, 119.0, 153.0);
 
 ----------------
 --Chests--
@@ -112,7 +113,9 @@ local nR2Done = false;
 local nR3Done = false;
 local nR4Done = false;
 local nR5Done = false;
+local nRLDone = false;
 local nRoundRunning = false;
+local nLRoundRunning = false;
 local nR1 = Timer:new("n_end_r1", 1);
 local nR2 = Timer:new("n_end_r2", 1);
 local nR3 = Timer:new("n_end_r3", 1);
@@ -809,3 +812,202 @@ function nr4_rewards(data)
 
 registerHook("REGION_ENTER", "nr4_rewards", "mobarena_nether-nether_rewards");
 
+---------------------------------------
+-----------Round  5 / Lightning---------
+---------------------------------------
+
+function n_start_light(data)
+        for playerName, value in pairs(NarenaPlayers) do
+         local player = Player:new(data.player);
+      if nR1Done then
+      if nR2Done then
+      if nR3Done then
+      if nR4Done then
+      if not nR5Done then
+      if not nRoundRunning then  
+        if player:hasItem("skull", 1) then
+		player:removeItem("skull", 1);
+	 nLRoundRunning = true;
+         nRL:startRepeating()
+         nethersound:playSound('HORSE_IDLE', 1, 2);
+	 nethersound:playSound('HORSE_HIT', 1, 2);
+         a_broadcast_npc(Overlord, player.name .. " has started &a the Lightning Round! Round rewards are increased!");
+         a_whisper_good(Message, "&cA lightning round has started, kill all the bosses and its minons!", player);
+	 a_whisper_good(Message, "&eLook out &21 &eMobs spawning in!", player);
+		NspawnMob(nS50, "WITHER");
+	        NspawnMob(nS51, "BLAZE");
+	        NspawnMob(nS52, "BLAZE");
+	        NspawnMob(nS53, "BLAZE");
+	        NspawnMob(nS54, "WITHER");
+	        NspawnMob(nS55, "BLAZE");
+	        NspawnMob(nS56, "BLAZE");
+	        NspawnMob(nS57, "BLAZE");
+	        NspawnMob(nS58, "BLAZE");
+	        NspawnMob(nS59, "BLAZE");
+		NspawnMob(nS10, "SKELETON");
+	        NspawnMob(nS22, "SKELETON");
+	        NspawnMob(nS33, "SKELETON");
+	        NspawnMob(nS44, "SKELETON");
+	        NspawnMob(nS30, "SKELETON");
+	        NspawnMob(nS60, "SKELETON");
+	        NspawnMob(nS17, "SKELETON");
+	        NspawnMob(nS19, "SKELETON");
+	        NspawnMob(nS9, "SKELETON");
+	        NspawnMob(nS24, "SKELETON");
+	        NspawnMob(nS18, "SKELETON");
+	else								
+	if not player:hasItem("skull", 1) then
+	       nRoundRunning = true;
+               nR5:startRepeating()
+               nethersound:playSound('PORTAL_TRIGGER', 1, 2);
+               a_broadcast_npc(Overlord, player.name .. " has started &aRound 5 &fin the &6Nether Arena&f!");
+               a_whisper_good(Message, "&cRound 5 has started, kill all mobs to defeat the arena!", player);
+	       a_whisper_good(Message, "&eLook out &675 &eMobs spawning in!", player);
+	NspawnMob(nS1, "PIGZOMBIE");
+	NspawnMob(nS1, "SKELETON");
+	NspawnMob(nS2, "PIGZOMBIE");
+	NspawnMob(nS3, "PIGZOMBIE");
+	NspawnMob(nS4, "PIGZOMBIE");
+	NspawnMob(nS4, "SKELETON");
+	NspawnMob(nS5, "PIGZOMBIE");
+	NspawnMob(nS6, "PIGZOMBIE");
+	NspawnMob(nS7, "PIGZOMBIE");
+	NspawnMob(nS8, "PIGZOMBIE");
+	NspawnMob(nS10, "SKELETON");
+	NspawnMob(nS9, "PIGZOMBIE");
+	NspawnMob(nS10, "SKELETON");
+	NspawnMob(nS10, "PIGZOMBIE");
+	NspawnMob(nS11, "LAVASLIME");
+	NspawnMob(nS12, "PIGZOMBIE");
+	NspawnMob(nS12, "LAVASLIME");
+	NspawnMob(nS13, "SKELETON");
+	NspawnMob(nS14, "SKELETON");
+	NspawnMob(nS15, "LAVASLIME");
+	NspawnMob(nS16, "SKELETON");
+	NspawnMob(nS17, "PIGZOMBIE");
+	NspawnMob(nS18, "PIGZOMBIE");
+	NspawnMob(nS19, "LAVASLIME");
+	NspawnMob(nS20, "SKELETON");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS21, "LAVASLIME");
+	NspawnMob(nS22, "PIGZOMBIE");
+	NspawnMob(nS23, "SKELETON");
+	NspawnMob(nS24, "SKELETON");
+	NspawnMob(nS25, "SKELETON");
+	NspawnMob(nS26, "SKELETON");
+	NspawnMob(nS27, "LAVASLIME");
+	NspawnMob(nS28, "LAVASLIME");
+	NspawnMob(nS29, "SKELETON");
+	NspawnMob(nS30, "SKELETON");
+	NspawnMob(nS31, "PIGZOMBIE");
+	NspawnMob(nS32, "LAVASLIME");
+	NspawnMob(nS33, "LAVASLIME");
+	NspawnMob(nS33, "PIGZOMBIE");
+	NspawnMob(nS34, "LAVASLIME");
+	NspawnMob(nS35, "SKELETON");
+	NspawnMob(nS36, "SKELETON");
+	NspawnMob(nS37, "LAVASLIME");
+	NspawnMob(nS38, "SKELETON");
+	NspawnMob(nS39, "SKELETON");
+	NspawnMob(nS39, "LAVASLIME");
+	NspawnMob(nS40, "PIGZOMBIE");
+	NspawnMob(nS41, "PIGZOMBIE");
+	NspawnMob(nS42, "LAVASLIME");
+	NspawnMob(nS43, "SKELETON");
+	NspawnMob(nS44, "LAVASLIME");
+	NspawnMob(nS45, "SKELETON");
+	NspawnMob(nS46, "LAVASLIME");
+	NspawnMob(nS47, "PIGZOMBIE");
+	NspawnMob(nS47, "LAVASLIME");
+	NspawnMob(nS48, "LAVASLIME");
+	NspawnMob(nS49, "LAVASLIME");
+	NspawnMob(nS49, "PIGZOMBIE");
+	NspawnMob(nS50, "GHAST");
+	NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS58, "BLAZE");
+	NspawnMob(nS52, "BLAZE");
+	NspawnMob(nS53, "GHAST");
+        NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS54, "BLAZE");
+	NspawnMob(nS55, "GHAST");
+	NspawnMob(nS56, "BLAZE");
+	NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS57, "BLAZE");
+	NspawnMob(nS58, "GHAST");
+	NspawnMob(nS51, "GHAST");
+	NspawnMob(nS59, "BLAZE");
+	NspawnMob(nS60, "PIGZOMBIE");
+
+
+function n_end_light()
+	if check_alive_statsN() then
+	if nLRoundRunning then
+           nRL:cancel()
+           nLRoundRunning = false;
+           nRLDone = true;
+           for playerName, value in pairs(NarenaPlayers) do
+           local player = Player:new(playerName);
+	   player:teleport(netherreset);
+           a_broadcast_npc(Overlord, "&aThe Lightning round has ended!")
+	   player:sendEvent("achievement.lightninground");
+	else
+	    if check_alive_statsN() then
+	    if nRoundRunning then
+           nR5:cancel()
+           nRoundRunning = false;
+           nR5Done = true;
+           for playerName, value in pairs(NarenaPlayers) do
+           local player = Player:new(playerName);
+	   player:teleport(netherr5);
+           a_broadcast_npc(Overlord, "&fThe &6Nether Arena &fhas been defeated!")
+	   nR1Done = false;
+           nR2Done = false;
+           nR3Done = false;
+           nR4Done = false;
+	   player:sendEvent("achievement.netherchampion"); 
+           a_broadcast2(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
+           a_broadcast3(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
+           a_broadcast4(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
+	   a_broadcast5(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
+	end
+	end
+end 
+
+registerHook("REGION_ENTER", "n_start_light", "mobarena_nether-nether_round");
+
+------------------------------------------------------
+----Lightning Rewards----------
+--------------------------------------------------------
+
+local world = World:new('mobarena_nether');
+local nRLChest = Location:new(world, 7.0, 85.0, 47.0);
+local nRLChestOpen = Location:new(world, 7.0, 85.0, 47.0);
+local nChestPlayers = {};
+local nChestTimerRunning = false;
+
+function nrL_rewards(data)
+     local player = Player:new(data.player);
+	if not nRoundRunning then 
+	if nR1Done then
+	if nR2Done then
+	if nR3Done then
+        if nR4Done then
+	if nRLDone then
+        if not nR5Done then
+		nChestPlayers[player.name] = true;
+		player:closeInventory();
+		nRLChest:cloneChestToPlayer(player.name);
+                nethersound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 4 Rewards: you earned 30 Mob Bones!");
+							end 
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "nrL_rewards", "mobarena_nether-nether_rewards");
+         
