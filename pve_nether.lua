@@ -152,6 +152,8 @@ function chatMonitor_nether(data)
                         nR4Done = false;
 			nR5Done = false;
 			nRLDone = false;
+			NarenaPlayers[player.name] = nil;
+                        NplayerCount = NplayerCount - 1;
 			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
 		end
 	end
