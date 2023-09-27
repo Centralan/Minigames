@@ -481,6 +481,7 @@ function n_start_r2(data)
       end
    end
 end
+end
 
 function n_end_r2()
 	if check_alive_statsN() then
