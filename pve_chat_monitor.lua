@@ -13,6 +13,16 @@ local function splitPlayerName(message, len)
 	return string.sub(message, len, string.len(message));
 end
 
+
+local NarenaPlayers = {};
+local NplayerCount = 0;
+local nR1Done = false;
+local nR2Done = false;
+local nR3Done = false;
+local nR4Done = false;
+local nR5Done = false;
+local nRoundRunning = false;
+
 ----------------
 -----Nether-----
 ----------------
@@ -50,47 +60,3 @@ function add_nether(data)
 	end
 end
 registerHook("CHAT_MESSAGE", "add_nether", "mobarena_nether");
-
-----------------
------Mine-----
-----------------
-
-function chatMonitor_mine(data)
-	-- Make sure it's you giving the command.
-	if data.player == "Centralan" then
-		local player = Player:new(data.player);
-		local message = data.message;
-
-		if hasPrefix(message, "#ResetMine") then
-			local playerName = splitPlayerName(message, 16);
-			mRoundRunning = false;
-			mR1Done = false;
-                        mR2Done = false;
-                        mR3Done = false;
-                        mR4Done = false;
-			player:sendMessage("&5Server:&6Mine &fArena has been reset.");
-
-registerHook("CHAT_MESSAGE", "chatMonitor_mine", "mobarena");
-
-----------------
------Surface-----
-----------------
-
-function chatMonitor_surface(data)
-	-- Make sure it's you giving the command.
-	if data.player == "Centralan" then
-		local player = Player:new(data.player);
-		local message = data.message;
-
-		if hasPrefix(message, "#ResetMine") then
-			local playerName = splitPlayerName(message, 16);
-			sRoundRunning = false;
-			sR1Done = false;
-                        sR2Done = false;
-                        sR3Done = false;
-                        sR4Done = false;
-			sR5Done = false;
-			player:sendMessage("&5Server:&6Surface &fArena has been reset.");
-					
-	registerHook("CHAT_MESSAGE", "chatMonitor_surface", "mobarena");
-
