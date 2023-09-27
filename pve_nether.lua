@@ -17,7 +17,7 @@ local nethercatch = Location:new(myWorld5, 0, 62.0, 4.0);
 local netherenter = Location:new(myWorld5, 0, 75.0, 42.0);
 local netherexit = Location:new(myWorld, 837.0, 97, 149.0);
 local netherrespawn = Location:new(myWorld5, 0, 62.0, 4.0);
-local netherreset = Location:new(myWorld5, 0, 85.0, 4.0);
+local netherreset = Location:new(myWorld5, 0, 85.0, 38.0);
 
 ----------------
 --Chests--
