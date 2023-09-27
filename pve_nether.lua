@@ -152,6 +152,7 @@ function chatMonitor_nether(data)
                         nR3Done = false;
                         nR4Done = false;
 			nR5Done = false;
+			nRLDone = false;
 			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
 		end
 	end
@@ -837,11 +838,10 @@ function n_start_light(data)
 	 nethersound:playSound('HORSE_HIT', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started the &aLightning Round! &fRound rewards are &6increased!");
          a_whisper_good(Message, "&cA lightning round has started, kill all the bosses and its minons!", player);
-	  a_broadcast2(Overlord9, player.name .." A &aLightning Round &fhas started in the &6Nether &fArena!");
-           a_broadcast3(Overlord9, player.name .."A &aLightning Round &fhas started in the &6Nether &fArena!");
-           a_broadcast4(Overlord9, player.name .." A &aLightning Round &fhas started in the &6Nether &fArena!");
-	   a_broadcast5(Overlord9, player.name .." A &aLightning Round &fhas started in the &6Nether &fArena!");
-	 a_whisper_good(Message, "&eLook out &221 &eMobs spawning in!", player);
+	  a_broadcast2(Overlord9, player.name .." &fA &aLightning Round &fhas started in the &6Nether &fArena!");
+           a_broadcast3(Overlord9, player.name .."&fA &aLightning Round &fhas started in the &6Nether &fArena!");
+           a_broadcast4(Overlord9, player.name .." &fA &aLightning Round &fhas started in the &6Nether &fArena!");
+	 a_whisper_good(Message, "&eLook out &219 &emobs and &22 &eBosses are spawning in!", player);
 		NspawnMob(nS50, "WITHER");
 	        NspawnMob(nS51, "BLAZE");
 	        NspawnMob(nS52, "BLAZE");
