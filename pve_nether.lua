@@ -14,7 +14,7 @@ local nethersound = Location:new(myWorld5, 0.0, 86.0, 0.0);
 -------------
 
 local nethercatch = Location:new(myWorld5, 0, 62.0, 4.0);
-local netherenter = Location:new(myWorld5, 0, 62.0, 4.0);
+local netherenter = Location:new(myWorld5, 0, 75.0, 42.0);
 local netherexit = Location:new(myWorld, 837.0, 97, 149.0);
 local netherrespawn = Location:new(myWorld5, 0, 62.0, 4.0);
 local netherreset = Location:new(myWorld5, 0, 68.0, 4.0);
@@ -253,4 +253,4 @@ local player = Player:new(playerName);
 	end
 end 
 
-registerHook("INTERACT", "n_start_r1", 143, "mobarena_nether", 1.0, 62.0, 7.0);
+registerHook("REGION_ENTER", "n_start_r1", "mobarena_nether-nether_round");
