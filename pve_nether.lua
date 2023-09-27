@@ -380,3 +380,37 @@ local player = Player:new(playerName);
 end 
 
 registerHook("REGION_ENTER", "n_start_r1", "mobarena_nether-nether_round");
+
+------------------------------------------------------
+----R1 Rewards----------
+--------------------------------------------------------
+
+local world = World:new('mobarena_nether');
+local nR1Chest = Location:new(world, -3.0, 85.0, 47.0);
+local nR1ChestOpen = Location:new(world, -3.0, 85.0, 47.0);
+local nChestPlayers = {};
+local nChestTimerRunning = false;
+
+function nr1_rewards(data)
+     local player = Player:new(data.player);
+	if not nRoundRunning then 
+	if nR1Done then
+	if not nR2Done then
+	if not nR3Done then
+        if not nR4Done then
+        if not nR5Done then
+		nChestPlayers[player.name] = true;
+		player:closeInventory();
+		nR1Chest:cloneChestToPlayer(player.name);
+                nethersound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 1 Rewards: you earned 6 Mob Bones!");
+							end 
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "nr1_rewards", "mobarena_nether-nether_rewards");
