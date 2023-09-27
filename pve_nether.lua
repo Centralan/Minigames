@@ -678,7 +678,7 @@ function n_start_r4(data)
       if nR1Done then
       if nR2Done then
       if nR3Done then
-      if not nR3Done then			
+      if not nR4Done then			
       if not nRoundRunning then  
          nRoundRunning = true;
          nR4:startRepeating()
