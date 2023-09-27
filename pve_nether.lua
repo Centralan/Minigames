@@ -103,6 +103,25 @@ function add_nether(data)
 	end
 end
 registerHook("CHAT_MESSAGE", "add_nether", "mobarena_nether");
+
+function reset_nether(data)
+	if data.player == "Centralan" then
+		local player = Player:new(data.player);
+		local message = data.message;
+
+		if hasPrefix(message, "#ResetNether") then
+			local playerName = splitPlayerName(message, 16);)
+		        nRoundRunning = false;
+			nR1Done = false;
+                        nR2Done = false;
+                        nR3Done = false;
+                        nR4Done = false;
+			nR5Done = false;
+		        NarenaPlayers[player.name] = nil;
+                        NplayerCount = NplayerCount - 1;
+			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
+		
+registerHook("CHAT_MESSAGE", "reset_nether", "mobarena_nether");
 --------------------------------
 ----Mob Control--
 ----------------------------------
