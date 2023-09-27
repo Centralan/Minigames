@@ -96,8 +96,9 @@ function add_nether(data)
 
 		if hasPrefix(message, "#AddNether") then
 			local playerName = splitPlayerName(message, 16);
+			NarenaPlayers[player.name] = true;
 		        NplayerCount = NplayerCount + 1;
-			player:sendMessage("&5Server:&6Nether &fArena player count +1");
+			player:sendMessage("&5Server: &6Nether &fArena player count +1");
 		end
 	end
 end
