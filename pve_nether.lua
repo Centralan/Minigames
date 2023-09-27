@@ -938,6 +938,16 @@ function n_start_light(data)
 	NspawnMob(nS51, "GHAST");
 	NspawnMob(nS59, "BLAZE");
 	NspawnMob(nS60, "PIGZOMBIE");
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
 
 
 function n_end_light()
