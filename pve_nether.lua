@@ -34,6 +34,7 @@ local Overlord = 'PvE'
 local Overlord6 = '&d[PvE] &fA Player has &ajoined &6Nether Arena&f.'
 local Overlord7 = '&d[PvE] &fA Player has &adefeated &6Nether Arena&f.'
 local Overlord8 = '&d[PvE] &fA Player has &cabandoned &6Nether Arena&f.'
+local Overlord9 = '&d[PvE] A &aLightning Round &fhas started in the &6Nether &fArena!.'
 local Message = ''
 local Message2 = ''
 
@@ -836,6 +837,10 @@ function n_start_light(data)
 	 nethersound:playSound('HORSE_HIT', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started the &aLightning Round! &fRound rewards are &6increased!");
          a_whisper_good(Message, "&cA lightning round has started, kill all the bosses and its minons!", player);
+	  a_broadcast2(Overlord9, player.name .." A &aLightning Round &fhas started in the &6Nether &fArena!");
+           a_broadcast3(Overlord9, player.name .."A &aLightning Round &fhas started in the &6Nether &fArena!");
+           a_broadcast4(Overlord9, player.name .." A &aLightning Round &fhas started in the &6Nether &fArena!");
+	   a_broadcast5(Overlord9, player.name .." A &aLightning Round &fhas started in the &6Nether &fArena!");
 	 a_whisper_good(Message, "&eLook out &221 &eMobs spawning in!", player);
 		NspawnMob(nS50, "WITHER");
 	        NspawnMob(nS51, "BLAZE");
