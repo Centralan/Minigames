@@ -171,6 +171,55 @@ registerHook("REGION_ENTER", "tp_to_arena2", "mobarena-mine_arena_e");
 registerHook("INTERACT", "button_out_arena2", 143, "mobarena", -3001.0, 110.0, 2975.0);
 registerHook("REGION_EXIT", "command_out_arena2", "mobarena-pve_mine_main");
 
+--------------
+----Chat Mon--
+--------------
+
+local function hasPrefix(subject, prefix)
+	return string.sub(subject, 1, string.len(prefix)) == prefix;
+end
+
+local function splitPlayerName(message, len)
+	return string.sub(message, len, string.len(message));
+end
+
+function chatMonitor_mine(data)
+	-- Make sure it's you giving the command.
+	if data.player == "Centralan" then
+		local player = Player:new(data.player);
+		local message = data.message;
+
+		if hasPrefix(message, "#ResetMine") then
+			local playerName = splitPlayerName(message, 16);
+		        mRoundRunning = false;
+			mR1Done = false;
+                        mR2Done = false;
+                        mR3Done = false;
+                        mR4Done = false;
+			nR5Done = false;
+			player:sendMessage("&5Server:&6Mine &fArena has been reset.");
+		end
+	end
+end
+		
+registerHook("CHAT_MESSAGE", "chatMonitor_mine", "mobarena");
+
+function add_mine(data)
+	-- Make sure it's you giving the command.
+	if data.player == "Centralan" then
+		local player = Player:new(data.player);
+		local message = data.message;
+
+		if hasPrefix(message, "#AddMine") then
+			local playerName = splitPlayerName(message, 16);
+			MarenaPlayers[player.name] = true;
+		        MplayerCount = MplayerCount + 1;
+			player:sendMessage("&5Server: &6Mine &fArena player count +1");
+		end
+	end
+end
+registerHook("CHAT_MESSAGE", "add_mine", "mobarena");
+
 --------------------------
 ----Respawning/Game Over----
 ----------------------------
@@ -793,37 +842,3 @@ end
 
 
 registerHook("REGION_ENTER", "m_start_r4", "mobarena-mine_startr");   
-
---------------
-----Chat Mon--
---------------
-
-local function hasPrefix(subject, prefix)
-	return string.sub(subject, 1, string.len(prefix)) == prefix;
-end
-
-local function splitPlayerName(message, len)
-	return string.sub(message, len, string.len(message));
-end
-
-function chatMonitor_nether(data)
-	-- Make sure it's you giving the command.
-	if data.player == "Centralan" then
-		local player = Player:new(data.player);
-		local message = data.message;
-
-		if hasPrefix(message, "#ResetNether") then
-			local playerName = splitPlayerName(message, 16);
-		        nRoundRunning = false;
-			nR1Done = false;
-                        nR2Done = false;
-                        nR3Done = false;
-                        nR4Done = false;
-			nR5Done = false;
-			nRLDone = false;
-			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
-		end
-	end
-end
-		
-registerHook("CHAT_MESSAGE", "chatMonitor_nether", "mobarena_nether");
