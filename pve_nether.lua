@@ -120,6 +120,9 @@ function reset_nether(data)
 		        NarenaPlayers[player.name] = nil;
                         NplayerCount = NplayerCount - 1;
 			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
+	end
+end
+end
 		
 registerHook("CHAT_MESSAGE", "reset_nether", "mobarena_nether");
 --------------------------------
