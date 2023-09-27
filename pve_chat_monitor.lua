@@ -35,6 +35,22 @@ function chatMonitor_nether(data)
 		
 registerHook("CHAT_MESSAGE", "chatMonitor_nether", "mobarena_nether");
 
+function add_nether(data)
+	-- Make sure it's you giving the command.
+	if data.player == "Centralan" then
+		local player = Player:new(data.player);
+		local message = data.message;
+
+		if hasPrefix(message, "#AddNether") then
+			local playerName = splitPlayerName(message, 16);
+			NarenaPlayers[player.name] = true;
+		        NplayerCount = NplayerCount + 1;
+			player:sendMessage("&5Server: &6Nether &fArena player count +1");
+		end
+	end
+end
+registerHook("CHAT_MESSAGE", "add_nether", "mobarena_nether");
+
 ----------------
 -----Mine-----
 ----------------
