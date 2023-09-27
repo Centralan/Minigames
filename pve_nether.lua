@@ -973,6 +973,10 @@ function n_end_light()
 	end
 	end
 end 
+													end
+												end
+											end
+										end
 
 registerHook("REGION_ENTER", "n_start_light", "mobarena_nether-nether_round");
 
