@@ -42,6 +42,9 @@ function chatMonitor_nether(data)
                         nR4Done = false;
 			nR5Done = false;
 			player:sendMessage("&5Server:&6Nether &fArena has been reset.");
+	end
+end
+end
 		
 registerHook("CHAT_MESSAGE", "chatMonitor_nether", "mobarena_nether");
 
