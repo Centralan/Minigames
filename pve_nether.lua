@@ -76,7 +76,7 @@ local NarenaPlayers = {};
 local NplayerCount = 0;
 
 --------------------------------
-----Mob Control--
+----Mob Control---
 ----------------------------------
 
 local entityList = {};
