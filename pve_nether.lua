@@ -123,7 +123,6 @@ local nR3 = Timer:new("n_end_r3", 1);
 local nR4 = Timer:new("n_end_r4", 1);
 local nR5 = Timer:new("n_end_r5", 1);
 local nRL = Timer:new("n_end_light", 1);
-local nRL = Timer:new("n_end_light2", 1);
 
 
 --------------
@@ -975,29 +974,7 @@ function n_end_light()
 		end
 	end
 end
-	function n_end_light2()
-	    if check_alive_statsN() then
-	    if nRoundRunning then
-           nR5:cancel()
-           nRoundRunning = false;
-           nR5Done = true;
-           for playerName, value in pairs(NarenaPlayers) do
-           local player = Player:new(playerName);
-	   player:teleport(netherr5);
-           a_broadcast_npc(Overlord, "&fThe &6Nether Arena &fhas been defeated!")
-	   nR1Done = false;
-           nR2Done = false;
-           nR3Done = false;
-           nR4Done = false;
-	   player:sendEvent("achievement.netherchampion"); 
-           a_broadcast2(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
-           a_broadcast3(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
-           a_broadcast4(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
-	   a_broadcast5(Overlord7, player.name .." has &adefeated &fthe &6Nether Arena&f!");
-	end
-	end
-end 
-end
+	
 
 registerHook("REGION_ENTER", "n_start_light", "mobarena_nether-nether_round");
 
