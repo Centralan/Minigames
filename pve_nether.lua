@@ -1118,6 +1118,7 @@ end
 end
 end
 end
+end
 
 function n_end_r5()
 	if check_alive_statsM() then
