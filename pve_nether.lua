@@ -1001,7 +1001,7 @@ function nrL_rewards(data)
 		player:closeInventory();
 		nRLChest:cloneChestToPlayer(player.name);
                 nethersound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 4 Rewards: you earned 30 Mob Bones!");
+                player:sendMessage("&dLightning Round Rewards: you earned 30 Mob Bones!");
 							end 
 						end
 					end
