@@ -86,10 +86,12 @@ function add_nether(data)
 		local message = data.message;
 
 		if hasPrefix(message, "#AddNether") then
-			local playerName = splitPlayerName(message, 16);)
+			local playerName = splitPlayerName(message, 16);
 		        NplayerCount = NplayerCount + 1;
 			player:sendMessage("&5Server:&6Nether &fArena player count +1");
-		
+		end
+	end
+end
 registerHook("CHAT_MESSAGE", "add_nether", "mobarena_nether");
 --------------------------------
 ----Mob Control--
