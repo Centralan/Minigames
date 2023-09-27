@@ -414,3 +414,119 @@ function nr1_rewards(data)
 	
 
 registerHook("REGION_ENTER", "nr1_rewards", "mobarena_nether-nether_rewards");
+
+---------------------------
+-----------Round 2---------
+---------------------------
+
+function n_start_r2(data)
+        for playerName, value in pairs(NarenaPlayers) do
+         local player = Player:new(data.player);
+      if nR1Done then
+      if not nR2Done then
+      if not nRoundRunning then  
+         nRoundRunning = true;
+         nR2:startRepeating()
+         nethersound:playSound('PORTAL_TRIGGER', 1, 2);
+         a_broadcast_npc(Overlord, player.name .. " has started &aRound 2 &fin the &6Nether Arena&f!");
+         a_whisper_good(Message, "&cRound 2 has started, kill all mobs to move to Round 3.", player);
+	 a_whisper_good(Message, "&eLook out &640 &eMobs spawning in!", player);
+	NspawnMob(nS1, "SKELETON");
+	NspawnMob(nS2, "SKELETON");
+	NspawnMob(nS3, "PIGZOMBIE");
+	NspawnMob(nS4, "SKELETON");
+	NspawnMob(nS5, "SKELETON");
+	NspawnMob(nS6, "PIGZOMBIE");
+	NspawnMob(nS7, "SKELETON");
+	NspawnMob(nS8, "SKELETON");
+	NspawnMob(nS9, "SKELETON");
+	NspawnMob(nS10, "SKELETON");
+	NspawnMob(nS11, "LAVASLIME");
+	NspawnMob(nS12, "PIGZOMBIE");
+	NspawnMob(nS13, "SKELETON");
+	NspawnMob(nS14, "SKELETON");
+	NspawnMob(nS15, "LAVASLIME");
+	NspawnMob(nS16, "SKELETON");
+	NspawnMob(nS17, "SKELETON");
+	NspawnMob(nS18, "PIGZOMBIE");
+	NspawnMob(nS19, "SKELETON");
+	NspawnMob(nS20, "SKELETON");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS21, "LAVASLIME");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS22, "PIGZOMBIE");
+	NspawnMob(nS23, "SKELETON");
+	NspawnMob(nS24, "PIGZOMBIE");
+	NspawnMob(nS25, "SKELETON");
+	NspawnMob(nS26, "SKELETON");
+	NspawnMob(nS27, "LAVASLIME");
+	NspawnMob(nS28, "PIGZOMBIE");
+	NspawnMob(nS29, "SKELETON");
+	NspawnMob(nS30, "SKELETON");
+	NspawnMob(nS31, "SKELETON");
+	NspawnMob(nS32, "PIGZOMBIE");
+	NspawnMob(nS33, "LAVASLIME");
+	NspawnMob(nS34, "SKELETON");
+	NspawnMob(nS35, "SKELETON");
+	NspawnMob(nS36, "SKELETON");
+	NspawnMob(nS37, "LAVASLIME");
+	NspawnMob(nS38, "PIGZOMBIE");
+	NspawnMob(nS39, "SKELETON");
+	NspawnMob(nS40, "SKELETON");
+
+ else
+         a_whisper_error(Message, "Joining the fight for Round 2.", player);
+
+         end
+      end
+   end
+end
+
+function n_end_r2()
+	if check_alive_statsN() then
+           nR2:cancel()
+           nRoundRunning = false;
+           nR2Done = true;
+for playerName, value in pairs(NarenaPlayers) do
+local player = Player:new(playerName);
+	   player:teleport(netherreset);
+           a_broadcast_npc(Overlord, "&aRound 2 &fin the &6Nether Arena &fhas ended!")
+	end
+	end
+end 
+
+registerHook("REGION_ENTER", "n_start_r2", "mobarena_nether-nether_round");
+
+------------------------------------------------------
+----R2 Rewards----------
+--------------------------------------------------------
+
+local world = World:new('mobarena_nether');
+local nR2Chest = Location:new(world, -1.0, 85.0, 47.0);
+local nR2ChestOpen = Location:new(world, -1.0, 85.0, 47.0);
+local nChestPlayers = {};
+local nChestTimerRunning = false;
+
+function nr2_rewards(data)
+     local player = Player:new(data.player);
+	if not nRoundRunning then 
+	if nR1Done then
+	if nR2Done then
+	if not nR3Done then
+        if not nR4Done then
+        if not nR5Done then
+		nChestPlayers[player.name] = true;
+		player:closeInventory();
+		nR1Chest:cloneChestToPlayer(player.name);
+                nethersound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 2 Rewards: you earned 8 Mob Bones!");
+							end 
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "nr2_rewards", "mobarena_nether-nether_rewards");
