@@ -473,6 +473,7 @@ function n_start_r2(data)
 	NspawnMob(nS38, "PIGZOMBIE");
 	NspawnMob(nS39, "SKELETON");
 	NspawnMob(nS40, "SKELETON");
+	NspawnMob(nS60, "PIGZOMBIE");
 
  else
          a_whisper_error(Message, "Joining the fight for Round 2.", player);
@@ -606,6 +607,7 @@ function n_start_r3(data)
 	NspawnMob(nS53, "GHAST");
 	NspawnMob(nS54, "BLAZE");
 	NspawnMob(nS55, "BLAZE");
+	NspawnMob(nS60, "PIGZOMBIE");
 
  else
          a_whisper_error(Message, "Joining the fight for Round 3.", player);
@@ -654,7 +656,7 @@ function nr3_rewards(data)
 		player:closeInventory();
 		nR3Chest:cloneChestToPlayer(player.name);
                 nethersound:playSound('HORSE_SADDLE', 1, 0);
-                player:sendMessage("&dRound 2 Rewards: you earned 10 Mob Bones!");
+                player:sendMessage("&dRound 3 Rewards: you earned 10 Mob Bones!");
 							end 
 						end
 					end
@@ -665,4 +667,145 @@ function nr3_rewards(data)
 	
 
 registerHook("REGION_ENTER", "nr3_rewards", "mobarena_nether-nether_rewards");
+
+---------------------------
+-----------Round 4---------
+---------------------------
+
+function n_start_r4(data)
+        for playerName, value in pairs(NarenaPlayers) do
+         local player = Player:new(data.player);
+      if nR1Done then
+      if nR2Done then
+      if nR3Done then
+      if not nR3Done then			
+      if not nRoundRunning then  
+         nRoundRunning = true;
+         nR4:startRepeating()
+         nethersound:playSound('PORTAL_TRIGGER', 1, 2);
+         a_broadcast_npc(Overlord, player.name .. " has started &aRound 4 &fin the &6Nether Arena&f!");
+         a_whisper_good(Message, "&cRound 4 has started, kill all mobs to move to Round 5.", player);
+	 a_whisper_good(Message, "&eLook out &660 &eMobs spawning in!", player);
+	NspawnMob(nS1, "PIGZOMBIE");
+	NspawnMob(nS2, "PIGZOMBIE");
+	NspawnMob(nS3, "PIGZOMBIE");
+	NspawnMob(nS4, "PIGZOMBIE");
+	NspawnMob(nS5, "PIGZOMBIE");
+	NspawnMob(nS6, "PIGZOMBIE");
+	NspawnMob(nS7, "PIGZOMBIE");
+	NspawnMob(nS8, "PIGZOMBIEN");
+	NspawnMob(nS9, "PIGZOMBIE");
+	NspawnMob(nS10, "SKELETON");
+	NspawnMob(nS11, "LAVASLIME");
+	NspawnMob(nS12, "PIGZOMBIE");
+	NspawnMob(nS13, "SKELETON");
+	NspawnMob(nS14, "SKELETON");
+	NspawnMob(nS15, "LAVASLIME");
+	NspawnMob(nS16, "SKELETON");
+	NspawnMob(nS17, "PIGZOMBIE");
+	NspawnMob(nS18, "PIGZOMBIE");
+	NspawnMob(nS19, "LAVASLIME");
+	NspawnMob(nS20, "SKELETON");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS21, "SKELETON");
+	NspawnMob(nS21, "LAVASLIME");
+	NspawnMob(nS22, "PIGZOMBIE");
+	NspawnMob(nS23, "SKELETON");
+	NspawnMob(nS24, "SKELETON");
+	NspawnMob(nS25, "SKELETON");
+	NspawnMob(nS26, "SKELETON");
+	NspawnMob(nS27, "LAVASLIME");
+	NspawnMob(nS28, "LAVASLIME");
+	NspawnMob(nS29, "SKELETON");
+	NspawnMob(nS30, "SKELETON");
+	NspawnMob(nS31, "PIGZOMBIE");
+	NspawnMob(nS32, "LAVASLIME");
+	NspawnMob(nS33, "PIGZOMBIE");
+	NspawnMob(nS34, "LAVASLIME");
+	NspawnMob(nS35, "SKELETON");
+	NspawnMob(nS36, "SKELETON");
+	NspawnMob(nS37, "LAVASLIME");
+	NspawnMob(nS38, "SKELETON");
+	NspawnMob(nS39, "SKELETON");
+	NspawnMob(nS40, "PIGZOMBIE");
+	NspawnMob(nS41, "PIGZOMBIE");
+	NspawnMob(nS42, "LAVASLIME");
+	NspawnMob(nS43, "SKELETON");
+	NspawnMob(nS44, "LAVASLIME");
+	NspawnMob(nS45, "SKELETON");
+	NspawnMob(nS46, "LAVASLIME");
+	NspawnMob(nS47, "PIGZOMBIE");
+	NspawnMob(nS48, "LAVASLIME");
+	NspawnMob(nS49, "LAVASLIME");
+	NspawnMob(nS50, "GHAST");
+	NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS52, "BLAZE");
+	NspawnMob(nS53, "GHAST");
+	NspawnMob(nS54, "BLAZE");
+	NspawnMob(nS55, "GHAST");
+	NspawnMob(nS56, "BLAZE");
+	NspawnMob(nS57, "BLAZE");
+	NspawnMob(nS58, "GHAST");
+	NspawnMob(nS59, "BLAZE");
+	NspawnMob(nS60, "PIGZOMBIE");
+
+ else
+         a_whisper_error(Message, "Joining the fight for Round 4.", player);
+
+         end
+      end
+   end
+end
+end
+end
+end
+
+function n_end_r4()
+	if check_alive_statsN() then
+           nR4:cancel()
+           nRoundRunning = false;
+           nR4Done = true;
+for playerName, value in pairs(NarenaPlayers) do
+local player = Player:new(playerName);
+	   player:teleport(netherreset);
+           a_broadcast_npc(Overlord, "&aRound 4 &fin the &6Nether Arena &fhas ended!")
+	end
+	end
+end 
+
+registerHook("REGION_ENTER", "n_start_r4", "mobarena_nether-nether_round");
+
+------------------------------------------------------
+----R4 Rewards----------
+--------------------------------------------------------
+
+local world = World:new('mobarena_nether');
+local nR4Chest = Location:new(world, 3.0, 85.0, 47.0);
+local nR4ChestOpen = Location:new(world, 3.0, 85.0, 47.0);
+local nChestPlayers = {};
+local nChestTimerRunning = false;
+
+function nr4_rewards(data)
+     local player = Player:new(data.player);
+	if not nRoundRunning then 
+	if nR1Done then
+	if nR2Done then
+	if nR3Done then
+        if nR4Done then
+        if not nR5Done then
+		nChestPlayers[player.name] = true;
+		player:closeInventory();
+		nR4Chest:cloneChestToPlayer(player.name);
+                nethersound:playSound('HORSE_SADDLE', 1, 0);
+                player:sendMessage("&dRound 4 Rewards: you earned 12 Mob Bones!");
+							end 
+						end
+					end
+				end
+			end
+		end
+	end
+	
+
+registerHook("REGION_ENTER", "nr4_rewards", "mobarena_nether-nether_rewards");
 
