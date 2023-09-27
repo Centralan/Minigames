@@ -1011,7 +1011,7 @@ function nrL_rewards(data)
 			end
 		end
 	end
-	
+										end
 
 registerHook("REGION_ENTER", "nrL_rewards", "mobarena_nether-nether_rewards");
          
