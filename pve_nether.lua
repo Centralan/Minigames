@@ -834,9 +834,9 @@ function n_start_light(data)
          nRL:startRepeating()
          nethersound:playSound('HORSE_IDLE', 1, 2);
 	 nethersound:playSound('HORSE_HIT', 1, 2);
-         a_broadcast_npc(Overlord, player.name .. " has started &a the Lightning Round! Round rewards are increased!");
+         a_broadcast_npc(Overlord, player.name .. " has started the &aLightning Round! &fRound rewards are &6increased!");
          a_whisper_good(Message, "&cA lightning round has started, kill all the bosses and its minons!", player);
-	 a_whisper_good(Message, "&eLook out &21 &eMobs spawning in!", player);
+	 a_whisper_good(Message, "&eLook out &221 &eMobs spawning in!", player);
 		NspawnMob(nS50, "WITHER");
 	        NspawnMob(nS51, "BLAZE");
 	        NspawnMob(nS52, "BLAZE");
@@ -860,6 +860,7 @@ function n_start_light(data)
 	        NspawnMob(nS18, "SKELETON");
 	else								
 	if not player:hasItem("skull", 1) then
+	if not nRLDone then
 	       nRoundRunning = true;
                nR5:startRepeating()
                nethersound:playSound('PORTAL_TRIGGER', 1, 2);
