@@ -548,7 +548,7 @@ function n_start_r3(data)
          nethersound:playSound('PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 3 &fin the &6Nether Arena&f!");
          a_whisper_good(Message, "&cRound 3 has started, kill all mobs to move to Round 4.", player);
-	 a_whisper_good(Message, "&eLook out &640 &eMobs spawning in!", player);
+	 a_whisper_good(Message, "&eLook out &655 &eMobs spawning in!", player);
 	NspawnMob(nS1, "LAVASLIME");
 	NspawnMob(nS2, "PIGZOMBIE");
 	NspawnMob(nS3, "SKELETON");
@@ -600,6 +600,12 @@ function n_start_r3(data)
 	NspawnMob(nS47, "PIGZOMBIE");
 	NspawnMob(nS48, "LAVASLIME");
 	NspawnMob(nS49, "SKELETON");
+	NspawnMob(nS50, "GHAST");
+	NspawnMob(nS51, "BLAZE");
+	NspawnMob(nS52, "BLAZE");
+	NspawnMob(nS53, "GHAST");
+	NspawnMob(nS54, "BLAZE");
+	NspawnMob(nS55, "BLAZE");
 
  else
          a_whisper_error(Message, "Joining the fight for Round 3.", player);
