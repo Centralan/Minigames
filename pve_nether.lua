@@ -121,6 +121,9 @@ local nR2 = Timer:new("n_end_r2", 1);
 local nR3 = Timer:new("n_end_r3", 1);
 local nR4 = Timer:new("n_end_r4", 1);
 local nR5 = Timer:new("n_end_r5", 1);
+local nRL = Timer:new("n_end_light", 1);
+local nRL = Timer:new("n_end_light2", 1);
+
 
 --------------
 ----Chat Mon--
