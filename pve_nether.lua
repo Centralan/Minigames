@@ -19,6 +19,7 @@ local netherexit = Location:new(myWorld, 837.0, 97, 149.0);
 local netherrespawn = Location:new(myWorld5, 0, 62.0, 4.0);
 local netherreset = Location:new(myWorld5, 0, 85.0, 38.0);
 local netherr5 = Location:new(myWorld, 838, 119.0, 153.0);
+local nlrewards = Location:new(myWorld, -4, 83.0, 38.0);
 
 ----------------
 --Chests--
@@ -969,7 +970,7 @@ function n_end_light()
            nRLDone = true;
            for playerName, value in pairs(NarenaPlayers) do
            local player = Player:new(playerName);
-	   player:teleport(netherreset);
+	   player:teleport(nlrewards);
            a_broadcast_npc(Overlord, "&aThe Lightning round has ended!")
 	   player:sendEvent("achievement.lightninground");
 			end
@@ -1013,7 +1014,7 @@ function nrL_rewards(data)
 	end
 										end
 
-registerHook("REGION_ENTER", "nrL_rewards", "mobarena_nether-nether_rewards");
+registerHook("REGION_ENTER", "nrL_rewards", "mobarena_nether-nrl_rewards");
 
 ---------------------------------------
 -----------Round  5 ---------
