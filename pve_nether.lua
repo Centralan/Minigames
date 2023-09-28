@@ -1124,11 +1124,11 @@ end
 end
 
 function n_end_r5()
-	if check_alive_statsM() then
+	if check_alive_statsN() then
            nR5:cancel()
            nRoundRunning = false;
            nR5Done = true;
-for playerName, value in pairs(MarenaPlayers) do
+for playerName, value in pairs(NarenaPlayers) do
 local player = Player:new(playerName);
 	   player:teleport(netherr5);
            a_broadcast_npc(Overlord, "&fThe &6Nether Arena &fhas been defeated!")
