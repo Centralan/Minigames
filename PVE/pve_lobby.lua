@@ -462,7 +462,7 @@ registerHook("BLOCK_GAINS_CURRENT", "processPlayers", "mobarena", 831.0, 130.0, 
 function lobby_endgame_portal(data)
 local player = Player:new(data.player);
           a_whisper_npc(Message, "&4&lYou are not yet worthy", player);
-          lobbysound:playSound('VILLAGER_NO', 1, 1);
+          lobbysound:playSound('ENTITY_VILLAGER_NO', 1, 1);
 end
 
 registerHook("REGION_ENTER", "lobby_endgame_portal", "mobarena-lobby_endgame1");
@@ -502,7 +502,7 @@ function mr4_rewards(data)
      local player = Player:new(data.player);
 		mChestPlayers[player.name] = true;
 		mR4Chest:cloneChestToPlayer(player.name);
-                lobbysound:playSound('HORSE_SADDLE', 1, 0);
+                lobbysound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 4 Rewards: you earned 9 Mob Bones!");
 		end
 	
@@ -525,7 +525,7 @@ function nr5_rewards(data)
      local player = Player:new(data.player);
 		nChestPlayers[player.name] = true;
 		nR5Chest:cloneChestToPlayer(player.name);
-                lobbysound:playSound('HORSE_SADDLE', 1, 0);
+                lobbysound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 5 Rewards: you earned 15 Mob Bones!");
 		end
 	
