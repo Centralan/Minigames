@@ -123,7 +123,7 @@ function tp_to_arena2(data)
         local player = Player:new(data.player);
           player:teleport(minearenaenter);
 	  GearChest:cloneChestToPlayer(player.name);
-	  minesound:playSound('HORSE_SADDLE', 1, 0);
+	  minesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
 	  player:sendMessage("&dYou have been granted with free gear.");
           MarenaPlayers[player.name] = true;
           MplayerCount = MplayerCount + 1;
@@ -284,7 +284,7 @@ function m_start_r1(data)
       if not mRoundRunning then  
          mRoundRunning = true;
          mR1:startRepeating()
-         minesound:playSound('PORTAL_TRIGGER', 1, 2);
+         minesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
 	 a_whisper_good(Message, "&eLook out &630 &eMobs spawning in!", player);
@@ -364,7 +364,7 @@ function mr1_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		mR1Chest:cloneChestToPlayer(player.name);
-                minesound:playSound('HORSE_SADDLE', 1, 0);
+                minesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 1 Rewards: you earned 5 Mob Bones!");
 							end 
 						end
@@ -426,7 +426,7 @@ function m_start_r2(data)
       if not mRoundRunning then  
          mRoundRunning = true;
          mR2:startRepeating()
-         minesound:playSound('PORTAL_TRIGGER', 1, 2);
+         minesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 2 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 2 has started, kill all mobs to move to Round 3.", player);
 	 a_whisper_good(Message, "&eLook out &640 &eMobs spawning in!", player);
@@ -517,7 +517,7 @@ function mr2_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		mR2Chest:cloneChestToPlayer(player.name);
-                minesound:playSound('HORSE_SADDLE', 1, 0);
+                minesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 2 Rewards: you earned 6 Mob Bones!");
 								end
 						end
@@ -585,7 +585,7 @@ function m_start_r3(data)
       if not mRoundRunning then  
          mRoundRunning = true;
          mR3:startRepeating()
-         minesound:playSound('PORTAL_TRIGGER', 1, 2);
+         minesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 3 &fin the &6Mine Arena&f!");
          a_whisper_good(Message, "&cRound 3 has started, kill all mobs to move to Round 4.", player);
 	 a_whisper_good(Message, "&eLook out &650 &eMobs spawning in!", player);
@@ -687,7 +687,7 @@ function mr3_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		mR3Chest:cloneChestToPlayer(player.name);
-                minesound:playSound('HORSE_SADDLE', 1, 0);
+                minesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 3 Rewards: you earned 7 Mob Bones!");
 								end
 						end
@@ -748,7 +748,7 @@ function m_start_r4(data)
       if not mRoundRunning then  
          mRoundRunning = true;
          mR4:startRepeating()
-         minesound:playSound('PORTAL_TRIGGER', 1, 2);
+         minesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 4 &fin the &6Mine Arena&f!");
 	 a_whisper_good(Message, "&cRound 4 has started, kill all mobs to defeat the &6Mine Arena&f!.", player);
          a_whisper_good(Message, "&eLook out &655 &eMobs spawning in!", player);
