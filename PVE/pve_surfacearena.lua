@@ -122,7 +122,7 @@ function tp_to_arena(data)
         local player = Player:new(data.player);
           player:teleport(surfacearenaenter);
 	  GearChest:cloneChestToPlayer(player.name);
-	  surfacesound:playSound('HORSE_SADDLE', 1, 0);
+	  surfacesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
 	  player:sendMessage("&dYou have been granted with free gear.");
           arenaPlayers[player.name] = true;
           playerCount = playerCount + 1;
@@ -195,7 +195,7 @@ function start_r1(data)
       if not sRoundRunning then  
          sRoundRunning = true;
          R1:startRepeating()
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
+         surfacesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 1 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 1 has started, kill all mobs to move to Round 2.", player);
 	spawnMob(R1S1, "ZOMBIE");
@@ -265,7 +265,7 @@ function r1_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		R1Chest:cloneChestToPlayer(player.name);
-                surfacesound:playSound('HORSE_SADDLE', 1, 0);
+                surfacesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 1 Rewards: you earned 2 Mob Bones!");
 							end 
 						end
@@ -298,7 +298,7 @@ function start_r2(data)
       if not sRoundRunning then  
          sRoundRunning = true;
          R2:startRepeating()
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
+         surfacesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 2 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 2 has started, kill all mobs to move to Round 3.", player);
 	spawnMob(R2S1, "ZOMBIE");
@@ -373,7 +373,7 @@ function r2_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		R1Chest:cloneChestToPlayer(player.name);
-                surfacesound:playSound('HORSE_SADDLE', 1, 0);
+                surfacesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 2 Rewards: you earned 3 Mob Bones!");
 								end
 						end
@@ -405,7 +405,7 @@ function start_r3(data)
       if not sRoundRunning then  
          sRoundRunning = true;
          R3:startRepeating()
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
+         surfacesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 3 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 3 has started, kill all mobs to move to Round 4.", player);
 	spawnMob(R3S1, "ZOMBIE");
@@ -483,7 +483,7 @@ function r3_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		R3Chest:cloneChestToPlayer(player.name);
-                surfacesound:playSound('HORSE_SADDLE', 1, 0);
+                surfacesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 3 Rewards: you earned 4 Mob Bones!");
 								end
 						end
@@ -514,7 +514,7 @@ function start_r4(data)
       if not sRoundRunning then  
          sRoundRunning = true;
          R4:startRepeating()
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
+         surfacesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 4 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 4 has started, kill all mobs to move to Round 5.", player);
 	spawnMob(R4S1, "ZOMBIE");
@@ -599,7 +599,7 @@ function r4_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		R4Chest:cloneChestToPlayer(player.name);
-                surfacesound:playSound('HORSE_SADDLE', 1, 0);
+                surfacesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 4 Rewards: you earned 5 Mob Bones!");
 								end
 						end
@@ -630,7 +630,7 @@ function start_r5(data)
       if not sRoundRunning then  
          sRoundRunning = true;
          R5:startRepeating()
-         surfacesound:playSound('PORTAL_TRIGGER', 1, 2);
+         surfacesound:playSound('BLOCK_PORTAL_TRIGGER', 1, 2);
          a_broadcast_npc(Overlord, player.name .. " has started &aRound 5 &fin the &6Surface Arena&f!");
          a_whisper_good(Message, "&cRound 5 has started, kill all mobs to beat the arena!", player);
 	spawnMob(R5S1, "ZOMBIE");
@@ -725,7 +725,7 @@ function r5_rewards(data)
 		ChestPlayers[player.name] = true;
 		player:closeInventory();
 		R5Chest:cloneChestToPlayer(player.name);
-                surfacesound:playSound('HORSE_SADDLE', 1, 0);
+                surfacesound:playSound('ENTITY_HORSE_SADDLE', 1, 0);
                 player:sendMessage("&dRound 5 Rewards: you earned 6 Mob Bones!");
 								end
 					
