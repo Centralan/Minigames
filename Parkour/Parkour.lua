@@ -10,7 +10,7 @@ end
 registerHook("REGION_ENTER", "pkr_mode", "creative-centralan_7");
 
 -----------------------------------
---------pkr_desert--------
+--------pkr_desert-----------------
 -----------------------------------
 
 local pkr_d = Location:new(myWorld4, -1393.531, 71.0, 5653.0);
