@@ -1,3 +1,5 @@
+local world = World:new('creative');
+
 -----------------------------------
 ----------pkr----------------------
 -----------------------------------
@@ -13,7 +15,7 @@ registerHook("REGION_ENTER", "pkr_mode", "creative-centralan_7");
 --------pkr_desert-----------------
 -----------------------------------
 
-local pkr_d = Location:new(myWorld4, -1393.531, 71.0, 5653.0);
+local pkr_d = Location:new(world, -1393.531, 71.0, 5653.0);
 pkr_d:setYaw(-90.4);
 pkr_d:setPitch(6.6);
 
@@ -35,7 +37,7 @@ registerHook("REGION_ENTER", "pkr_d_complete", "creative-pkr_d_cheeve");
 --------pkr_plains--------
 -----------------------------------
 
-local pkr_p = Location:new(myWorld4, -1407.279, 71.0, 5666.0);
+local pkr_p = Location:new(world, -1407.279, 71.0, 5666.0);
 pkr_p:setYaw(1.2);
 pkr_p:setPitch(3.6);
 
