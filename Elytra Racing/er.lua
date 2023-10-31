@@ -7,6 +7,7 @@ local world = World:new('creative');
 function er_mode(data)
         local p = Player:new(data["player"]);
         p:setMode("ADVENTURE");
+        p:clearInventory();
 end
 
 registerHook("REGION_ENTER", "er_mode", "creative-centralan_8");
