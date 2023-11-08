@@ -58,3 +58,30 @@ registerHook("REGION_ENTER", "pkr_p_respawn", "creative-pkr_p_3");
 registerHook("REGION_ENTER", "pkr_p_respawn", "creative-pkr_p_4");
 registerHook("REGION_ENTER", "pkr_p_complete", "creative-pkr_p_cheeve");
 
+-----------------------------------
+--------pkr_water--------
+-----------------------------------
+
+local pkr_o = Location:new(world, -1407.449, 71.0, 5638.509);
+pkr_o:setYaw(179.3);
+pkr_o:setPitch(6.7);
+
+function pkr_o_respawn(data)
+	local player = Player:new(data["player"]);
+	player:teleport(pkr_o);
+end
+
+function pkr_o_complete(data)
+	local player = Player:new(data["player"]);
+	player:sendEvent("achievement.parkourmaster");
+end
+
+function pkr_o_finish(data)
+	local player = Player:new(data["player"]);
+	player:teleport(pkr_o);
+end
+
+registerHook("REGION_ENTER", "pkr_o_respawn", "creative-parkour_blue_fall1");
+registerHook("REGION_ENTER", "pkr_0_complete", "creative-pkr_o_cheeve");
+registerHook("REGION_ENTER", "pkr_0_finish", "creative-pkr_o_warp");
+
