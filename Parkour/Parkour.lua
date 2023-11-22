@@ -5,12 +5,28 @@ local world = World:new('creative');
 -----------------------------------
 
 function pkr_mode(data)
-        local p = Player:new(data["player"]);
-        p:setMode("ADVENTURE");
-	p:clearInventory();
+        local player = Player:new(data.player);
+        if player:hasPermission("runsafe.toybox.mode") then
+           player:sendMessage("&7Gamemode check ignored.");
+        else
+           local player = Player:new(data.player);
+                player:setMode("SURVIVAL");
+                player:clearInventory();
+end
 end
 
-registerHook("REGION_ENTER", "pkr_mode", "creative-centralan_7");
+registerHook("REGION_ENTER", "pkr_mode", "creative-parkour");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p1");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p2");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p3");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p4");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p5");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p6");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p7");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p8");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p9");
+registerHook("REGION_ENTER", "pkr_mode", "creative-p10");
+registerHook("REGION_LEAVE", "pkr_mode", "creative-pkr_test");
 
 -----------------------------------
 --------pkr_desert-----------------
