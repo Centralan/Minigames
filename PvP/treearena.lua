@@ -5,4 +5,4 @@ function respawn_wipe(data)
              player:clearInventory();
 end
 
-registerHook("REGION_ENTER", "respawn_wipe", "pvparena-pvp_mine")
+registerHook("REGION_LEAVE", "respawn_wipe", "pvparena-pvp_wipe")
