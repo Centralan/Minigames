@@ -26,6 +26,7 @@ function pkr_ban(data)
         if player:hasPermission("runsafe.pkr.blacklist") then
            player:sendMessage("&cSorry you've been blacklisted from playing Parkour");
            player:teleport(pkr_remove);
+           player:playSound('ENTITY_VILLAGER_NO', 1, 1);
 end
 end
 
