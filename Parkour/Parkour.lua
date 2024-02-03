@@ -23,13 +23,12 @@ end
 
 function pkr_ban(data)
         local player = Player:new(data.player);
-        if data.player == "PapaPetes" or data.player == "Jesse_070296" then
+        if player:hasPermission("runsafe.pkr.blacklist") then
            player:sendMessage("&cSorry you've been blacklisted from playing Parkour");
            player:teleport(pkr_remove);
 end
 end
 
-	
 registerHook("REGION_ENTER", "pkr_mode", "creative-parkour");
 registerHook("REGION_ENTER", "pkr_mode", "creative-p1");
 registerHook("REGION_ENTER", "pkr_mode", "creative-p2");
