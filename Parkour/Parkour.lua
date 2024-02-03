@@ -1,8 +1,14 @@
 local world = World:new('creative');
+local world2 = World:new('survival3');
+
+local pkr_remove = Location:new(world2, 19549.456, 72.0, -20790.600);
+pkr_remove:setYaw(90.6);
+pkr_remove:setPitch(-8.6);
+
 
 -----------------------------------
-----------pkr----------------------
------------------------------------
+------------Lobby----------------------
+-------------------------------------
 
 function pkr_mode(data)
         local player = Player:new(data.player);
@@ -10,11 +16,20 @@ function pkr_mode(data)
            player:sendMessage("&7Gamemode check ignored.");
         else
            local player = Player:new(data.player);
-                player:setMode("SURVIVAL");
-                player:clearInventory();
+                player:setMode("ADVENTURE");
+--                player:clearInventory();
 end
 end
 
+function pkr_ban(data)
+        local player = Player:new(data.player);
+        if data.player == "PapaPetes" or data.player == "Jesse_070296" then
+           player:sendMessage("&cSorry you've been blacklisted from playing Parkour");
+           player:teleport(pkr_remove);
+end
+end
+
+	
 registerHook("REGION_ENTER", "pkr_mode", "creative-parkour");
 registerHook("REGION_ENTER", "pkr_mode", "creative-p1");
 registerHook("REGION_ENTER", "pkr_mode", "creative-p2");
@@ -26,7 +41,17 @@ registerHook("REGION_ENTER", "pkr_mode", "creative-p7");
 registerHook("REGION_ENTER", "pkr_mode", "creative-p8");
 registerHook("REGION_ENTER", "pkr_mode", "creative-p9");
 registerHook("REGION_ENTER", "pkr_mode", "creative-p10");
-registerHook("REGION_LEAVE", "pkr_mode", "creative-pkr_test");
+registerHook("REGION_ENTER", "pkr_ban", "creative-parkour");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p1");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p2");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p3");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p4");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p5");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p6");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p7");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p8");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p9");
+registerHook("REGION_ENTER", "pkr_ban", "creative-p10");
 
 -----------------------------------
 --------pkr_desert-----------------
