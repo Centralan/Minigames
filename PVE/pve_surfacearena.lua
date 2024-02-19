@@ -17,6 +17,10 @@ function a_whisper_error(npc, msg, player)
 	player:sendMessage('&f&c' .. npc .. '&c' .. msg);
 end
 
+function a_whisper_good(npc, msg, player)
+	player:sendMessage('&f&c' .. npc .. '&f' .. msg);
+end
+
 --------------------------------
 ----Player Control--
 ----------------------------------
