@@ -182,7 +182,7 @@ if playerCount < 2 then
 		if playerCount == 1 then
 			s_match_winner(matchPlayers[1]);
 		elseif playerCount == 0 then
-			s_broadcast('The match ended with no winner!');
+			lmsai:speak("The match ended with no winner!");
 		end
 		s_match_end();
 	else
@@ -191,13 +191,13 @@ if playerCount < 2 then
 end
  
 function s_match_winner(winner)
-	s_message(winner, "You have won this round of Last Man Standing!");
+	lmsai:speak( player.name .. " has won this round of Last Man Standing!");
 	sign:setSign('', 'Last Winner:', winner.name, '');
 	local winner = Player:new(winner);
 	winner:kill();
 end
 function s_match_stale()
-	s_broadcast('Time up! The match concludes with no winner.');
+	lmsai:speak(" Times up! The match concludes with no winner.");
 	s_match_end();
 end
  
@@ -236,13 +236,13 @@ function s_match_check()
 			if #s_get_players_in_lobby() > 1 then
 				s_match_start();
 			else
-				s_broadcast('Not enough players for a match!');
+				lmsai:speak("Not enough players for a match!");
 				matchCheckTimer:start();
 			end
 		else
 			if #s_get_players_in_lobby() > 1 then
 				preMatchRunning = true;
-				s_broadcast('New match starting in 60 seconds! Prepare yourselves!');
+				lmsai:speak("New match starting in 60 seconds! Prepare yourselves!");
 			end
 			matchCheckTimer:start();
 		end
