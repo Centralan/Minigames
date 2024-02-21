@@ -9,6 +9,11 @@ local pkr_reset = Location:new(world, 0.0, 65.0, 0.0);
 pkr_reset:setYaw(0.0);
 pkr_reset:setPitch(0.9);
 
+function p_broadcast(msg)
+	world:broadcast("&e[PKR] &f" .. msg);
+end
+
+
 
 -----------------------------------
 ------------Lobby----------------------
@@ -57,7 +62,7 @@ function pkr_blue_enter(data)
         local player = Player:new(data.player);
           if not player:hasPermission("runsafe.pkr.blacklist") then
 	  if not player:hasPermission("runsafe.pkr.blue") then
-             player:sendTitle("&9&lBlue Course", "&l31 Jumps");
+             player:sendTitle("&9&lBlue Course", "&l49 Jumps");
 	     player:addPermission("runsafe.pkr.blue");
 					end
 				end
