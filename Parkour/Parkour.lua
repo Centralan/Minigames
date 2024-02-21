@@ -106,7 +106,7 @@ end
 function pkr_y_complete(data)
 	local player = Player:new(data.player);
 	player:teleport(pkr_reset);
-	yellowsign:setSign('Last Completion:', player.name, '', '');
+	yellowsign:setSign('Last Completion:', '', player.name, '');
 end
 
 registerHook("REGION_ENTER", "pkr_y_respawn", "pkr-pkr_y_1");
@@ -138,7 +138,7 @@ end
 function pkr_g_finish(data)
 	local player = Player:new(data.player);
 	player:teleport(pkr_reset);
-	greensign:setSign('Last Completion:', player.name, '', '');
+	greensign:setSign('Last Completion:', '', player.name, '');
 end
 
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_1");
@@ -172,7 +172,7 @@ end
 function pkr_b_finish(data)
 	local player = Player:new(data.player);
 	player:teleport(pkr_reset);
-	bluesign:setSign('Last Completion:', player.name, '', '');
+	bluesign:setSign('Last Completion:', '', player.name, '');
 end
 
 registerHook("REGION_ENTER", "pkr_b_respawn", "pkr-pkr_blue_fall");
