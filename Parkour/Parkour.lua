@@ -26,29 +26,49 @@ end
 function pkr_red_enter(data)
         local player = Player:new(data.player);
           if not player:hasPermission("runsafe.pkr.blacklist") then
+	  if not player:hasPermission("runsafe.pkr.red") then
              player:sendTitle("&c&lRed Course", "&l# Jumps");
-end
-end
+	     player:addPermission("runsafe.pkr.red"); 
+					end
+				end
+			end
 
 function pkr_yellow_enter(data)
         local player = Player:new(data.player);
           if not player:hasPermission("runsafe.pkr.blacklist") then
+	  if not player:hasPermission("runsafe.pkr.yellow") then
              player:sendTitle("&e&lYellow Course", "&l32 Jumps");
-end
-end
+	     player:addPermission("runsafe.pkr.yellow");
+					end
+				end
+			end
 
 function pkr_green_enter(data)
         local player = Player:new(data.player);
           if not player:hasPermission("runsafe.pkr.blacklist") then
+	  if not player:hasPermission("runsafe.pkr.green") then
              player:sendTitle("&a&lGreen Course", "&l31 Jumps");
-end
-end
+	     player:addPermission("runsafe.pkr.green");
+					end
+				end
+			end
 
 function pkr_blue_enter(data)
         local player = Player:new(data.player);
           if not player:hasPermission("runsafe.pkr.blacklist") then
+	  if not player:hasPermission("runsafe.pkr.blue") then
              player:sendTitle("&9&lBlue Course", "&l31 Jumps");
-end
+	     player:addPermission("runsafe.pkr.blue");
+					end
+				end
+			end
+
+function pkr_perm_wipe(data)
+        local player = Player:new(data.player);
+          player:removePermission("runsafe.pkr.red");
+	  player:removePermission("runsafe.pkr.yellow");
+	  player:removePermission("runsafe.pkr.green");
+	  player:removePermission("runsafe.pkr.blue");
 end
 
 registerHook("REGION_ENTER", "pkr_ban", "pkr-pkr_purple");
@@ -60,6 +80,7 @@ registerHook("REGION_ENTER", "pkr_red_enter", "pkr-pkr_red");
 registerHook("REGION_ENTER", "pkr_yellow_enter", "pkr-pkr_yellow");
 registerHook("REGION_ENTER", "pkr_green_enter", "pkr-pkr_green");
 registerHook("REGION_ENTER", "pkr_blue_enter", "pkr-pkr_blue");
+registerHook("REGION_LEAVE", "pkr_perm_wipe", "pkr-pkr");
 
 -----------------------------------
 --------pkr_yellow-----------------
@@ -70,11 +91,11 @@ pkr_y:setYaw(-178.7);
 pkr_y:setPitch(-0.2);
 
 local yellowsign = Location:new(world, 34.0, 67.0, -1.0);
+local yellowsound = Location:new(world, 26.0, 64.0, -7.0);
 
 function pkr_y_respawn(data)
 	local player = Player:new(data.player);
 	player:teleport(pkr_y);
-	player:playSound('ENTITY_GENERIC_BIG_FALL', 1, 0.1);
 end
 
 function pkr_y_cheeve(data)
@@ -97,9 +118,9 @@ registerHook("REGION_ENTER", "pkr_y_complete", "pkr-pkr_y_complete");
 --------pkr_green--------
 -----------------------------------
 
-local pkr_g = Location:new(world, 0.500, 65.0, 16.500);
-pkr_g:setYaw(1.2);
-pkr_g:setPitch(3.6);
+local pkr_g = Location:new(world, 0.500, 65.0, 15.500);
+pkr_g:setYaw(0.0);
+pkr_g:setPitch(-1.1);
 
 local greensign = Location:new(world, 34.0, 67.0, -2.0);
 
@@ -133,7 +154,7 @@ registerHook("REGION_ENTER", "pkr_g_finish", "pkr-pkr_g_finish");
 
 local pkr_b = Location:new(world, 0.500, 65.0, -14.500);
 pkr_b:setYaw(179.9);
-pkr_b:setPitch(-1.9);
+pkr_b:setPitch(-2.1);
 
 local bluesign = Location:new(world, 34.0, 67.0, 1.0);
 
