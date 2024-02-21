@@ -1,25 +1,18 @@
-local world = World:new('creative');
+local world = World:new('pkr');
 local world2 = World:new('survival3');
 
 local pkr_remove = Location:new(world2, 19549.456, 72.0, -20790.600);
 pkr_remove:setYaw(90.6);
 pkr_remove:setPitch(-8.6);
 
+local pkr_reset = Location:new(world, 0.0, 65.0, 0.0);
+pkr_reset:setYaw(0.0);
+pkr_reset:setPitch(0.9);
+
 
 -----------------------------------
 ------------Lobby----------------------
 -------------------------------------
-
-function pkr_mode(data)
-        local player = Player:new(data.player);
-        if player:hasPermission("runsafe.toybox.mode") then
-           player:sendMessage("&7Gamemode check ignored.");
-        else
-           local player = Player:new(data.player);
-                player:setMode("ADVENTURE");
---                player:clearInventory();
-end
-end
 
 function pkr_ban(data)
         local player = Player:new(data.player);
@@ -30,99 +23,138 @@ function pkr_ban(data)
 end
 end
 
-registerHook("REGION_ENTER", "pkr_mode", "creative-parkour");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p1");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p2");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p3");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p4");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p5");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p6");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p7");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p8");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p9");
-registerHook("REGION_ENTER", "pkr_mode", "creative-p10");
-registerHook("REGION_ENTER", "pkr_ban", "creative-parkour");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p1");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p2");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p3");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p4");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p5");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p6");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p7");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p8");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p9");
-registerHook("REGION_ENTER", "pkr_ban", "creative-p10");
-
------------------------------------
---------pkr_desert-----------------
------------------------------------
-
-local pkr_d = Location:new(world, -1393.531, 71.0, 5653.0);
-pkr_d:setYaw(-90.4);
-pkr_d:setPitch(6.6);
-
-function pkr_d_respawn(data)
-	local player = Player:new(data["player"]);
-	player:teleport(pkr_d);
+function pkr_red_enter(data)
+        local player = Player:new(data.player);
+          if not player:hasPermission("runsafe.pkr.blacklist") then
+             player:sendTitle("&c&lRed Course", "&l# Jumps");
+end
 end
 
-function pkr_d_complete(data)
-	local player = Player:new(data["player"]);
+function pkr_yellow_enter(data)
+        local player = Player:new(data.player);
+          if not player:hasPermission("runsafe.pkr.blacklist") then
+             player:sendTitle("&e&lYellow Course", "&l32 Jumps");
+end
+end
+
+function pkr_green_enter(data)
+        local player = Player:new(data.player);
+          if not player:hasPermission("runsafe.pkr.blacklist") then
+             player:sendTitle("&a&lGreen Course", "&l31 Jumps");
+end
+end
+
+function pkr_blue_enter(data)
+        local player = Player:new(data.player);
+          if not player:hasPermission("runsafe.pkr.blacklist") then
+             player:sendTitle("&9&lBlue Course", "&l31 Jumps");
+end
+end
+
+registerHook("REGION_ENTER", "pkr_ban", "pkr-pkr_purple");
+registerHook("REGION_ENTER", "pkr_ban", "pkr-pkr_red");
+registerHook("REGION_ENTER", "pkr_ban", "pkr-pkr_yellow");
+registerHook("REGION_ENTER", "pkr_ban", "pkr-pkr_green");
+registerHook("REGION_ENTER", "pkr_ban", "pkr-pkr_blue");
+registerHook("REGION_ENTER", "pkr_red_enter", "pkr-pkr_red");
+registerHook("REGION_ENTER", "pkr_yellow_enter", "pkr-pkr_yellow");
+registerHook("REGION_ENTER", "pkr_green_enter", "pkr-pkr_green");
+registerHook("REGION_ENTER", "pkr_blue_enter", "pkr-pkr_blue");
+
+-----------------------------------
+--------pkr_yellow-----------------
+-----------------------------------
+
+local pkr_y = Location:new(world, 26.500, 65.0, -6.500);
+pkr_y:setYaw(-178.7);
+pkr_y:setPitch(-0.2);
+
+local yellowsign = Location:new(world, 34.0, 67.0, -1.0);
+
+function pkr_y_respawn(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_y);
+	player:playSound('ENTITY_GENERIC_BIG_FALL', 1, 0.1);
+end
+
+function pkr_y_cheeve(data)
+	local player = Player:new(data.player);
 	player:sendEvent("achievement.parkourcompetent");
 end
 
-registerHook("REGION_ENTER", "pkr_d_respawn", "creative-pkr_d_1");
-registerHook("REGION_ENTER", "pkr_d_respawn", "creative-pkr_d_2");
-registerHook("REGION_ENTER", "pkr_d_complete", "creative-pkr_d_cheeve");
-
------------------------------------
---------pkr_plains--------
------------------------------------
-
-local pkr_p = Location:new(world, -1407.279, 71.0, 5666.0);
-pkr_p:setYaw(1.2);
-pkr_p:setPitch(3.6);
-
-function pkr_p_respawn(data)
-	local player = Player:new(data["player"]);
-	player:teleport(pkr_p);
+function pkr_y_complete(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_reset);
+	yellowsign:setSign('Last Completion:', player.name, '', '');
 end
 
-function pkr_p_complete(data)
-	local player = Player:new(data["player"]);
+registerHook("REGION_ENTER", "pkr_y_respawn", "pkr-pkr_y_1");
+registerHook("REGION_ENTER", "pkr_y_respawn", "pkr-pkr_y_2");
+registerHook("REGION_ENTER", "pkr_y_cheeve", "pkr-pkr_y_cheeve");
+registerHook("REGION_ENTER", "pkr_y_complete", "pkr-pkr_y_complete");
+
+-----------------------------------
+--------pkr_green--------
+-----------------------------------
+
+local pkr_g = Location:new(world, 0.500, 65.0, 16.500);
+pkr_g:setYaw(1.2);
+pkr_g:setPitch(3.6);
+
+local greensign = Location:new(world, 34.0, 67.0, -2.0);
+
+function pkr_g_respawn(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_g);
+end
+
+function pkr_g_complete(data)
+	local player = Player:new(data.player);
 	player:sendEvent("achievement.parkournovice");
+	player:playSound('ENTITY_GENERIC_BIG_FALL', 1, 0.1);
 end
 
-registerHook("REGION_ENTER", "pkr_p_respawn", "creative-pkr_p_1");
-registerHook("REGION_ENTER", "pkr_p_respawn", "creative-pkr_p_2");
-registerHook("REGION_ENTER", "pkr_p_respawn", "creative-pkr_p_3");
-registerHook("REGION_ENTER", "pkr_p_respawn", "creative-pkr_p_4");
-registerHook("REGION_ENTER", "pkr_p_complete", "creative-pkr_p_cheeve");
-
------------------------------------
---------pkr_water--------
------------------------------------
-
-local pkr_o = Location:new(world, -1407.449, 71.0, 5638.509);
-pkr_o:setYaw(179.3);
-pkr_o:setPitch(6.7);
-
-function pkr_o_respawn(data)
-	local player = Player:new(data["player"]);
-	player:teleport(pkr_o);
+function pkr_g_finish(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_reset);
+	greensign:setSign('Last Completion:', player.name, '', '');
 end
 
-function pkr_o_complete(data)
-	local player = Player:new(data["player"]);
+registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_1");
+registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_2");
+registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_3");
+registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_4");
+registerHook("REGION_ENTER", "pkr_g_complete", "pkr-pkr_g_cheeve");
+registerHook("REGION_ENTER", "pkr_g_finish", "pkr-pkr_g_finish");
+
+-----------------------------------
+--------pkr_blue--------
+-----------------------------------
+
+local pkr_b = Location:new(world, 0.500, 65.0, -14.500);
+pkr_b:setYaw(179.9);
+pkr_b:setPitch(-1.9);
+
+local bluesign = Location:new(world, 34.0, 67.0, 1.0);
+
+function pkr_b_respawn(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_b);
+end
+
+function pkr_b_complete(data)
+	local player = Player:new(data.player);
 	player:sendEvent("achievement.parkourmaster");
+	player:playSound('ENTITY_GENERIC_BIG_FALL', 1, 0.1);
 end
 
-function pkr_o_finish(data)
-	local player = Player:new(data["player"]);
-	player:teleport(pkr_o);
+function pkr_b_finish(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_reset);
+	bluesign:setSign('Last Completion:', player.name, '', '');
 end
 
-registerHook("REGION_ENTER", "pkr_o_respawn", "creative-parkour_blue_fall1");
-registerHook("REGION_ENTER", "pkr_0_complete", "creative-pkr_o_cheeve");
-registerHook("REGION_ENTER", "pkr_0_finish", "creative-pkr_o_warp");
+registerHook("REGION_ENTER", "pkr_b_respawn", "pkr-pkr_blue_fall");
+registerHook("REGION_ENTER", "pkr_b_complete", "pkr-pkr_b_cheeve");
+registerHook("REGION_ENTER", "pkr_b_finish", "pkr-pkr_b_complete");
 
