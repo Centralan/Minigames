@@ -202,3 +202,38 @@ registerHook("REGION_ENTER", "pkr_b_respawn", "pkr-pkr_blue_fall");
 registerHook("REGION_ENTER", "pkr_b_complete", "pkr-pkr_b_cheeve");
 registerHook("REGION_ENTER", "pkr_b_finish", "pkr-pkr_b_complete");
 
+----------------------------------------------------------------
+--------DROPPER 1-----------------------------------------------
+----------------------------------------------------------------
+
+
+local dropper1 = Location:new(world, -251.5, 219.0, 30.5);
+dropper1:setYaw(-90.0);
+dropper1:setPitch(4.3);
+
+function dropper1_enter(data)
+	local player = Player:new(data.player);
+	player:teleport(dropper1);
+	player:addPermission("runsafe.dropper.1");
+end
+
+function dropper1_exit(data)
+	local player = Player:new(data.player);
+	player:removePermission("runsafe.dropper.1");
+end
+
+function respawn_dropper1(data)
+             local player = Player:new(data.player);
+              if player:hasPermission("runsafe.dropper.1") then
+                   player:setHealth(20);
+                   player:teleport(dropper1);
+         end
+end
+
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-dropper1_e");
+registerHook("REGION_LEAVE", "dropper1_exit", "pkr-dropper1");
+registerHook("PLAYER_DEATH", "respawn_dropper1", "pkr");
+
+
+
+
