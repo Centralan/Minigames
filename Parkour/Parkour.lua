@@ -129,7 +129,7 @@ end
 function pkr_y_complete(data)
 	local player = Player:new(data.player);
 	player:teleport(pkr_reset);
-	yellowsign:setSign('Last Completion:', '', player.name, '');
+	yellowsign:setSign('', 'Last Completion:', player.name, '');
 end
 
 registerHook("REGION_ENTER", "pkr_y_respawn", "pkr-pkr_y_1");
@@ -161,7 +161,7 @@ end
 function pkr_g_finish(data)
 	local player = Player:new(data.player);
 	player:teleport(pkr_reset);
-	greensign:setSign('Last Completion:', '', player.name, '');
+	greensign:setSign('', 'Last Completion:', player.name, '');
 end
 
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_1");
@@ -195,7 +195,7 @@ end
 function pkr_b_finish(data)
 	local player = Player:new(data.player);
 	player:teleport(pkr_reset);
-	bluesign:setSign('Last Completion:', '', player.name, '');
+	bluesign:setSign('', 'Last Completion:', player.name, '');
 end
 
 registerHook("REGION_ENTER", "pkr_b_respawn", "pkr-pkr_blue_fall");
@@ -211,29 +211,50 @@ local dropper1 = Location:new(world, -251.5, 219.0, 30.5);
 dropper1:setYaw(-90.0);
 dropper1:setPitch(4.3);
 
+local d1 = Location:new(world, -126.0, 71.0, 8.0);
+
 function dropper1_enter(data)
 	local player = Player:new(data.player);
 	player:teleport(dropper1);
-	player:addPermission("runsafe.dropper.1");
-end
-
-function dropper1_exit(data)
-	local player = Player:new(data.player);
-	player:removePermission("runsafe.dropper.1");
 end
 
 function respawn_dropper1(data)
              local player = Player:new(data.player);
-              if player:hasPermission("runsafe.dropper.1") then
-                   player:setHealth(20);
-                   player:teleport(dropper1);
-         end
+                   player:teleport(pkr_dropperenter);
+                   d1:setSign('', 'Last Completion:', player.name, '');
 end
 
-registerHook("REGION_ENTER", "dropper1_enter", "pkr-dropper1_e");
-registerHook("REGION_LEAVE", "dropper1_exit", "pkr-dropper1");
-registerHook("PLAYER_DEATH", "respawn_dropper1", "pkr");
-
-
-
-
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-dropper1_e")
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_1");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_2");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_3");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_4");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_5");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_6");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_7");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_8");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_9");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_10");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_11");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_12");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_13");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_14");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_15");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_16");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_17");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_18");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_19");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_20");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_21");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_22");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_23");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_24");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_25");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_26");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_27");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_28");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_29");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_30");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_31");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_32");
+registerHook("INTERACT", "respawn_dropper1", 77, "pkr", -215.0, 22.0, 30.0);
