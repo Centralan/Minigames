@@ -9,11 +9,13 @@ local pkr_reset = Location:new(world, 0.0, 65.0, 0.0);
 pkr_reset:setYaw(0.0);
 pkr_reset:setPitch(0.9);
 
+local pkr_dropperenter = Location:new(world, -124.5, 67.0, -0.5);
+pkr_dropperenter:setYaw(90.0);
+pkr_dropperenter:setPitch(0.3);
+
 function p_broadcast(msg)
 	world:broadcast("&e[PKR] &f" .. msg);
 end
-
-
 
 -----------------------------------
 ------------Lobby----------------------
@@ -25,6 +27,20 @@ function pkr_ban(data)
            player:sendMessage("&cSorry you've been blacklisted from playing Parkour");
            player:teleport(pkr_remove);
            player:playSound('ENTITY_VILLAGER_NO', 1, 1);
+end
+end
+
+function pkr_dropper_enter(data)
+        local player = Player:new(data.player);
+        if not player:hasPermission("runsafe.pkr.blacklist") then
+           player:teleport(pkr_dropperenter);
+end
+end
+
+function pkr_dropper_exit(data)
+        local player = Player:new(data.player);
+        if not player:hasPermission("runsafe.pkr.blacklist") then
+           player:teleport(pkr_reset);
 end
 end
 
@@ -86,6 +102,8 @@ registerHook("REGION_ENTER", "pkr_yellow_enter", "pkr-pkr_yellow");
 registerHook("REGION_ENTER", "pkr_green_enter", "pkr-pkr_green");
 registerHook("REGION_ENTER", "pkr_blue_enter", "pkr-pkr_blue");
 registerHook("REGION_LEAVE", "pkr_perm_wipe", "pkr-pkr");
+registerHook("REGION_ENTER", "pkr_dropper_enter", "pkr-dropper_enter");
+registerHook("REGION_ENTER", "pkr_dropper_exit", "pkr-dropper_exit");
 
 -----------------------------------
 --------pkr_yellow-----------------
@@ -150,8 +168,8 @@ registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_1");
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_2");
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_3");
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_4");
-registerHook("REGION_ENTER", "pkr_g_complete", "pkr-pkr_g_cheeve");
-registerHook("REGION_ENTER", "pkr_g_finish", "pkr-pkr_g_finish");
+registerHook("REGION_ENTER", "pkr_g_complete", "pkr-dropper_enter");
+registerHook("REGION_ENTER", "pkr_g_finish", "pkr-dropper_exit");
 
 -----------------------------------
 --------pkr_blue--------
