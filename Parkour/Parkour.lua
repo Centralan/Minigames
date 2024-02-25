@@ -168,8 +168,8 @@ registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_1");
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_2");
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_3");
 registerHook("REGION_ENTER", "pkr_g_respawn", "pkr-pkr_g_4");
-registerHook("REGION_ENTER", "pkr_g_complete", "pkr-dropper_enter");
-registerHook("REGION_ENTER", "pkr_g_finish", "pkr-dropper_exit");
+registerHook("REGION_ENTER", "pkr_g_complete", "pkr-pkr_g_cheeve");
+registerHook("REGION_ENTER", "pkr_g_finish", "pkr-pkr_g_finish");
 
 -----------------------------------
 --------pkr_blue--------
@@ -213,10 +213,17 @@ dropper1:setPitch(4.3);
 
 local d1 = Location:new(world, -126.0, 71.0, 8.0);
 
+function dropper1_enter2(data)
+	local player = Player:new(data.player);
+	player:teleport(dropper1);
+	player:sendTitle("&a&lDropper 1", "&lEasy");
+end
+
 function dropper1_enter(data)
 	local player = Player:new(data.player);
 	player:teleport(dropper1);
 end
+
 
 function respawn_dropper1(data)
              local player = Player:new(data.player);
@@ -224,7 +231,7 @@ function respawn_dropper1(data)
                    d1:setSign('', 'Last Completion:', player.name, '');
 end
 
-registerHook("REGION_ENTER", "dropper1_enter", "pkr-dropper1_e")
+registerHook("REGION_ENTER", "dropper1_enter2", "pkr-dropper1_e")
 registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_1");
 registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_2");
 registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_3");
