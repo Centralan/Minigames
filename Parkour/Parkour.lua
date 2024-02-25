@@ -264,4 +264,6 @@ registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_29");
 registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_30");
 registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_31");
 registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_32");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_33");
+registerHook("REGION_ENTER", "dropper1_enter", "pkr-d1_34");
 registerHook("INTERACT", "respawn_dropper1", 77, "pkr", -215.0, 22.0, 30.0);
