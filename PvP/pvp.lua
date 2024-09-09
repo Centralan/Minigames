@@ -10,9 +10,20 @@ function respawn_wipe(data)
              player:clearInventory();
 end
 
+function pvp_main(data)
+       local player = Player:new(data.player);
+             player:sendMessage("&4>> &cJoining Free-For-All Combat! &4<<");
+end
+
+function pvp_main2(data)
+       local player = Player:new(data.player);
+             player:sendMessage("&4>> &cLeaving Free-For-All Combat! &4<<");
+end
+
 
 registerHook("REGION_LEAVE", "respawn_wipe", "pvparena-pvp_wipe")
-registerHook("REGION_LEAVE", "respawn_wipe", "pvparena-pvp_wipe2")
+registerHook("REGION_ENTER", "pvp_main", "pvparena-pvp_enter")
+registerHook("REGION_LEAVE", "pvp_main2", "pvparena-pvp_enter")
 
 -------------------------------
 ----------  1v1 #1  ------------
