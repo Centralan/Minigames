@@ -44,16 +44,6 @@ function pkr_dropper_exit(data)
 end
 end
 
-function pkr_red_enter(data)
-        local player = Player:new(data.player);
-          if not player:hasPermission("runsafe.pkr.blacklist") then
-	  if not player:hasPermission("runsafe.pkr.red") then
-             player:sendTitle("&c&lRed Course", "&l# Jumps");
-	     player:addPermission("runsafe.pkr.red"); 
-					end
-				end
-			end
-
 function pkr_yellow_enter(data)
         local player = Player:new(data.player);
           if not player:hasPermission("runsafe.pkr.blacklist") then
@@ -83,6 +73,17 @@ function pkr_blue_enter(data)
 					end
 				end
 			end
+
+function pkr_red_enter(data)
+        local player = Player:new(data.player);
+          if not player:hasPermission("runsafe.pkr.blacklist") then
+	  if not player:hasPermission("runsafe.pkr.red") then
+             player:sendTitle("&c&lRed Course", "&l1&k07 &r&l Jumps");
+	     player:addPermission("runsafe.pkr.red");
+					end
+				end
+			end
+
 
 function pkr_perm_wipe(data)
         local player = Player:new(data.player);
@@ -201,6 +202,58 @@ end
 registerHook("REGION_ENTER", "pkr_b_respawn", "pkr-pkr_blue_fall");
 registerHook("REGION_ENTER", "pkr_b_complete", "pkr-pkr_b_cheeve");
 registerHook("REGION_ENTER", "pkr_b_finish", "pkr-pkr_b_complete");
+
+-----------------------------------
+--------pkr_red--------
+-----------------------------------
+
+local pkr_r = Location:new(world, 26.500, 65.0, 7.500);
+pkr_r:setYaw(-0.3);
+pkr_r:setPitch(6.9);
+
+local redsign = Location:new(world, 34.0, 67.0, 2.0);
+
+function pkr_r_respawn(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_r);
+end
+
+function pkr_r_complete(data)
+	local player = Player:new(data.player);
+	--player:sendEvent("achievement.pkrred");
+	player:playSound('ENTITY_GENERIC_BIG_FALL', 1, 0.1);
+end
+
+function pkr_r_finish(data)
+	local player = Player:new(data.player);
+	player:teleport(pkr_reset);
+	redsign:setSign('', 'Last Completion:', player.name, '');
+end
+
+
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_1");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_2");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_3");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_4");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_5");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_6");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_7");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_8");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_9");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_10");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_11");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_12");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_13");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_14");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_15");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_16");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_17");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_18");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_19");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_20");
+registerHook("REGION_ENTER", "pkr_r_respawn", "pkr-pkr_red_21");
+registerHook("REGION_ENTER", "pkr_r_complete", "pkr-pkr_red_portal");
+registerHook("REGION_ENTER", "pkr_r_finish", "pkr-pkr_red_portal");
 
 ----------------------------------------------------------------
 --------DROPPER 1-----------------------------------------------
